@@ -1,5 +1,6 @@
 export { Navbar } from './Navbar';
 export { HeroSection } from './HeroSection';
+export { IntroSection } from '@/components/intro/IntroSection';
 export { AboutSection } from './AboutSection';
 export { CharacterSection } from './CharacterSection';
 export { JourneySection } from './JourneySection';

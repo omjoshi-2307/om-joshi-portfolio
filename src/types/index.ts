@@ -1,3 +1,5 @@
+export type { JourneyVisualType, JourneyStage } from './journey';
+
 export type ThemeMode = 'light' | 'dark' | 'system';
 
 export interface ThemeContextValue {
@@ -9,6 +11,7 @@ export interface ThemeContextValue {
 
 export type SectionId = 
   | 'hero'
+  | 'intro'
   | 'projects'
   | 'journey'
   | 'about'

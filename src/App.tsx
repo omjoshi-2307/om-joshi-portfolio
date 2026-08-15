@@ -3,9 +3,10 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import { SiteShell } from '@/components/layout/SiteShell';
 import { Section } from '@/components/layout/Section';
 import { HeroSection } from '@/components/sections/HeroSection';
+import { IntroSection } from '@/components/intro/IntroSection';
+import { JourneySection } from '@/components/journey/JourneySection';
 import {
   ProjectsSection,
-  JourneySection,
   AboutSection,
   SkillsSection,
   ExplorationSection,
@@ -25,10 +26,16 @@ const PortfolioShellView: React.FC = () => {
 
   return (
     <SiteShell>
-      {/* 1. HERO PLACEHOLDER */}
+      {/* 1. HERO SECTION */}
       <HeroSection />
 
-      {/* 2. SYSTEM STATUS & DESIGN TOKEN VERIFICATION BAR */}
+      {/* 2. INTRO / CURRENT IDENTITY SECTION */}
+      <IntroSection />
+
+      {/* 3. JOURNEY / EVOLUTION SECTION */}
+      <JourneySection />
+
+      {/* 4. SYSTEM STATUS & DESIGN TOKEN VERIFICATION BAR */}
       <Section id="foundation-status" containerSize="xl" className="py-8 bg-surface/30 border-y border-border/60">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
           <div className="flex flex-col gap-1 p-3 rounded-md bg-card border border-border">
@@ -47,36 +54,33 @@ const PortfolioShellView: React.FC = () => {
           </div>
 
           <div className="flex flex-col gap-1 p-3 rounded-md bg-card border border-border">
-            <span className="text-muted-foreground uppercase text-[10px]">Global Shell</span>
+            <span className="text-muted-foreground uppercase text-[10px]">Narrative Flow</span>
             <span className="font-semibold text-foreground flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-accent inline-block" />
-              Navbar + ScrollSpy Active
+              Hero &rarr; Intro &rarr; Journey
             </span>
           </div>
 
           <div className="flex flex-col gap-1 p-3 rounded-md bg-card border border-border">
-            <span className="text-muted-foreground uppercase text-[10px]">Character Kinematics</span>
+            <span className="text-muted-foreground uppercase text-[10px]">Stages Verified</span>
             <span className="font-semibold text-foreground flex items-center gap-1.5 text-emerald-500">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping inline-block" />
-              Tracking Ready
+              6 Evolution Stages
             </span>
           </div>
         </div>
       </Section>
 
-      {/* 3. WORK / PROJECTS SECTION PLACEHOLDER */}
+      {/* 5. WORK / PROJECTS SECTION PLACEHOLDER */}
       <ProjectsSection />
 
-      {/* 4. JOURNEY SECTION PLACEHOLDER */}
-      <JourneySection />
-
-      {/* 5. ABOUT SECTION PLACEHOLDER */}
+      {/* 6. ABOUT SECTION PLACEHOLDER */}
       <AboutSection />
 
-      {/* 6. CHARACTER SUBSYSTEM FOUNDATION */}
+      {/* 7. CHARACTER SUBSYSTEM FOUNDATION */}
       <CharacterSection />
 
-      {/* 7. DESIGN TOKENS & TYPOGRAPHY SYSTEM SPEC */}
+      {/* 8. DESIGN TOKENS & TYPOGRAPHY SYSTEM SPEC */}
       <Section
         id="tokens-spec"
         eyebrow="Foundation Audit / Tokens & Typo"
@@ -171,7 +175,7 @@ const PortfolioShellView: React.FC = () => {
         </div>
       </Section>
 
-      {/* 8. MOTION FOUNDATION MATRIX */}
+      {/* 9. MOTION FOUNDATION MATRIX */}
       <Section
         id="motion-primitives"
         eyebrow="Foundation Audit / Motion"
@@ -233,7 +237,7 @@ const PortfolioShellView: React.FC = () => {
         </StaggerContainer>
       </Section>
 
-      {/* 9. SKILLS, EXPLORATION, CONTACT PLACEHOLDERS */}
+      {/* 10. SKILLS, EXPLORATION, CONTACT PLACEHOLDERS */}
       <SkillsSection />
       <ExplorationSection />
       <ContactSection />
