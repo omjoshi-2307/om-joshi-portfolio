@@ -1,0 +1,10 @@
+export { Navbar } from './Navbar';
+export { HeroSection } from './HeroSection';
+export { AboutSection } from './AboutSection';
+export { CharacterSection } from './CharacterSection';
+export { JourneySection } from './JourneySection';
+export { ProjectsSection } from './ProjectsSection';
+export { SkillsSection } from './SkillsSection';
+export { ExplorationSection } from './ExplorationSection';
+export { ContactSection } from './ContactSection';
+export { FooterSection } from './FooterSection';
