@@ -5,11 +5,11 @@ import { Section } from '@/components/layout/Section';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { IntroSection } from '@/components/intro/IntroSection';
 import { JourneySection } from '@/components/journey/JourneySection';
+import { ProjectsSection } from '@/components/projects/ProjectsSection';
+import { ToolboxSection } from '@/components/toolbox/ToolboxSection';
+import { ExplorationSection } from '@/components/exploration/ExplorationSection';
 import {
-  ProjectsSection,
   AboutSection,
-  SkillsSection,
-  ExplorationSection,
   ContactSection,
 } from '@/components/sections';
 import { CharacterSection } from '@/components/sections/CharacterSection';
@@ -35,7 +35,16 @@ const PortfolioShellView: React.FC = () => {
       {/* 3. JOURNEY / EVOLUTION SECTION */}
       <JourneySection />
 
-      {/* 4. SYSTEM STATUS & DESIGN TOKEN VERIFICATION BAR */}
+      {/* 4. SELECTED WORK / PROJECTS SECTION */}
+      <ProjectsSection />
+
+      {/* 5. TECHNICAL TOOLBOX / SKILLS SECTION */}
+      <ToolboxSection />
+
+      {/* 6. CURRENTLY EXPLORING SECTION */}
+      <ExplorationSection />
+
+      {/* 7. SYSTEM STATUS & DESIGN TOKEN VERIFICATION BAR */}
       <Section id="foundation-status" containerSize="xl" className="py-8 bg-surface/30 border-y border-border/60">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
           <div className="flex flex-col gap-1 p-3 rounded-md bg-card border border-border">
@@ -54,33 +63,30 @@ const PortfolioShellView: React.FC = () => {
           </div>
 
           <div className="flex flex-col gap-1 p-3 rounded-md bg-card border border-border">
-            <span className="text-muted-foreground uppercase text-[10px]">Narrative Flow</span>
+            <span className="text-muted-foreground uppercase text-[10px]">Narrative Sequence</span>
             <span className="font-semibold text-foreground flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-accent inline-block" />
-              Hero &rarr; Intro &rarr; Journey
+              Hero &rarr; Intro &rarr; Journey &rarr; Work &rarr; Toolbox &rarr; Exploring
             </span>
           </div>
 
           <div className="flex flex-col gap-1 p-3 rounded-md bg-card border border-border">
-            <span className="text-muted-foreground uppercase text-[10px]">Stages Verified</span>
+            <span className="text-muted-foreground uppercase text-[10px]">Identity & Exploration</span>
             <span className="font-semibold text-foreground flex items-center gap-1.5 text-emerald-500">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping inline-block" />
-              6 Evolution Stages
+              5 Active Frontiers Ready
             </span>
           </div>
         </div>
       </Section>
 
-      {/* 5. WORK / PROJECTS SECTION PLACEHOLDER */}
-      <ProjectsSection />
-
-      {/* 6. ABOUT SECTION PLACEHOLDER */}
+      {/* 8. ABOUT SECTION PLACEHOLDER */}
       <AboutSection />
 
-      {/* 7. CHARACTER SUBSYSTEM FOUNDATION */}
+      {/* 9. CHARACTER SUBSYSTEM FOUNDATION */}
       <CharacterSection />
 
-      {/* 8. DESIGN TOKENS & TYPOGRAPHY SYSTEM SPEC */}
+      {/* 10. DESIGN TOKENS & TYPOGRAPHY SYSTEM SPEC */}
       <Section
         id="tokens-spec"
         eyebrow="Foundation Audit / Tokens & Typo"
@@ -175,7 +181,7 @@ const PortfolioShellView: React.FC = () => {
         </div>
       </Section>
 
-      {/* 9. MOTION FOUNDATION MATRIX */}
+      {/* 11. MOTION FOUNDATION MATRIX */}
       <Section
         id="motion-primitives"
         eyebrow="Foundation Audit / Motion"
@@ -237,9 +243,7 @@ const PortfolioShellView: React.FC = () => {
         </StaggerContainer>
       </Section>
 
-      {/* 10. SKILLS, EXPLORATION, CONTACT PLACEHOLDERS */}
-      <SkillsSection />
-      <ExplorationSection />
+      {/* 12. CONTACT PLACEHOLDER */}
       <ContactSection />
     </SiteShell>
   );

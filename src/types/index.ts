@@ -1,4 +1,7 @@
 export type { JourneyVisualType, JourneyStage } from './journey';
+export type { ProjectVisualType, ProjectCategory, ProjectItem } from './projects';
+export type { SkillTier, SkillCategoryType, TechnologyItem, SkillCategory, ExplorationDomain } from './skills';
+export type { ExplorationVisualCategory, ExplorationArea } from './exploration';
 
 export type ThemeMode = 'light' | 'dark' | 'system';
 

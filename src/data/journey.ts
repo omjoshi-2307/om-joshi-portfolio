@@ -1,4 +1,5 @@
 import type { JourneyStage } from '@/types/journey';
+import { externalLinks } from '@/config/links';
 
 export const JOURNEY_STAGES: JourneyStage[] = [
   {
@@ -44,8 +45,8 @@ export const JOURNEY_STAGES: JourneyStage[] = [
       'A critical milestone transitioning from basic circuit assembly to collaborative physical prototyping, sensor integration, and real-time navigation.',
     ],
     technologies: ['Arduino', 'Ultrasonic Sensors', 'Motor Drivers', 'Robotics Kinematics', 'Physical Assembly'],
-    repositoryUrl: 'https://github.com/omjoshi-2307/WALL-E-Autonomous-Obstacle-Avoiding-Robot',
-    repositoryName: 'omjoshi-2307/WALL-E-Autonomous-Obstacle-Avoiding-Robot',
+    repositoryUrl: externalLinks.projects.wallE.repository,
+    repositoryName: externalLinks.projects.wallE.name,
     visualType: 'robotics',
   },
   {
@@ -61,8 +62,8 @@ export const JOURNEY_STAGES: JourneyStage[] = [
       'While the project faced severe time constraints and did not reach its final intended implementation, the experience fundamentally changed my understanding of team velocity, scope control, and rapid iteration.',
     ],
     technologies: ['Rapid Prototyping', 'Team Collaboration', 'System Architecture', 'Hackathon Sprint'],
-    repositoryUrl: 'https://github.com/omjoshi-2307/JalSanchaeeNavachar',
-    repositoryName: 'omjoshi-2307/JalSanchaeeNavachar',
+    repositoryUrl: externalLinks.projects.jalSanchaeeNavachar.repository,
+    repositoryName: externalLinks.projects.jalSanchaeeNavachar.name,
     keyLearning: "The project didn't reach the finish line, but the experience transformed how I approach architecture and velocity under pressure.",
     visualType: 'hackathon',
   },
@@ -85,6 +86,8 @@ export const JOURNEY_STAGES: JourneyStage[] = [
       'Branding & Design System Tokens',
       'Wallet & Contract Client Integration',
     ],
+    repositoryUrl: externalLinks.projects.sured.repository,
+    repositoryName: externalLinks.projects.sured.name,
     visualType: 'product',
   },
   {

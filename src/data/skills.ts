@@ -1,0 +1,143 @@
+import type { SkillCategory, ExplorationDomain } from '@/types/skills';
+
+export const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    id: 'languages',
+    number: '01',
+    label: 'LANGUAGES',
+    description: 'Core logic, systems programming, and scripting languages.',
+    technologies: [
+      { name: 'TypeScript', tier: 'core', associatedProjects: ['SureD', 'Portfolio'] },
+      { name: 'JavaScript', tier: 'core', associatedProjects: ['SureD'] },
+      { name: 'C++', tier: 'core', associatedProjects: ['WALL-E', 'Arduino Projects'] },
+      { name: 'Python', tier: 'core' },
+      { name: 'C', tier: 'familiar' },
+      { name: 'Rust', tier: 'familiar', associatedProjects: ['SureD / Soroban Contracts'] },
+      { name: 'HTML', tier: 'core' },
+      { name: 'CSS', tier: 'core' },
+      { name: 'Assembly', tier: 'familiar' },
+    ],
+  },
+  {
+    id: 'frontend',
+    number: '02',
+    label: 'FRONTEND',
+    description: 'Interface architecture, reactive state, and modern styling.',
+    technologies: [
+      { name: 'React', tier: 'core', associatedProjects: ['SureD', 'Portfolio'] },
+      { name: 'TypeScript', tier: 'core', associatedProjects: ['SureD', 'Portfolio'] },
+      { name: 'Tailwind CSS', tier: 'core', associatedProjects: ['SureD', 'Portfolio'] },
+      { name: 'Vite', tier: 'core', associatedProjects: ['Portfolio'] },
+      { name: 'Framer Motion', tier: 'core', associatedProjects: ['Portfolio'] },
+      { name: 'shadcn/ui', tier: 'core', associatedProjects: ['Portfolio'] },
+      { name: 'Responsive UI', tier: 'core' },
+      { name: 'Component Architecture', tier: 'core' },
+    ],
+  },
+  {
+    id: 'backend',
+    number: '03',
+    label: 'BACKEND & APIS',
+    description: 'Server runtime, RESTful services, and endpoint integration.',
+    technologies: [
+      { name: 'Node.js', tier: 'core', associatedProjects: ['SureD'] },
+      { name: 'Express.js', tier: 'core', associatedProjects: ['SureD'] },
+      { name: 'REST APIs', tier: 'core' },
+      { name: 'API Integration', tier: 'core' },
+      { name: 'Auth Concepts', tier: 'familiar' },
+    ],
+  },
+  {
+    id: 'data',
+    number: '04',
+    label: 'DATA & STORAGE',
+    description: 'Document and relational persistence models.',
+    technologies: [
+      { name: 'MongoDB', tier: 'core', associatedProjects: ['SureD'] },
+      { name: 'PostgreSQL', tier: 'familiar' },
+      { name: 'Prisma', tier: 'familiar' },
+    ],
+  },
+  {
+    id: 'web3',
+    number: '05',
+    label: 'WEB3 & BLOCKCHAIN',
+    description: 'Decentralized escrow concepts, wallets, and smart contracts.',
+    technologies: [
+      { name: 'Stellar Blockchain', tier: 'familiar', associatedProjects: ['SureD'] },
+      { name: 'Soroban Contracts', tier: 'familiar', associatedProjects: ['SureD'] },
+      { name: 'Freighter Wallet', tier: 'familiar', associatedProjects: ['SureD'] },
+      { name: 'Rust Smart Contracts', tier: 'familiar' },
+      { name: 'Escrow Concepts', tier: 'familiar' },
+    ],
+  },
+  {
+    id: 'dev-tools',
+    number: '06',
+    label: 'DEVELOPER WORKFLOW',
+    description: 'Version control, command-line tooling, and agentic workflows.',
+    technologies: [
+      { name: 'Git', tier: 'core' },
+      { name: 'GitHub', tier: 'core' },
+      { name: 'npm', tier: 'core' },
+      { name: 'CLI Workflows', tier: 'core' },
+      { name: 'VS Code', tier: 'core' },
+      { name: 'AI-Assisted Dev', tier: 'core' },
+    ],
+  },
+  {
+    id: 'design-product',
+    number: '07',
+    label: 'DESIGN & PRODUCT',
+    description: 'Design token systems, prototyping, and visual craft.',
+    technologies: [
+      { name: 'Figma', tier: 'core', associatedProjects: ['SureD', 'Portfolio'] },
+      { name: 'Design Systems', tier: 'core' },
+      { name: 'UI/UX Prototyping', tier: 'core' },
+      { name: 'Canva', tier: 'core' },
+      { name: 'Motion Design', tier: 'familiar' },
+    ],
+  },
+];
+
+export const EXPLORATION_DOMAINS: ExplorationDomain[] = [
+  {
+    id: 'ai-local-llms',
+    title: 'AI & Local LLM Systems',
+    badge: 'ACTIVE R&D',
+    description: 'Experimenting with local inference engines, agent architectures, and LLM-assisted workflows.',
+    topics: [
+      'Local LLM Experimentation',
+      'llama.cpp Runtime',
+      'AI Coding Agents',
+      'Agentic Tooling & Workflows',
+      'Generative AI Integrations',
+    ],
+  },
+  {
+    id: 'systems-security',
+    title: 'Systems, DSA & Security',
+    badge: 'FOUNDATIONAL',
+    description: 'Deepening core computer science foundations, algorithm efficiency, and security vectors.',
+    topics: [
+      'Cybersecurity Fundamentals',
+      'Data Structures & Algorithms (DSA)',
+      'Object-Oriented Programming (OOP)',
+      'Computer Networks & Protocols',
+      'Computer Architecture & Assembly',
+      'Digital Electronics',
+    ],
+  },
+  {
+    id: 'web3-protocols',
+    title: 'Distributed Protocols',
+    badge: 'EXPLORATORY',
+    description: 'Expanding smart contract architecture and transparent trustless state management.',
+    topics: [
+      'Stellar & Soroban Ecosystem',
+      'Rust-based Contract Logic',
+      'Decentralized Identity & Escrow',
+      'Modern Web3 Tooling',
+    ],
+  },
+];
