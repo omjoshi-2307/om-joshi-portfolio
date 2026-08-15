@@ -6,7 +6,7 @@
 export const siteIdentity = {
   name: 'Om Joshi',
   role: 'B.Tech Information Technology Student & Builder',
-  email: 'onjoshi2307@gmail.com',
+  email: 'omjoshi2307@gmail.com',
   location: 'Pune, Maharashtra, India',
   availability: 'Open to high-impact software engineering & builder opportunities',
 
