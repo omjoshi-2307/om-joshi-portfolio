@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from '@/components/layout/Section';
-import { CharacterPlaceholder } from '@/components/character/CharacterPlaceholder';
+import { InteractiveCharacter } from '@/components/character/InteractiveCharacter';
 
 export const CharacterSection: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ export const CharacterSection: React.FC = () => {
       hasDivider
     >
       <div className="flex flex-col items-center justify-center p-8 rounded-xl border border-border bg-card">
-        <CharacterPlaceholder size="lg" showDebugCoordinates interactive />
+        <InteractiveCharacter size="lg" showPedestal showStatusBadge interactive />
       </div>
     </Section>
   );

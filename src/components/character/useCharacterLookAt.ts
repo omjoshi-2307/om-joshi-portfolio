@@ -1,12 +1,13 @@
 import { useState, useEffect, type RefObject } from 'react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import type { LookAngle } from './types';
+import type { LookAngle, CharacterTargetOverride } from './types';
 
 interface UseCharacterLookAtOptions {
-  maxHeadYaw?: number;     // Max horizontal head turn in deg (default 24)
-  maxHeadPitch?: number;   // Max vertical head tilt in deg (default 18)
-  maxEyeOffset?: number;   // Max pupil shift in px (default 4)
+  maxHeadYaw?: number;     // Max horizontal head turn in deg (default 16)
+  maxHeadPitch?: number;   // Max vertical head tilt in deg (default 12)
+  maxEyeOffset?: number;   // Max pupil shift in px (default 3.5)
   enabled?: boolean;
+  targetOverride?: CharacterTargetOverride | null;
 }
 
 export function useCharacterLookAt(
@@ -14,10 +15,11 @@ export function useCharacterLookAt(
   options: UseCharacterLookAtOptions = {}
 ): LookAngle {
   const {
-    maxHeadYaw = 24,
-    maxHeadPitch = 18,
-    maxEyeOffset = 4,
+    maxHeadYaw = 16,
+    maxHeadPitch = 12,
+    maxEyeOffset = 3.5,
     enabled = true,
+    targetOverride = null,
   } = options;
 
   const prefersReduced = useReducedMotion();
@@ -31,8 +33,43 @@ export function useCharacterLookAt(
     isTracking: false,
   });
 
+  // Target override (e.g., hovering a specific CTA button)
   useEffect(() => {
+    if (targetOverride) {
+      const yaw = Number((targetOverride.x * maxHeadYaw).toFixed(2));
+      const pitch = Number((-targetOverride.y * maxHeadPitch).toFixed(2));
+      const eyeX = Number((targetOverride.x * maxEyeOffset).toFixed(2));
+      const eyeY = Number((targetOverride.y * (maxEyeOffset * 0.8)).toFixed(2));
+
+      setLookAngle({
+        headYaw: yaw,
+        headPitch: pitch,
+        eyeOffsetX: eyeX,
+        eyeOffsetY: eyeY,
+        distance: 100,
+        isTracking: true,
+      });
+    }
+  }, [targetOverride, maxHeadYaw, maxHeadPitch, maxEyeOffset]);
+
+  useEffect(() => {
+    if (targetOverride) return; // If overriding, skip mouse listeners
+
     if (!enabled || prefersReduced || typeof window === 'undefined') {
+      setLookAngle({
+        headYaw: 0,
+        headPitch: 0,
+        eyeOffsetX: 0,
+        eyeOffsetY: 0,
+        distance: 0,
+        isTracking: false,
+      });
+      return;
+    }
+
+    // Check if device is touch-primary
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    if (isTouchDevice) {
       setLookAngle({
         headYaw: 0,
         headPitch: 0,
@@ -59,9 +96,9 @@ export function useCharacterLookAt(
         const dy = event.clientY - centerY;
         const distance = Math.hypot(dx, dy);
 
-        // Normalize based on screen dimensions for responsive behavior
-        const screenHalfW = window.innerWidth / 2;
-        const screenHalfH = window.innerHeight / 2;
+        // Normalize based on screen dimensions
+        const screenHalfW = Math.max(window.innerWidth / 2, 400);
+        const screenHalfH = Math.max(window.innerHeight / 2, 400);
 
         const normalizedX = Math.max(-1, Math.min(1, dx / screenHalfW));
         const normalizedY = Math.max(-1, Math.min(1, dy / screenHalfH));
@@ -70,7 +107,7 @@ export function useCharacterLookAt(
         const headYaw = Number((normalizedX * maxHeadYaw).toFixed(2));
         const headPitch = Number((-normalizedY * maxHeadPitch).toFixed(2));
         const eyeOffsetX = Number((normalizedX * maxEyeOffset).toFixed(2));
-        const eyeOffsetY = Number((normalizedY * maxEyeOffset).toFixed(2));
+        const eyeOffsetY = Number((normalizedY * (maxEyeOffset * 0.8)).toFixed(2));
 
         setLookAngle({
           headYaw,
@@ -102,7 +139,7 @@ export function useCharacterLookAt(
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [containerRef, enabled, prefersReduced, maxHeadYaw, maxHeadPitch, maxEyeOffset]);
+  }, [containerRef, enabled, prefersReduced, targetOverride, maxHeadYaw, maxHeadPitch, maxEyeOffset]);
 
   return lookAngle;
 }
