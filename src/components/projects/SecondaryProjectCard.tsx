@@ -43,7 +43,7 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
         {/* Context Tag */}
         <div className="flex items-center justify-between pb-4 border-b border-border text-xs font-mono text-muted-foreground">
           <span className="text-foreground font-semibold uppercase">{project.context}</span>
-          <span className="px-2 py-0.5 rounded-sm bg-elevated border border-border text-[10px] uppercase font-mono">
+          <span className="px-2 py-0.5 rounded-sm bg-elevated border border-border text-[10px] uppercase font-mono font-semibold">
             {project.category}
           </span>
         </div>
@@ -102,14 +102,14 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
         </div>
       </div>
 
-      {/* Repository Action Button */}
+      {/* Repository Action Button with min 44px height */}
       {project.repositoryUrl && (
         <div className="pt-6 mt-6 border-t border-border">
           <a
             href={project.repositoryUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="group inline-flex items-center justify-between w-full px-4 py-2.5 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer"
+            className="group inline-flex items-center justify-between w-full min-h-[44px] px-4 py-2.5 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer"
           >
             <div className="flex items-center gap-2">
               <GitHubIcon className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />

@@ -79,22 +79,22 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation Menu"
-          className="fixed inset-0 z-50 md:hidden flex flex-col justify-between bg-background"
+          className="fixed inset-0 z-50 md:hidden flex flex-col justify-between bg-background h-dvh max-h-dvh overflow-y-auto"
         >
           {/* Mobile Header Bar */}
-          <div className="flex items-center justify-between px-6 h-20 border-b border-border">
+          <div className="flex items-center justify-between px-6 h-20 border-b border-border shrink-0">
             <Brand onClick={onClose} showLocation={false} />
 
             <div className="flex items-center gap-3">
               <ThemeControl />
               
-              {/* Close Button */}
+              {/* Close Button with 44x44px target */}
               <button
                 ref={firstFocusableRef}
                 type="button"
                 onClick={onClose}
                 aria-label="Close navigation menu"
-                className="w-10 h-10 rounded-sm border border-border bg-elevated flex items-center justify-center text-foreground hover:bg-card transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent shadow-subtle"
+                className="min-w-[44px] min-h-[44px] w-11 h-11 rounded-sm border border-border bg-elevated flex items-center justify-center text-foreground hover:bg-card transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent shadow-subtle"
               >
                 <svg
                   className="w-5 h-5"
@@ -110,8 +110,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           </div>
 
           {/* Navigation Links List */}
-          <nav className="flex-1 px-8 py-12 flex flex-col justify-center">
-            <ul className="flex flex-col gap-6">
+          <nav className="flex-1 px-8 py-8 flex flex-col justify-center">
+            <ul className="flex flex-col gap-4 sm:gap-6">
               {items.map((item: NavItem, index: number) => {
                 const isActive = activeSection === item.sectionId;
 
@@ -123,7 +123,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                     exit={prefersReduced ? { opacity: 0 } : { opacity: 0, x: -10 }}
                     transition={{
                       duration: 0.3,
-                      delay: prefersReduced ? 0 : index * 0.06,
+                      delay: prefersReduced ? 0 : index * 0.05,
                       ease: [0.16, 1, 0.3, 1],
                     }}
                   >
@@ -131,14 +131,14 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                       href={item.href}
                       onClick={(e) => handleLinkClick(e, item.href)}
                       className={cn(
-                        'group flex items-center justify-between py-2 text-2xl font-display font-semibold transition-colors duration-150',
+                        'group flex items-center justify-between min-h-[44px] py-2.5 text-2xl sm:text-3xl font-display font-bold transition-colors duration-150',
                         isActive
                           ? 'text-accent'
                           : 'text-foreground hover:text-accent'
                       )}
                     >
                       <span className="flex items-center gap-3">
-                        <span className="font-mono text-xs text-muted-foreground">
+                        <span className="font-mono text-xs text-muted-subtle">
                           0{index + 1}
                         </span>
                         <span>{item.label}</span>
@@ -154,10 +154,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             </ul>
           </nav>
 
-          {/* Mobile Footer Meta */}
-          <div className="px-8 py-6 border-t border-border bg-surface flex items-center justify-between text-xs font-mono text-muted-foreground">
+          {/* Mobile Footer Meta with Safe Area padding */}
+          <div className="px-8 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] border-t border-border bg-surface flex items-center justify-between text-xs font-mono text-muted-foreground shrink-0">
             <span>B.Tech IT • Pune</span>
-            <span className="text-[10px] text-accent font-semibold tracking-wider">ELECTRIC PINK / LAVENDER</span>
+            <span className="text-[10px] text-accent font-semibold tracking-wider uppercase">ELECTRIC PINK / LAVENDER</span>
           </div>
         </div>
       )}

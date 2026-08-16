@@ -50,16 +50,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2 sm:gap-3">
             <ThemeControl />
 
-            {/* Mobile Menu Trigger */}
+            {/* Mobile Menu Trigger with accessible 44x44px touch target */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
-              className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-sm border border-border bg-elevated hover:bg-card text-foreground transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent shadow-subtle"
+              className="md:hidden inline-flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-sm border border-border bg-elevated hover:bg-card text-foreground transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent shadow-subtle"
             >
               <svg
-                className="w-4 h-4"
+                className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
