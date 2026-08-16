@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
-export const CharacterBody: React.FC = () => {
+export const CharacterBody: React.FC = memo(() => {
   const prefersReduced = useReducedMotion();
 
   return (
@@ -60,44 +60,23 @@ export const CharacterBody: React.FC = () => {
         y1="154"
         x2="100"
         y2="198"
-        stroke="var(--border)"
-        strokeWidth="1.5"
-        strokeDasharray="2 2"
-        className="opacity-70"
-      />
-      <circle
-        cx="100"
-        cy="154"
-        r="2"
-        fill="var(--accent)"
-      />
-
-      {/* Shoulder Raglan Seams */}
-      <path
-        d="M 64 142 L 48 186"
-        stroke="#2E3747"
+        stroke="var(--accent)"
         strokeWidth="1.5"
         strokeLinecap="round"
-        className="dark:stroke-[#252D3D]"
+        opacity="0.6"
       />
-      <path
-        d="M 136 142 L 152 186"
-        stroke="#2E3747"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        className="dark:stroke-[#252D3D]"
-      />
-
-      {/* Minimal Chest Insignia / Subtle Monogram */}
+      {/* Minimal Tech Chest Tag */}
       <rect
-        x="64"
+        x="66"
         y="162"
         width="10"
-        height="2"
-        rx="1"
+        height="3"
+        rx="1.5"
         fill="var(--accent)"
-        opacity="0.8"
+        fillOpacity="0.4"
       />
     </motion.g>
   );
-};
+});
+
+CharacterBody.displayName = 'CharacterBody';

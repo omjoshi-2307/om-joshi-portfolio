@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 
 export interface CharacterEyesProps {
@@ -6,7 +6,7 @@ export interface CharacterEyesProps {
   offsetY: number;
 }
 
-export const CharacterEyes: React.FC<CharacterEyesProps> = ({ offsetX, offsetY }) => {
+export const CharacterEyes: React.FC<CharacterEyesProps> = memo(({ offsetX, offsetY }) => {
   return (
     <g className="character-eyes">
       {/* Left Eye Socket */}
@@ -54,4 +54,6 @@ export const CharacterEyes: React.FC<CharacterEyesProps> = ({ offsetX, offsetY }
       </motion.g>
     </g>
   );
-};
+});
+
+CharacterEyes.displayName = 'CharacterEyes';

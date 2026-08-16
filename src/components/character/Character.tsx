@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { CharacterHead } from './CharacterHead';
 import { CharacterBody } from './CharacterBody';
 import type { LookAngle } from './types';
@@ -9,7 +9,7 @@ export interface CharacterProps {
   className?: string;
 }
 
-export const Character: React.FC<CharacterProps> = ({ lookAngle, className }) => {
+export const Character: React.FC<CharacterProps> = memo(({ lookAngle, className }) => {
   return (
     <svg
       viewBox="0 0 200 200"
@@ -35,4 +35,6 @@ export const Character: React.FC<CharacterProps> = ({ lookAngle, className }) =>
       <CharacterHead lookAngle={lookAngle} />
     </svg>
   );
-};
+});
+
+Character.displayName = 'Character';

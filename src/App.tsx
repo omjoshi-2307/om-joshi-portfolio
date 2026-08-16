@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { PointerProvider } from '@/context/PointerContext';
 import { SiteShell } from '@/components/layout/SiteShell';
@@ -10,11 +10,33 @@ import { ToolboxSection } from '@/components/toolbox/ToolboxSection';
 import { ExplorationSection } from '@/components/exploration/ExplorationSection';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { ContactSection } from '@/components/sections/ContactSection';
-import { ProjectCaseStudyPage } from '@/pages/ProjectCaseStudyPage';
-import { NotFoundPage } from '@/pages/NotFoundPage';
 import { CASE_STUDIES } from '@/data/caseStudies';
 import { useRouter } from '@/hooks/useRouter';
 import { usePageMetadata } from '@/hooks/usePageMetadata';
+
+// Route-level code splitting for case studies and fallback pages
+const ProjectCaseStudyPage = lazy(() =>
+  import('@/pages/ProjectCaseStudyPage').then((module) => ({
+    default: module.ProjectCaseStudyPage,
+  }))
+);
+
+const NotFoundPage = lazy(() =>
+  import('@/pages/NotFoundPage').then((module) => ({
+    default: module.NotFoundPage,
+  }))
+);
+
+const CaseStudyLoadingFallback: React.FC = () => (
+  <div className="min-h-screen py-24 flex items-center justify-center bg-background">
+    <div className="flex flex-col items-center gap-4">
+      <div className="w-8 h-8 rounded-full border-2 border-accent border-t-transparent animate-spin" />
+      <span className="font-mono text-xs text-muted-subtle tracking-widest uppercase">
+        LOADING CASE STUDY...
+      </span>
+    </div>
+  </div>
+);
 
 const PortfolioShellView: React.FC = () => {
   const { currentPath, navigate } = useRouter();
@@ -22,7 +44,7 @@ const PortfolioShellView: React.FC = () => {
   // Route: /work/:slug Case Studies
   if (currentPath.startsWith('/work/')) {
     const slugKey = currentPath.replace('/work/', '').toLowerCase().replace(/[^a-z0-9]/g, '');
-    
+
     // Map normalized slugs: 'sured', 'walle', 'jalsanchaeenavachar' -> 'jalsanchaee'
     let caseStudyKey = slugKey;
     if (slugKey.includes('jalsanchaee') || slugKey.includes('navachar')) {
@@ -38,22 +60,26 @@ const PortfolioShellView: React.FC = () => {
     if (caseStudy) {
       return (
         <SiteShell>
-          <ProjectCaseStudyPage
-            caseStudy={caseStudy}
-            onNavigate={(to) => navigate(to)}
-          />
+          <Suspense fallback={<CaseStudyLoadingFallback />}>
+            <ProjectCaseStudyPage
+              caseStudy={caseStudy}
+              onNavigate={(to) => navigate(to)}
+            />
+          </Suspense>
         </SiteShell>
       );
     }
 
     return (
       <SiteShell>
-        <NotFoundPage onGoHome={() => navigate('/')} />
+        <Suspense fallback={<CaseStudyLoadingFallback />}>
+          <NotFoundPage onGoHome={() => navigate('/')} />
+        </Suspense>
       </SiteShell>
     );
   }
 
-  // Set default homepage metadata
+  // Default homepage view
   return <HomepageView />;
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { CharacterEyes } from './CharacterEyes';
 import type { LookAngle } from './types';
@@ -7,7 +7,7 @@ export interface CharacterHeadProps {
   lookAngle: LookAngle;
 }
 
-export const CharacterHead: React.FC<CharacterHeadProps> = ({ lookAngle }) => {
+export const CharacterHead: React.FC<CharacterHeadProps> = memo(({ lookAngle }) => {
   return (
     <motion.g
       className="character-head-group"
@@ -239,4 +239,6 @@ export const CharacterHead: React.FC<CharacterHeadProps> = ({ lookAngle }) => {
       </g>
     </motion.g>
   );
-};
+});
+
+CharacterHead.displayName = 'CharacterHead';

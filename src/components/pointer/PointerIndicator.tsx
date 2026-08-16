@@ -1,13 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, memo } from 'react';
 import { usePointer } from '@/hooks/usePointer';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { cn } from '@/utils/cn';
 
-export const PointerIndicator: React.FC = () => {
+export const PointerIndicator: React.FC = memo(() => {
   const { mode, label } = usePointer();
   const prefersReduced = useReducedMotion();
 
-  const [isVisible, setIsVisible] = useState(false);
   const [isFinePointer, setIsFinePointer] = useState(false);
 
   const dotRef = useRef<HTMLDivElement>(null);
@@ -17,7 +16,7 @@ export const PointerIndicator: React.FC = () => {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Verify pointer is fine (mouse / trackpad) and not reduced motion
+    // Verify pointer is fine (desktop mouse / precision trackpad)
     const media = window.matchMedia('(pointer: fine)');
     setIsFinePointer(media.matches);
 
@@ -37,11 +36,21 @@ export const PointerIndicator: React.FC = () => {
     const renderLoop = () => {
       if (!dotRef.current) return;
 
-      // Linear interpolation (lerp) for smooth weighted trailing
       const lerp = 0.22;
-      posRef.current.x += (posRef.current.targetX - posRef.current.x) * lerp;
-      posRef.current.y += (posRef.current.targetY - posRef.current.y) * lerp;
+      const dx = posRef.current.targetX - posRef.current.x;
+      const dy = posRef.current.targetY - posRef.current.y;
 
+      // Stop RAF animation loop when pointer is at rest (0% idle CPU usage)
+      if (Math.abs(dx) < 0.08 && Math.abs(dy) < 0.08) {
+        posRef.current.x = posRef.current.targetX;
+        posRef.current.y = posRef.current.targetY;
+        dotRef.current.style.transform = `translate3d(${posRef.current.x.toFixed(2)}px, ${posRef.current.y.toFixed(2)}px, 0) translate(-50%, -50%)`;
+        isRunningRef.current = false;
+        return;
+      }
+
+      posRef.current.x += dx * lerp;
+      posRef.current.y += dy * lerp;
       dotRef.current.style.transform = `translate3d(${posRef.current.x.toFixed(2)}px, ${posRef.current.y.toFixed(2)}px, 0) translate(-50%, -50%)`;
 
       animFrameId = requestAnimationFrame(renderLoop);
@@ -51,7 +60,9 @@ export const PointerIndicator: React.FC = () => {
       posRef.current.targetX = e.clientX;
       posRef.current.targetY = e.clientY;
 
-      if (!isVisible) setIsVisible(true);
+      if (dotRef.current && dotRef.current.style.opacity !== '1') {
+        dotRef.current.style.opacity = '1';
+      }
 
       if (!isRunningRef.current) {
         isRunningRef.current = true;
@@ -60,11 +71,15 @@ export const PointerIndicator: React.FC = () => {
     };
 
     const handleMouseLeave = () => {
-      setIsVisible(false);
+      if (dotRef.current) {
+        dotRef.current.style.opacity = '0';
+      }
     };
 
     const handleMouseEnter = () => {
-      setIsVisible(true);
+      if (dotRef.current) {
+        dotRef.current.style.opacity = '1';
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
@@ -78,14 +93,14 @@ export const PointerIndicator: React.FC = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, [isFinePointer, prefersReduced, isVisible]);
+  }, [isFinePointer, prefersReduced]);
 
-  // Do not render anything if reduced motion or touch device
+  // Do not render anything on touch devices or reduced motion
   if (!isFinePointer || prefersReduced) {
     return null;
   }
 
-  // Determine appearance classes based on mode
+  // Mode-based styles
   const getModeClasses = () => {
     switch (mode) {
       case 'view':
@@ -104,10 +119,9 @@ export const PointerIndicator: React.FC = () => {
     <div
       ref={dotRef}
       aria-hidden="true"
-      style={{ willChange: 'transform' }}
+      style={{ willChange: 'transform', opacity: 0 }}
       className={cn(
         'fixed top-0 left-0 pointer-events-none z-50 flex items-center justify-center transition-all duration-200 ease-out select-none',
-        isVisible ? 'opacity-100' : 'opacity-0',
         getModeClasses()
       )}
     >
@@ -118,4 +132,6 @@ export const PointerIndicator: React.FC = () => {
       )}
     </div>
   );
-};
+});
+
+PointerIndicator.displayName = 'PointerIndicator';

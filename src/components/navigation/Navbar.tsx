@@ -7,7 +7,7 @@ import { MobileMenu } from './MobileMenu';
 import { CommandPalette } from './CommandPalette';
 import { Search } from 'lucide-react';
 import { DEFAULT_NAV_ITEMS, TRACKED_SECTIONS } from '@/config/navigation';
-import { useScrollPosition } from '@/hooks/useScrollPosition';
+import { useIsScrolled } from '@/hooks/useScrollPosition';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { cn } from '@/utils/cn';
 import type { NavItem } from '@/types';
@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
-  const { isScrolled } = useScrollPosition(24);
+  const isScrolled = useIsScrolled(24);
   const activeSection = useActiveSection(TRACKED_SECTIONS, 'hero');
 
   // Listen for Cmd+K / Ctrl+K keyboard shortcut
