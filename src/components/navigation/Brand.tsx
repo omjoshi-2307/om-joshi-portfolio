@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from '@/hooks/useRouter';
 import { cn } from '@/utils/cn';
 
 export interface BrandProps {
@@ -12,20 +13,19 @@ export const Brand: React.FC<BrandProps> = ({
   onClick,
   showLocation = true,
 }) => {
+  const { navigate } = useRouter();
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
     if (onClick) {
       onClick();
     }
-    // Smooth scroll to top if clicked on current page
-    if (window.location.pathname === '/') {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    navigate('/');
   };
 
   return (
     <a
-      href="#top"
+      href="/"
       onClick={handleClick}
       aria-label="Om Joshi — Home"
       className={cn(

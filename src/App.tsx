@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { SiteShell } from '@/components/layout/SiteShell';
 import { HeroSection } from '@/components/sections/HeroSection';
@@ -9,8 +9,55 @@ import { ToolboxSection } from '@/components/toolbox/ToolboxSection';
 import { ExplorationSection } from '@/components/exploration/ExplorationSection';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { ContactSection } from '@/components/sections/ContactSection';
+import { ProjectCaseStudyPage } from '@/pages/ProjectCaseStudyPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+import { CASE_STUDIES } from '@/data/caseStudies';
+import { useRouter } from '@/hooks/useRouter';
 
 const PortfolioShellView: React.FC = () => {
+  const { currentPath, navigate } = useRouter();
+
+  // Reset default title when on homepage
+  useEffect(() => {
+    if (currentPath === '/' || currentPath === '') {
+      document.title = 'Om Joshi — B.Tech IT Student & Software Builder';
+    }
+  }, [currentPath]);
+
+  // Route: /work/:slug Case Studies
+  if (currentPath.startsWith('/work/')) {
+    const slugKey = currentPath.replace('/work/', '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    
+    // Map normalized slugs: 'sured', 'walle', 'jalsanchaeenavachar' -> 'jalsanchaee'
+    let caseStudyKey = slugKey;
+    if (slugKey.includes('jalsanchaee') || slugKey.includes('navachar')) {
+      caseStudyKey = 'jalsanchaee';
+    } else if (slugKey.includes('wall') || slugKey.includes('walle')) {
+      caseStudyKey = 'walle';
+    } else if (slugKey.includes('sure') || slugKey.includes('sured')) {
+      caseStudyKey = 'sured';
+    }
+
+    const caseStudy = CASE_STUDIES[caseStudyKey];
+
+    if (caseStudy) {
+      return (
+        <SiteShell>
+          <ProjectCaseStudyPage
+            caseStudy={caseStudy}
+            onNavigate={(to) => navigate(to)}
+          />
+        </SiteShell>
+      );
+    }
+
+    return (
+      <SiteShell>
+        <NotFoundPage onGoHome={() => navigate('/')} />
+      </SiteShell>
+    );
+  }
+
   return (
     <SiteShell>
       {/* 1. HERO */}

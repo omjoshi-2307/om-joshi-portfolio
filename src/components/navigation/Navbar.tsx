@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from '@/components/layout/Container';
 import { Brand } from './Brand';
 import { NavLinks } from './NavLinks';
 import { ThemeControl } from './ThemeControl';
 import { MobileMenu } from './MobileMenu';
+import { CommandPalette } from './CommandPalette';
+import { Search } from 'lucide-react';
 import { DEFAULT_NAV_ITEMS, TRACKED_SECTIONS } from '@/config/navigation';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { useActiveSection } from '@/hooks/useActiveSection';
@@ -20,8 +22,22 @@ export const Navbar: React.FC<NavbarProps> = ({
   className,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const { isScrolled } = useScrollPosition(24);
   const activeSection = useActiveSection(TRACKED_SECTIONS, 'hero');
+
+  // Listen for Cmd+K / Ctrl+K keyboard shortcut
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setCommandPaletteOpen((prev) => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <>
@@ -48,6 +64,20 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right Action Controls */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Command Palette Trigger */}
+            <button
+              type="button"
+              onClick={() => setCommandPaletteOpen(true)}
+              aria-label="Open command palette (Ctrl+K or Cmd+K)"
+              className="hidden sm:inline-flex items-center gap-2 px-2.5 py-1.5 min-h-[36px] rounded-sm border border-border bg-elevated hover:bg-card text-muted-foreground hover:text-foreground text-xs font-mono transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent shadow-subtle"
+            >
+              <Search className="w-3.5 h-3.5 text-accent" />
+              <span className="hidden lg:inline text-[11px]">Command</span>
+              <kbd className="px-1.5 py-0.5 rounded bg-surface border border-border text-[10px] font-mono text-muted-subtle">
+                ⌘K
+              </kbd>
+            </button>
+
             <ThemeControl />
 
             {/* Mobile Menu Trigger with accessible 44x44px touch target */}
@@ -78,6 +108,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         onClose={() => setMobileMenuOpen(false)}
         activeSection={activeSection}
         items={items}
+      />
+
+      {/* Global Command Palette */}
+      <CommandPalette
+        isOpen={commandPaletteOpen}
+        onClose={() => setCommandPaletteOpen(false)}
       />
     </>
   );

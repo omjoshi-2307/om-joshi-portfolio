@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useRouter } from '@/hooks/useRouter';
 import { ThemeControl } from './ThemeControl';
 import { Brand } from './Brand';
 import { DEFAULT_NAV_ITEMS } from '@/config/navigation';
@@ -21,6 +22,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   items = DEFAULT_NAV_ITEMS,
 }) => {
   const prefersReduced = useReducedMotion();
+  const { navigate } = useRouter();
   const menuRef = useRef<HTMLDivElement>(null);
   const firstFocusableRef = useRef<HTMLButtonElement>(null);
 
@@ -50,25 +52,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   }, [isOpen, onClose]);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
     onClose();
-
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        setTimeout(() => {
-          const headerOffset = 80;
-          const elementPosition = targetElement.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: prefersReduced ? 'auto' : 'smooth',
-          });
-        }, 150);
-      }
-    }
+    navigate('/' + href);
   };
 
   return (

@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, CheckCircle2, ArrowRight } from 'lucide-react';
 import { ProjectVisual } from './ProjectVisual';
 import type { ProjectItem } from '@/types/projects';
+import { useRouter } from '@/hooks/useRouter';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { cn } from '@/utils/cn';
 
@@ -27,6 +28,7 @@ export interface SecondaryProjectCardProps {
 
 export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ project, className }) => {
   const prefersReduced = useReducedMotion();
+  const { navigate } = useRouter();
 
   return (
     <motion.article
@@ -102,23 +104,35 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
         </div>
       </div>
 
-      {/* Repository Action Button with min 44px height */}
-      {project.repositoryUrl && (
-        <div className="pt-6 mt-6 border-t border-border">
+      {/* Actions: Case Study & Repository Button */}
+      <div className="flex flex-col sm:flex-row items-center gap-3 pt-6 mt-6 border-t border-border">
+        <a
+          href={project.slug}
+          onClick={(e) => {
+            e.preventDefault();
+            navigate(project.slug);
+          }}
+          className="group inline-flex items-center justify-center gap-2 w-full min-h-[44px] px-4 py-2.5 rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors duration-150 active:scale-[0.98] cursor-pointer"
+        >
+          <span>Read Case Study</span>
+          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-1" />
+        </a>
+
+        {project.repositoryUrl && (
           <a
             href={project.repositoryUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="group inline-flex items-center justify-between w-full min-h-[44px] px-4 py-2.5 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer"
+            className="group inline-flex items-center justify-between w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer shrink-0"
           >
             <div className="flex items-center gap-2">
               <GitHubIcon className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
-              <span>{project.repositoryName || 'View Source Code'}</span>
+              <span>GitHub</span>
             </div>
-            <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-accent transition-colors" />
+            <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-accent transition-colors sm:hidden" />
           </a>
-        </div>
-      )}
+        )}
+      </div>
     </motion.article>
   );
 };

@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ExternalLink, Sparkles } from 'lucide-react';
+import { CheckCircle2, ExternalLink, Sparkles, ArrowRight } from 'lucide-react';
 import { ProjectVisual } from './ProjectVisual';
 import type { ProjectItem } from '@/types/projects';
+import { useRouter } from '@/hooks/useRouter';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { cn } from '@/utils/cn';
 
@@ -27,6 +28,7 @@ export interface FeaturedProjectCardProps {
 
 export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ project, className }) => {
   const prefersReduced = useReducedMotion();
+  const { navigate } = useRouter();
 
   return (
     <motion.article
@@ -71,13 +73,25 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
         {/* Live Action Buttons */}
         <div className="flex flex-wrap items-center gap-3 shrink-0">
           <a
+            href={project.slug}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(project.slug);
+            }}
+            className="group/btn inline-flex items-center gap-2 px-5 py-3 rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer"
+          >
+            <span>Read Case Study</span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover/btn:translate-x-0.5" />
+          </a>
+
+          <a
             href="https://sure-d.vercel.app/"
             target="_blank"
             rel="noreferrer noopener"
-            className="group/btn inline-flex items-center gap-2 px-5 py-3 rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-3 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer"
           >
-            <span>Live Product Demo</span>
-            <ExternalLink className="w-3.5 h-3.5 transition-transform duration-150 group-hover/btn:translate-x-0.5" />
+            <span>Live Demo</span>
+            <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
           </a>
 
           {project.repositoryUrl && (
@@ -85,10 +99,10 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
               href={project.repositoryUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer"
             >
               <GitHubIcon className="w-3.5 h-3.5 text-muted-foreground" />
-              <span>GitHub Repo</span>
+              <span>GitHub</span>
             </a>
           )}
         </div>

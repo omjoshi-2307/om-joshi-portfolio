@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useRouter } from '@/hooks/useRouter';
 import { cn } from '@/utils/cn';
 import { DEFAULT_NAV_ITEMS } from '@/config/navigation';
 import type { NavItem, SectionId } from '@/types';
@@ -19,27 +20,14 @@ export const NavLinks: React.FC<NavLinksProps> = ({
   onLinkClick,
 }) => {
   const prefersReduced = useReducedMotion();
+  const { navigate } = useRouter();
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string, item: NavItem) => {
+    e.preventDefault();
     if (onLinkClick) {
       onLinkClick(item);
     }
-
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        const headerOffset = 80;
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: prefersReduced ? 'auto' : 'smooth',
-        });
-      }
-    }
+    navigate('/' + href);
   };
 
   return (
