@@ -20,7 +20,7 @@ const PortfolioShellView: React.FC = () => {
   // Reset default title when on homepage
   useEffect(() => {
     if (currentPath === '/' || currentPath === '') {
-      document.title = 'Om Joshi — B.Tech IT Student & Software Builder';
+      document.title = 'Om Joshi — B.Tech IT Student & Builder';
     }
   }, [currentPath]);
 
