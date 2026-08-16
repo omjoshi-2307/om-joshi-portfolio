@@ -16,6 +16,7 @@ const GitHubIcon = ({ className }: { className?: string }) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    aria-hidden="true"
     className={className}
   >
     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -65,15 +66,16 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
           </p>
         </div>
 
-        {/* Visual Motif with VIEW Pointer Trigger */}
+        {/* Visual Motif with Accessible VIEW Pointer Trigger */}
         <div
           role="button"
           tabIndex={0}
           onClick={() => navigate(project.slug)}
-          onKeyDown={(e) => e.key === 'Enter' && navigate(project.slug)}
+          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(project.slug)}
           onMouseEnter={() => setPointerState('view', 'VIEW')}
           onMouseLeave={resetPointerState}
-          className="cursor-pointer transition-transform duration-200 group-hover/card:scale-[1.01]"
+          aria-label={`Visual motif for ${project.title}. Press Enter to read full case study.`}
+          className="cursor-pointer transition-transform duration-200 group-hover/card:scale-[1.01] rounded-lg focus-visible:outline-2 focus-visible:outline-accent"
         >
           <ProjectVisual type={project.visualType} />
         </div>
@@ -87,7 +89,7 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
             <div className="space-y-1.5">
               {project.myContributions.map((contrib) => (
                 <div key={contrib} className="flex items-start gap-2 text-xs text-foreground">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" aria-hidden="true" />
                   <span>{contrib}</span>
                 </div>
               ))}
@@ -126,10 +128,11 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
           }}
           onMouseEnter={() => setPointerState('link')}
           onMouseLeave={resetPointerState}
-          className="group inline-flex items-center justify-center gap-2 w-full min-h-[44px] px-4 py-2.5 rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors duration-150 active:scale-[0.98] cursor-pointer"
+          aria-label={`Read dedicated case study for ${project.title}`}
+          className="group inline-flex items-center justify-center gap-2 w-full min-h-[44px] px-4 py-2.5 rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors duration-150 active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
         >
           <span>Read Case Study</span>
-          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-1" />
+          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" />
         </a>
 
         {project.repositoryUrl && (
@@ -139,13 +142,14 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
             rel="noreferrer noopener"
             onMouseEnter={() => setPointerState('link')}
             onMouseLeave={resetPointerState}
-            className="group inline-flex items-center justify-between w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer shrink-0"
+            aria-label={`View GitHub repository for ${project.title} (opens in a new tab)`}
+            className="group inline-flex items-center justify-between w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer shrink-0 focus-visible:outline-2 focus-visible:outline-accent"
           >
             <div className="flex items-center gap-2">
               <GitHubIcon className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
               <span>GitHub</span>
             </div>
-            <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-accent transition-colors sm:hidden" />
+            <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-accent transition-colors sm:hidden" aria-hidden="true" />
           </a>
         )}
       </div>

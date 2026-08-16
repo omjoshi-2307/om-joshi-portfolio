@@ -27,7 +27,7 @@ export const SocialLink: React.FC<SocialLinkProps> = ({ item, className }) => {
             {item.label}
           </span>
           <span className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground px-2 py-0.5 rounded-sm bg-elevated border border-border">
-            <Lock className="w-2.5 h-2.5" />
+            <Lock className="w-2.5 h-2.5" aria-hidden="true" />
             <span>PENDING PUBLIC URL</span>
           </span>
         </div>
@@ -49,7 +49,7 @@ export const SocialLink: React.FC<SocialLinkProps> = ({ item, className }) => {
       onMouseEnter={() => setPointerState('link')}
       onMouseLeave={resetPointerState}
       className={cn(
-        'group relative p-4 sm:p-5 rounded-md border border-border bg-card shadow-subtle flex flex-col justify-between gap-3 transition-colors duration-150 hover:border-border-strong hover:bg-elevated focus-visible:outline-2 focus-visible:outline-accent',
+        'group relative p-4 sm:p-5 min-h-[44px] rounded-md border border-border bg-card shadow-subtle flex flex-col justify-between gap-3 transition-colors duration-150 hover:border-border-strong hover:bg-elevated focus-visible:outline-2 focus-visible:outline-accent',
         className
       )}
     >
@@ -57,7 +57,7 @@ export const SocialLink: React.FC<SocialLinkProps> = ({ item, className }) => {
         <span className="text-xs font-mono font-semibold uppercase tracking-wider text-foreground group-hover:text-accent transition-colors duration-150">
           {item.label}
         </span>
-        <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-150" />
+        <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-150" aria-hidden="true" />
       </div>
 
       <div className="text-xs font-mono text-muted-foreground group-hover:text-foreground transition-colors duration-150 truncate">

@@ -18,6 +18,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, showLabels 
   if (!showLabels) {
     return (
       <button
+        type="button"
         onClick={toggleTheme}
         aria-label={`Switch to ${resolvedTheme === 'dark' ? 'light' : 'dark'} mode`}
         className={cn(
@@ -34,7 +35,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, showLabels 
               exit={prefersReduced ? { opacity: 0 } : { rotate: 90, opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.2 }}
             >
-              <Moon className="w-4 h-4 text-foreground" />
+              <Moon className="w-4 h-4 text-foreground" aria-hidden="true" />
             </motion.div>
           ) : (
             <motion.div
@@ -44,7 +45,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, showLabels 
               exit={prefersReduced ? { opacity: 0 } : { rotate: -90, opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.2 }}
             >
-              <Sun className="w-4 h-4 text-foreground" />
+              <Sun className="w-4 h-4 text-foreground" aria-hidden="true" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -53,9 +54,9 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, showLabels 
   }
 
   const modes: { mode: ThemeMode; label: string; icon: React.ReactNode }[] = [
-    { mode: 'light', label: 'Light', icon: <Sun className="w-3.5 h-3.5" /> },
-    { mode: 'dark', label: 'Dark', icon: <Moon className="w-3.5 h-3.5" /> },
-    { mode: 'system', label: 'System', icon: <Laptop className="w-3.5 h-3.5" /> },
+    { mode: 'light', label: 'Light', icon: <Sun className="w-3.5 h-3.5" aria-hidden="true" /> },
+    { mode: 'dark', label: 'Dark', icon: <Moon className="w-3.5 h-3.5" aria-hidden="true" /> },
+    { mode: 'system', label: 'System', icon: <Laptop className="w-3.5 h-3.5" aria-hidden="true" /> },
   ];
 
   return (
@@ -72,11 +73,12 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, showLabels 
         return (
           <button
             key={mode}
+            type="button"
             role="radio"
             aria-checked={isActive}
             onClick={() => setTheme(mode)}
             className={cn(
-              'relative flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-sm transition-colors cursor-pointer',
+              'relative flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-sm transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent',
               isActive
                 ? 'text-foreground bg-card shadow-sm'
                 : 'hover:text-foreground hover:bg-muted/60'

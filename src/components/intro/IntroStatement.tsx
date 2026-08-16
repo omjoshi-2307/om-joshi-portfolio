@@ -21,7 +21,7 @@ export const IntroStatement: React.FC<IntroStatementProps> = ({ className }) => 
       <div className="flex flex-col">
         {statementLines.map((line, idx) => (
           <div key={idx} className="overflow-hidden py-1">
-            <motion.p
+            <motion.h2
               initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: '95%' }}
               whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: '0%' }}
               viewport={{ once: true, margin: '-60px' }}
@@ -33,7 +33,7 @@ export const IntroStatement: React.FC<IntroStatementProps> = ({ className }) => 
               className="statement-monumental font-bold text-foreground tracking-tight"
             >
               {line}
-            </motion.p>
+            </motion.h2>
           </div>
         ))}
       </div>

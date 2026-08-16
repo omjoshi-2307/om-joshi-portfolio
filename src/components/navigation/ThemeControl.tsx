@@ -45,7 +45,7 @@ export const ThemeControl: React.FC<ThemeControlProps> = ({
             transition={{ duration: 0.15 }}
             className="flex items-center justify-center"
           >
-            <Moon className="w-4 h-4 text-foreground/90" />
+            <Moon className="w-4 h-4 text-foreground/90" aria-hidden="true" />
           </motion.div>
         ) : (
           <motion.div
@@ -56,7 +56,7 @@ export const ThemeControl: React.FC<ThemeControlProps> = ({
             transition={{ duration: 0.15 }}
             className="flex items-center justify-center"
           >
-            <Sun className="w-4 h-4 text-foreground/90" />
+            <Sun className="w-4 h-4 text-foreground/90" aria-hidden="true" />
           </motion.div>
         )}
       </AnimatePresence>

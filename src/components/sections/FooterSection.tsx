@@ -20,9 +20,9 @@ export const FooterSection: React.FC = () => {
       <Container className="flex flex-col sm:flex-row items-center justify-between gap-6 text-xs font-mono">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
           <span className="font-semibold text-foreground">{siteIdentity.name}</span>
-          <span className="text-border">/</span>
+          <span className="text-border" aria-hidden="true">/</span>
           <span>© {new Date().getFullYear()}</span>
-          <span className="text-border">/</span>
+          <span className="text-border" aria-hidden="true">/</span>
           <span>Pune, India (IST UTC+5:30)</span>
         </div>
 
@@ -34,11 +34,11 @@ export const FooterSection: React.FC = () => {
           <a
             href="#top"
             onClick={handleBackToTop}
-            className="group inline-flex items-center gap-2 text-foreground hover:text-accent transition-colors cursor-pointer select-none focus-visible:outline-2 focus-visible:outline-accent rounded-sm py-1.5 px-3 border border-border bg-surface hover:bg-card shadow-subtle"
+            className="group inline-flex items-center gap-2 text-foreground hover:text-accent transition-colors cursor-pointer select-none focus-visible:outline-2 focus-visible:outline-accent rounded-sm py-1.5 px-3 border border-border bg-surface hover:bg-card shadow-subtle min-h-[44px]"
             aria-label="Back to top of page"
           >
             <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5 text-accent transition-transform duration-200 group-hover:-translate-y-0.5" />
+            <ArrowUp className="w-3.5 h-3.5 text-accent transition-transform duration-200 group-hover:-translate-y-0.5" aria-hidden="true" />
           </a>
         </div>
       </Container>

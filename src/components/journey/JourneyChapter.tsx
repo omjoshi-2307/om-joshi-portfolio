@@ -15,6 +15,7 @@ const GitHubIcon = ({ className }: { className?: string }) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    aria-hidden="true"
     className={className}
   >
     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -49,7 +50,7 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
         {/* Enormous Chapter Numeral & Metadata */}
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
-            <span className="chapter-monumental text-accent tracking-tighter">
+            <span className="chapter-monumental text-accent tracking-tighter" aria-hidden="true">
               {stage.number}
             </span>
             <div className="flex flex-col">
@@ -70,9 +71,9 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
 
         {/* Narrative Quote / Philosophy */}
         {stage.quote && (
-          <div className="p-4 sm:p-5 rounded-md bg-card border-l-2 border-accent text-sm sm:text-base font-medium text-foreground italic shadow-subtle">
+          <blockquote className="p-4 sm:p-5 rounded-md bg-card border-l-2 border-accent text-sm sm:text-base font-medium text-foreground italic shadow-subtle">
             "{stage.quote}"
-          </div>
+          </blockquote>
         )}
 
         {/* Narrative Paragraphs */}
@@ -91,7 +92,7 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {stage.roleContributions.map((role) => (
                 <div key={role} className="flex items-center gap-2 text-xs sm:text-sm text-foreground">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" aria-hidden="true" />
                   <span>{role}</span>
                 </div>
               ))}
@@ -132,11 +133,12 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
               href={stage.repositoryUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="group inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border bg-card hover:bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer shadow-subtle"
+              aria-label={`View source repository for ${stage.title} (opens in a new tab)`}
+              className="group inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-md border border-border bg-card hover:bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer shadow-subtle focus-visible:outline-2 focus-visible:outline-accent"
             >
               <GitHubIcon className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
               <span>{stage.repositoryName || 'View Source Repository'}</span>
-              <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-accent transition-colors ml-1" />
+              <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-accent transition-colors ml-1" aria-hidden="true" />
             </a>
           </div>
         )}

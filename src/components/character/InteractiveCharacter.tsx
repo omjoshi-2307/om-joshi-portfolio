@@ -67,11 +67,15 @@ export const InteractiveCharacter: React.FC<InteractiveCharacterProps> = ({
 
       {/* Main Character Illustration Container */}
       <motion.div
+        role="button"
+        tabIndex={0}
         onClick={handleClick}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleClick()}
+        aria-label="Interactive illustrated avatar of Om Joshi. Click or press Enter to interact."
         animate={isWaving ? { rotate: [0, -6, 6, -4, 4, 0] } : {}}
         transition={{ duration: 0.6 }}
         className={cn(
-          'relative flex items-center justify-center p-4 cursor-pointer transition-transform duration-150',
+          'relative flex items-center justify-center p-4 cursor-pointer transition-transform duration-150 rounded-lg focus-visible:outline-2 focus-visible:outline-accent',
           sizeMap[size]
         )}
       >
@@ -80,7 +84,7 @@ export const InteractiveCharacter: React.FC<InteractiveCharacterProps> = ({
 
       {/* Minimal Status Beacon */}
       {showStatusBadge && (
-        <div className="mt-2 flex items-center gap-2 px-2.5 py-1 rounded-sm bg-surface border border-border text-[10px] font-mono text-muted-foreground shadow-subtle">
+        <div aria-hidden="true" className="mt-2 flex items-center gap-2 px-2.5 py-1 rounded-sm bg-surface border border-border text-[10px] font-mono text-muted-foreground shadow-subtle">
           <span
             className={cn(
               'w-1.5 h-1.5 rounded-full transition-colors',

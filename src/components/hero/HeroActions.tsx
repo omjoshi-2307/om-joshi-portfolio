@@ -61,7 +61,7 @@ export const HeroActions: React.FC<HeroActionsProps> = ({
         className="group relative inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-sm font-semibold transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
       >
         <span>View selected work</span>
-        <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-1" />
+        <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" />
       </a>
 
       {/* Secondary Action */}
@@ -80,7 +80,7 @@ export const HeroActions: React.FC<HeroActionsProps> = ({
         onBlur={() => onHoverSecondary?.(false)}
         className="group inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-md border border-border hover:border-border-strong bg-card hover:bg-elevated text-foreground text-sm font-medium transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
       >
-        <Compass className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors" />
+        <Compass className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors" aria-hidden="true" />
         <span>Explore my journey</span>
       </a>
     </motion.div>

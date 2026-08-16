@@ -18,16 +18,16 @@ export const ProjectVisual: React.FC<ProjectVisualProps> = ({ type, className })
       return (
         <div className={cn('relative p-6 sm:p-8 rounded-xl border border-border bg-card overflow-hidden shadow-subtle', className)}>
           {/* Subtle Background Grid */}
-          <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04] bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-[size:2rem_2rem]" />
+          <div aria-hidden="true" className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04] bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-[size:2rem_2rem]" />
 
           {/* Top Bar Spec */}
           <div className="relative flex items-center justify-between pb-4 mb-6 border-b border-border text-xs font-mono">
             <div className="flex items-center gap-2 text-foreground font-semibold">
-              <Lock className="w-4 h-4 text-accent" />
+              <Lock className="w-4 h-4 text-accent" aria-hidden="true" />
               <span>SURED // STELLAR_ESCROW_CORE</span>
             </div>
             <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm bg-accent-soft text-accent border border-accent/20 text-[10px] font-semibold">
-              <ShieldCheck className="w-3 h-3 text-accent" />
+              <ShieldCheck className="w-3 h-3 text-accent" aria-hidden="true" />
               <span>SMART_CONTRACT_LOCKED</span>
             </span>
           </div>
@@ -45,7 +45,7 @@ export const ProjectVisual: React.FC<ProjectVisualProps> = ({ type, className })
 
             {/* 2. Central Escrow Vault (Middle Column) */}
             <div className="relative p-5 rounded-md bg-accent-soft border border-accent/30 flex flex-col items-center justify-center text-center gap-2 shadow-subtle">
-              <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center shadow-subtle">
+              <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center shadow-subtle" aria-hidden="true">
                 <Lock className="w-4 h-4" />
               </div>
               <span className="font-mono text-[11px] font-bold text-accent uppercase tracking-wider">
@@ -77,7 +77,7 @@ export const ProjectVisual: React.FC<ProjectVisualProps> = ({ type, className })
             </div>
             <div className="flex items-center gap-1.5 text-foreground">
               <span>Soroban Contract Execution</span>
-              <ArrowRight className="w-3 h-3 text-accent" />
+              <ArrowRight className="w-3 h-3 text-accent" aria-hidden="true" />
             </div>
           </div>
         </div>
@@ -89,11 +89,11 @@ export const ProjectVisual: React.FC<ProjectVisualProps> = ({ type, className })
           {/* Header Bar */}
           <div className="flex items-center justify-between pb-3 mb-4 border-b border-border text-[10px] text-muted-foreground">
             <div className="flex items-center gap-2 text-foreground font-semibold">
-              <Bot className="w-4 h-4 text-accent-secondary" />
+              <Bot className="w-4 h-4 text-accent-secondary" aria-hidden="true" />
               <span>WALL-E // KINEMATICS & SENSORS</span>
             </div>
             <span className="text-accent-secondary flex items-center gap-1.5 font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-signal inline-block" />
+              <span className="w-1.5 h-1.5 rounded-full bg-signal inline-block" aria-hidden="true" />
               ACTIVE SENSOR SWEEP
             </span>
           </div>
@@ -101,11 +101,12 @@ export const ProjectVisual: React.FC<ProjectVisualProps> = ({ type, className })
           {/* Radar Obstacle Detection Visualizer */}
           <div className="relative h-36 rounded-md bg-elevated border border-border flex items-center justify-center overflow-hidden">
             {/* Concentric distance rings */}
-            <div className="absolute w-24 h-24 rounded-full border border-dashed border-accent-depth/30" />
-            <div className="absolute w-48 h-48 rounded-full border border-dashed border-accent-secondary/20" />
+            <div aria-hidden="true" className="absolute w-24 h-24 rounded-full border border-dashed border-accent-depth/30" />
+            <div aria-hidden="true" className="absolute w-48 h-48 rounded-full border border-dashed border-accent-secondary/20" />
             
             {/* Rotating sonar ray */}
             <motion.div
+              aria-hidden="true"
               animate={prefersReduced ? {} : { rotate: [-40, 40, -40] }}
               transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
               style={{ transformOrigin: 'bottom center' }}
@@ -134,7 +135,7 @@ export const ProjectVisual: React.FC<ProjectVisualProps> = ({ type, className })
           {/* Header Bar */}
           <div className="flex items-center justify-between pb-3 mb-4 border-b border-border text-[10px] text-muted-foreground">
             <div className="flex items-center gap-2 text-foreground font-semibold">
-              <Gauge className="w-4 h-4 text-accent-depth" />
+              <Gauge className="w-4 h-4 text-accent-depth" aria-hidden="true" />
               <span>JALSANCHAEE // IOT ARCHITECTURE</span>
             </div>
             <span className="text-accent-secondary font-semibold">TECHATHON 3.0 SPRINT</span>

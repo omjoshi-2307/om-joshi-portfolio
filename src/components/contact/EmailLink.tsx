@@ -32,7 +32,7 @@ export const EmailLink: React.FC<EmailLinkProps> = ({
       {/* Left: Email Monumental Link */}
       <div className="flex flex-col gap-3 min-w-0">
         <span className="technical-eyebrow text-muted-subtle flex items-center gap-2">
-          <Mail className="w-3.5 h-3.5 text-accent" />
+          <Mail className="w-3.5 h-3.5 text-accent" aria-hidden="true" />
           <span>PRIMARY COMMUNICATION INBOX</span>
         </span>
 
@@ -50,6 +50,7 @@ export const EmailLink: React.FC<EmailLinkProps> = ({
             animate={prefersReduced ? {} : { x: [0, 3, 0], y: [0, -3, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             className="text-accent shrink-0 hidden sm:inline-flex"
+            aria-hidden="true"
           >
             <ArrowUpRight className="w-8 h-8 transition-transform duration-150 group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
           </motion.span>

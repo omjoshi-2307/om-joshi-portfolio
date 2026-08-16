@@ -32,13 +32,13 @@ export const TechnicalIndexGroup: React.FC<TechnicalIndexGroupProps> = ({
       {/* Category Index & Label (Left Column / 4 cols) */}
       <div className="lg:w-1/3 flex flex-col gap-2">
         <div className="flex items-center gap-3">
-          <span className="font-mono font-bold text-base text-accent tracking-wider">
+          <span className="font-mono font-bold text-base text-accent tracking-wider" aria-hidden="true">
             {category.number}
           </span>
-          <span className="text-border">/</span>
-          <span className="font-display font-bold text-foreground uppercase tracking-wider text-sm sm:text-base">
+          <span className="text-border" aria-hidden="true">/</span>
+          <h3 className="font-display font-bold text-foreground uppercase tracking-wider text-sm sm:text-base">
             {category.label}
-          </span>
+          </h3>
         </div>
         <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-sm font-sans">
           {category.description}
@@ -46,18 +46,18 @@ export const TechnicalIndexGroup: React.FC<TechnicalIndexGroupProps> = ({
       </div>
 
       {/* Typographic Technical Catalog (Right Column / 8 cols) */}
-      <div className="lg:w-2/3 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4 items-baseline">
+      <ul className="lg:w-2/3 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4 items-baseline">
         {category.technologies.map((tech) => {
           const isCore = tech.tier === 'core';
 
           return (
-            <div
+            <li
               key={tech.name}
               className="group/item flex items-baseline justify-between gap-2 py-1 select-none transition-colors duration-150 cursor-default"
             >
               <div className="flex items-center gap-2">
                 {isCore && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block shrink-0" aria-hidden="true" />
                 )}
                 <span className="font-display text-base sm:text-lg md:text-xl font-bold text-foreground/90 group-hover/item:text-accent transition-colors duration-150 tracking-tight">
                   {tech.name}
@@ -65,13 +65,13 @@ export const TechnicalIndexGroup: React.FC<TechnicalIndexGroupProps> = ({
               </div>
 
               {/* Tiny Technical Tier annotation */}
-              <span className="font-mono text-[10px] text-muted-subtle uppercase tracking-widest shrink-0 hidden sm:inline-block">
+              <span className="font-mono text-[10px] text-muted-subtle uppercase tracking-widest shrink-0 hidden sm:inline-block" aria-label={`Tier: ${isCore ? 'Core daily stack' : 'Base familiarity'}`}>
                 {isCore ? 'CORE' : 'BASE'}
               </span>
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </motion.div>
   );
 };

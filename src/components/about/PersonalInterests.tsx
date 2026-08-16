@@ -31,7 +31,7 @@ export const PersonalInterests: React.FC<PersonalInterestsProps> = ({
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border pb-3">
         <div className="flex items-center gap-2">
-          <Heart className="w-3.5 h-3.5 text-accent" />
+          <Heart className="w-3.5 h-3.5 text-accent" aria-hidden="true" />
           <h3 className="text-sm font-mono uppercase tracking-widest text-foreground font-semibold">
             {heading}
           </h3>
@@ -62,7 +62,7 @@ export const PersonalInterests: React.FC<PersonalInterestsProps> = ({
             >
               {/* Icon & Category Pill */}
               <div className="flex items-center justify-between">
-                <div className="w-8 h-8 rounded-sm bg-elevated border border-border flex items-center justify-center text-accent group-hover:border-accent transition-colors duration-150">
+                <div className="w-8 h-8 rounded-sm bg-elevated border border-border flex items-center justify-center text-accent group-hover:border-accent transition-colors duration-150" aria-hidden="true">
                   <Icon className="w-4 h-4" />
                 </div>
                 <span className="text-[10px] font-mono text-muted-foreground uppercase px-2 py-0.5 rounded-sm bg-elevated border border-border">

@@ -8,9 +8,9 @@ export interface NotFoundPageProps {
 
 export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onGoHome }) => {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center py-20 bg-background text-center">
+    <main className="min-h-[70vh] flex items-center justify-center py-20 bg-background text-center">
       <Container size="sm" className="flex flex-col items-center gap-6">
-        <span className="text-6xl sm:text-8xl font-display font-extrabold text-accent">
+        <span className="text-6xl sm:text-8xl font-display font-extrabold text-accent" aria-hidden="true">
           404
         </span>
         <h1 className="text-2xl sm:text-3xl font-display font-bold text-foreground">
@@ -22,12 +22,12 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onGoHome }) => {
         <button
           type="button"
           onClick={onGoHome}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors cursor-pointer"
+          className="inline-flex items-center gap-2 min-h-[44px] px-5 py-2.5 rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent active:scale-[0.98]"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
+          <ArrowLeft className="w-3.5 h-3.5" aria-hidden="true" />
           <span>Return to Homepage</span>
         </button>
       </Container>
-    </div>
+    </main>
   );
 };

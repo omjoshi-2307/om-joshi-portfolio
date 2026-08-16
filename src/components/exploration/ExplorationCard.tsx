@@ -44,10 +44,10 @@ export const ExplorationCard: React.FC<ExplorationCardProps> = ({ area, classNam
         {/* Card Header Bar */}
         <div className="flex items-center justify-between pb-4 border-b border-border text-xs font-mono">
           <div className="flex items-center gap-3">
-            <span className="font-display font-black text-xl text-accent tracking-tighter">
+            <span className="font-display font-black text-xl text-accent tracking-tighter" aria-hidden="true">
               {area.number}
             </span>
-            <div className="w-7 h-7 rounded-sm bg-elevated border border-border flex items-center justify-center text-accent">
+            <div className="w-7 h-7 rounded-sm bg-elevated border border-border flex items-center justify-center text-accent" aria-hidden="true">
               <Icon className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -68,9 +68,9 @@ export const ExplorationCard: React.FC<ExplorationCardProps> = ({ area, classNam
         </div>
 
         {/* Concept Quote Callout */}
-        <div className="p-3 rounded-md bg-elevated border-l-2 border-accent text-xs font-medium text-foreground/90 italic leading-relaxed shadow-subtle">
+        <blockquote className="p-3 rounded-md bg-elevated border-l-2 border-accent text-xs font-medium text-foreground/90 italic leading-relaxed shadow-subtle">
           "{area.conceptQuote}"
-        </div>
+        </blockquote>
 
         {/* Narrative Description */}
         <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-sans">
@@ -95,7 +95,7 @@ export const ExplorationCard: React.FC<ExplorationCardProps> = ({ area, classNam
         <span>FRONTIER: ACTIVE LAB</span>
         <span className="flex items-center gap-1 text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-150">
           <span>INVESTIGATING</span>
-          <ArrowUpRight className="w-3 h-3" />
+          <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
         </span>
       </div>
     </motion.article>

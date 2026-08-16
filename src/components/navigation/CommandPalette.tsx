@@ -35,7 +35,7 @@ interface CommandItem {
   label: string;
   category: 'Navigation' | 'Case Studies' | 'Actions' | 'Social Links';
   shortcut?: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: React.ComponentType<{ className?: string; 'aria-hidden'?: boolean | 'true' | 'false' }>;
   perform: () => void;
 }
 
@@ -312,10 +312,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           >
             {/* Top Search Input Bar */}
             <div className="flex items-center gap-3 px-4 py-3.5 border-b border-border bg-card">
-              <Search className="w-4 h-4 text-accent shrink-0" />
+              <Search className="w-4 h-4 text-accent shrink-0" aria-hidden="true" />
               <input
                 ref={inputRef}
                 type="text"
+                role="combobox"
+                aria-expanded={isOpen}
+                aria-autocomplete="list"
+                aria-controls="command-palette-list"
+                aria-activedescendant={filteredCommands[selectedIndex]?.id}
+                aria-label="Search commands, case studies, and sections"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -329,10 +335,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   aria-label="Clear search query"
                   className="p-1 rounded text-muted-subtle hover:text-foreground transition-colors cursor-pointer"
                 >
-                  <X className="w-3.5 h-3.5" />
+                  <X className="w-3.5 h-3.5" aria-hidden="true" />
                 </button>
               )}
-              <div className="hidden sm:flex items-center gap-1 text-[10px] font-mono text-muted-subtle bg-elevated px-2 py-0.5 rounded border border-border">
+              <div className="hidden sm:flex items-center gap-1 text-[10px] font-mono text-muted-subtle bg-elevated px-2 py-0.5 rounded border border-border" aria-hidden="true">
                 <span>ESC</span>
               </div>
             </div>
@@ -344,7 +350,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   No matching commands found.
                 </div>
               ) : (
-                <ul ref={listRef} className="space-y-1">
+                <ul
+                  id="command-palette-list"
+                  ref={listRef}
+                  role="listbox"
+                  aria-label="Commands"
+                  className="space-y-1"
+                >
                   {filteredCommands.map((cmd, index) => {
                     const isSelected = index === selectedIndex;
                     const Icon = cmd.icon;
@@ -352,6 +364,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                     return (
                       <li
                         key={cmd.id}
+                        id={cmd.id}
                         role="option"
                         aria-selected={isSelected}
                         onClick={() => cmd.perform()}
@@ -372,17 +385,17 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                                 : 'bg-elevated text-muted-foreground border border-border'
                             )}
                           >
-                            <Icon className="w-3.5 h-3.5" />
+                            <Icon className="w-3.5 h-3.5" aria-hidden={true} />
                           </span>
                           <span className="truncate font-sans text-sm">{cmd.label}</span>
                         </div>
 
                         <div className="flex items-center gap-2 shrink-0 font-mono text-[10px]">
-                          <span className="text-muted-subtle uppercase tracking-widest hidden sm:inline">
+                          <span className="text-muted-subtle uppercase tracking-widest hidden sm:inline" aria-hidden="true">
                             {cmd.category}
                           </span>
                           {isSelected && (
-                            <CornerDownLeft className="w-3 h-3 text-accent" />
+                            <CornerDownLeft className="w-3 h-3 text-accent" aria-hidden="true" />
                           )}
                         </div>
                       </li>
@@ -393,7 +406,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
             </div>
 
             {/* Bottom Footer Info */}
-            <div className="px-4 py-2.5 border-t border-border bg-card flex items-center justify-between text-[11px] font-mono text-muted-subtle">
+            <div className="px-4 py-2.5 border-t border-border bg-card flex items-center justify-between text-[11px] font-mono text-muted-subtle" aria-hidden="true">
               <div className="flex items-center gap-2">
                 <span>Navigate</span>
                 <span className="px-1.5 py-0.5 rounded bg-elevated border border-border text-[9px]">↑↓</span>

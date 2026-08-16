@@ -26,13 +26,37 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   const menuRef = useRef<HTMLDivElement>(null);
   const firstFocusableRef = useRef<HTMLButtonElement>(null);
 
-  // Handle ESC key and Focus Trapping
+  // Handle ESC key, focus trapping, and focus restoration
   useEffect(() => {
     if (!isOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
+        return;
+      }
+
+      // Keyboard Focus Trap for Modal Dialog
+      if (e.key === 'Tab' && menuRef.current) {
+        const focusableElements = menuRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusableElements.length === 0) return;
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
       }
     };
 
@@ -42,12 +66,20 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    // Focus the first element
-    firstFocusableRef.current?.focus();
+    // Focus the first element on open
+    setTimeout(() => {
+      firstFocusableRef.current?.focus();
+    }, 50);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = originalOverflow;
+
+      // Restore focus to opening trigger
+      const trigger = document.getElementById('mobile-menu-trigger');
+      if (trigger) {
+        trigger.focus();
+      }
     };
   }, [isOpen, onClose]);
 
@@ -61,6 +93,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     <AnimatePresence>
       {isOpen && (
         <div
+          id="mobile-navigation-menu"
           ref={menuRef}
           role="dialog"
           aria-modal="true"
@@ -88,6 +121,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={2}
+                  aria-hidden="true"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -96,7 +130,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           </div>
 
           {/* Navigation Links List */}
-          <nav className="flex-1 px-8 py-8 flex flex-col justify-center">
+          <nav aria-label="Mobile Navigation Links" className="flex-1 px-8 py-8 flex flex-col justify-center">
             <ul className="flex flex-col gap-4 sm:gap-6">
               {items.map((item: NavItem, index: number) => {
                 const isActive = activeSection === item.sectionId;
@@ -116,22 +150,23 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                     <a
                       href={item.href}
                       onClick={(e) => handleLinkClick(e, item.href)}
+                      aria-current={isActive ? 'page' : undefined}
                       className={cn(
-                        'group flex items-center justify-between min-h-[44px] py-2.5 text-2xl sm:text-3xl font-display font-bold transition-colors duration-150',
+                        'group flex items-center justify-between min-h-[44px] py-2.5 text-2xl sm:text-3xl font-display font-bold transition-colors duration-150 rounded-sm focus-visible:outline-2 focus-visible:outline-accent',
                         isActive
                           ? 'text-accent'
                           : 'text-foreground hover:text-accent'
                       )}
                     >
                       <span className="flex items-center gap-3">
-                        <span className="font-mono text-xs text-muted-subtle">
+                        <span className="font-mono text-xs text-muted-subtle" aria-hidden="true">
                           0{index + 1}
                         </span>
                         <span>{item.label}</span>
                       </span>
 
                       {isActive && (
-                        <span className="w-2 h-2 rounded-full bg-accent" />
+                        <span className="w-2 h-2 rounded-full bg-accent" aria-hidden="true" />
                       )}
                     </a>
                   </motion.li>

@@ -16,6 +16,7 @@ const GitHubIcon = ({ className }: { className?: string }) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    aria-hidden="true"
     className={className}
   >
     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -46,7 +47,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
       {/* 1. Context Marker & Status */}
       <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-border text-xs font-mono">
         <div className="flex items-center gap-2 text-accent font-semibold uppercase tracking-wider">
-          <Sparkles className="w-3.5 h-3.5 text-accent" />
+          <Sparkles className="w-3.5 h-3.5 text-accent" aria-hidden="true" />
           <span>FEATURED BUILD // {project.context}</span>
         </div>
 
@@ -82,10 +83,11 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
             }}
             onMouseEnter={() => setPointerState('link')}
             onMouseLeave={resetPointerState}
-            className="group/btn inline-flex items-center gap-2 px-5 py-3 rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer"
+            aria-label={`Read dedicated case study for ${project.title}`}
+            className="group/btn inline-flex items-center gap-2 px-5 py-3 min-h-[44px] rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
           >
             <span>Read Case Study</span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover/btn:translate-x-0.5" />
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover/btn:translate-x-0.5" aria-hidden="true" />
           </a>
 
           <a
@@ -94,10 +96,11 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
             rel="noreferrer noopener"
             onMouseEnter={() => setPointerState('link')}
             onMouseLeave={resetPointerState}
-            className="inline-flex items-center gap-2 px-4 py-3 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer"
+            aria-label={`Open live product demo for ${project.title} (opens in a new tab)`}
+            className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
           >
             <span>Live Demo</span>
-            <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
+            <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" aria-hidden="true" />
           </a>
 
           {project.repositoryUrl && (
@@ -107,7 +110,8 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
               rel="noreferrer noopener"
               onMouseEnter={() => setPointerState('link')}
               onMouseLeave={resetPointerState}
-              className="inline-flex items-center gap-2 px-4 py-3 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer"
+              aria-label={`View GitHub repository for ${project.title} (opens in a new tab)`}
+              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
             >
               <GitHubIcon className="w-3.5 h-3.5 text-muted-foreground" />
               <span>GitHub</span>
@@ -116,15 +120,16 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
         </div>
       </div>
 
-      {/* 3. Interactive Visual Architecture Showcase with VIEW Pointer State */}
+      {/* 3. Interactive Visual Architecture Showcase with Accessible Keyboard Trigger */}
       <div
         role="button"
         tabIndex={0}
         onClick={() => navigate(project.slug)}
-        onKeyDown={(e) => e.key === 'Enter' && navigate(project.slug)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(project.slug)}
         onMouseEnter={() => setPointerState('view', 'VIEW')}
         onMouseLeave={resetPointerState}
-        className="cursor-pointer transition-transform duration-200 group-hover/featured:scale-[1.005]"
+        aria-label={`Interactive architectural schematic for ${project.title}. Press Enter to read full case study.`}
+        className="cursor-pointer transition-transform duration-200 group-hover/featured:scale-[1.005] rounded-lg focus-visible:outline-2 focus-visible:outline-accent"
       >
         <ProjectVisual type={project.visualType} />
       </div>
@@ -167,7 +172,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
             {project.myContributions.map((contrib) => (
               <div key={contrib} className="flex items-start gap-2 text-xs sm:text-sm text-foreground">
-                <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" aria-hidden="true" />
                 <span className="leading-snug">{contrib}</span>
               </div>
             ))}

@@ -13,15 +13,15 @@ export const CaseStudyStorySection: React.FC<CaseStudyStorySectionProps> = ({
   className,
 }) => {
   return (
-    <div className={cn('grid grid-cols-1 lg:grid-cols-12 gap-8 py-10 border-b border-border', className)}>
+    <section aria-labelledby={`case-section-${section.number}`} className={cn('grid grid-cols-1 lg:grid-cols-12 gap-8 py-10 border-b border-border', className)}>
       {/* Left Chapter Numeral & Title */}
       <div className="lg:col-span-4 flex flex-col gap-2">
-        <span className="font-display font-extrabold text-3xl sm:text-4xl text-accent tracking-tighter">
+        <span className="font-display font-extrabold text-3xl sm:text-4xl text-accent tracking-tighter" aria-hidden="true">
           {section.number}
         </span>
-        <h3 className="text-xl sm:text-2xl font-bold font-display text-foreground">
+        <h2 id={`case-section-${section.number}`} className="text-xl sm:text-2xl font-bold font-display text-foreground">
           {section.title}
-        </h3>
+        </h2>
       </div>
 
       {/* Right Content & Story Narrative */}
@@ -42,13 +42,13 @@ export const CaseStudyStorySection: React.FC<CaseStudyStorySectionProps> = ({
           <ul className="space-y-2.5 pt-2">
             {section.points.map((pt, idx) => (
               <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground">
-                <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" aria-hidden="true" />
                 <span>{pt}</span>
               </li>
             ))}
           </ul>
         )}
       </div>
-    </div>
+    </section>
   );
 };
