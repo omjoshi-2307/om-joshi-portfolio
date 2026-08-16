@@ -113,7 +113,7 @@ export const CharacterHead: React.FC<CharacterHeadProps> = ({ lookAngle }) => {
           width="27"
           height="21"
           rx="5"
-          fill="hsl(var(--accent))"
+          fill="var(--accent)"
           fillOpacity="0.08"
         />
         {/* Left Lens Glint */}
@@ -147,7 +147,7 @@ export const CharacterHead: React.FC<CharacterHeadProps> = ({ lookAngle }) => {
           width="27"
           height="21"
           rx="5"
-          fill="hsl(var(--accent))"
+          fill="var(--accent)"
           fillOpacity="0.08"
         />
         {/* Right Lens Glint */}
@@ -230,7 +230,7 @@ export const CharacterHead: React.FC<CharacterHeadProps> = ({ lookAngle }) => {
         {/* Subtle hair highlight strand */}
         <path
           d="M 72 35 Q 98 30, 118 34"
-          stroke="hsl(var(--accent))"
+          stroke="var(--accent)"
           strokeWidth="1.5"
           strokeLinecap="round"
           fill="none"

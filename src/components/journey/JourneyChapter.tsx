@@ -28,16 +28,14 @@ export interface JourneyChapterProps {
 
 export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = false }) => {
   const prefersReduced = useReducedMotion();
-
-  // Subtle character cameo on specific milestones (e.g. Stage 03 WALL-E)
   const isRoboticsMilestone = stage.id === 'stage-walle';
 
   return (
     <div
       id={stage.id}
       className={cn(
-        'relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 pb-20 sm:pb-28',
-        !isLast && 'border-b border-border/50'
+        'relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pb-24 sm:pb-32',
+        !isLast && 'border-b border-border'
       )}
     >
       {/* Left Column: Stage Metadata & Narrative (7 cols) */}
@@ -45,38 +43,40 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
         initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
         whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="lg:col-span-7 flex flex-col gap-6"
       >
-        {/* Stage Header Info */}
-        <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
-          <span className="font-display font-black text-2xl sm:text-3xl text-accent tracking-tighter">
-            {stage.number}
-          </span>
-          <span className="px-2.5 py-1 rounded bg-surface border border-border text-foreground font-semibold uppercase tracking-wider">
-            {stage.stageLabel}
-          </span>
-          {stage.timeframe && (
-            <span className="text-muted-foreground">
-              / {stage.timeframe}
+        {/* Enormous Chapter Numeral & Metadata */}
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-3">
+            <span className="chapter-monumental text-accent tracking-tighter">
+              {stage.number}
             </span>
-          )}
+            <div className="flex flex-col">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-subtle font-semibold">
+                CHAPTER STAGE
+              </span>
+              <span className="font-display text-sm font-bold text-foreground uppercase tracking-wider">
+                {stage.stageLabel}
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Stage Title */}
-        <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground tracking-tight">
           {stage.title}
         </h3>
 
         {/* Narrative Quote / Philosophy */}
         {stage.quote && (
-          <div className="p-4 rounded-lg bg-surface/50 border-l-2 border-accent text-sm font-medium text-foreground italic">
+          <div className="p-4 sm:p-5 rounded-md bg-card border-l-2 border-accent text-sm sm:text-base font-medium text-foreground italic shadow-subtle">
             "{stage.quote}"
           </div>
         )}
 
         {/* Narrative Paragraphs */}
-        <div className="space-y-3.5 text-muted-foreground text-sm sm:text-base leading-relaxed">
+        <div className="space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed font-sans">
           {stage.narrative.map((p, idx) => (
             <p key={idx}>{p}</p>
           ))}
@@ -84,13 +84,13 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
 
         {/* Role Contributions (if present) */}
         {stage.roleContributions && (
-          <div className="p-4 rounded-lg bg-card border border-border space-y-2">
-            <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider block">
-              Primary Role & Contributions
+          <div className="p-5 rounded-md bg-card border border-border space-y-3 shadow-subtle">
+            <span className="technical-eyebrow text-muted-subtle block">
+              PRIMARY ROLE & CONTRIBUTIONS
             </span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {stage.roleContributions.map((role) => (
-                <div key={role} className="flex items-center gap-2 text-xs text-foreground">
+                <div key={role} className="flex items-center gap-2 text-xs sm:text-sm text-foreground">
                   <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" />
                   <span>{role}</span>
                 </div>
@@ -101,9 +101,9 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
 
         {/* Key Learning Callout (e.g. Hackathon) */}
         {stage.keyLearning && (
-          <div className="p-4 rounded-lg bg-surface/80 border border-border text-xs text-muted-foreground space-y-1">
-            <span className="font-mono text-[10px] text-accent uppercase tracking-wider font-semibold block">
-              Key Retrospective Insight
+          <div className="p-5 rounded-md bg-elevated border border-border text-xs sm:text-sm text-muted-foreground space-y-1.5 shadow-subtle">
+            <span className="technical-eyebrow text-accent block">
+              RETROSPECTIVE INSIGHT
             </span>
             <p className="text-foreground/90 leading-relaxed font-medium">
               {stage.keyLearning}
@@ -111,13 +111,13 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
           </div>
         )}
 
-        {/* Technologies Pills */}
+        {/* Technologies List */}
         {stage.technologies && stage.technologies.length > 0 && (
           <div className="flex flex-wrap gap-2 pt-2">
             {stage.technologies.map((tech) => (
               <span
                 key={tech}
-                className="px-2.5 py-1 rounded bg-surface border border-border text-[11px] font-mono text-muted-foreground"
+                className="px-2.5 py-1 rounded-sm bg-elevated border border-border text-[11px] font-mono text-muted-foreground"
               >
                 {tech}
               </span>
@@ -132,7 +132,7 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
               href={stage.repositoryUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card hover:bg-surface text-foreground text-xs font-mono font-medium transition-all duration-200 active:scale-[0.98] cursor-pointer"
+              className="group inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border bg-card hover:bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer shadow-subtle"
             >
               <GitHubIcon className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
               <span>{stage.repositoryName || 'View Source Repository'}</span>
@@ -145,16 +145,16 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
       {/* Right Column: Visual Artifact & Cameo (5 cols) */}
       <motion.div
         initial={prefersReduced ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 24 }}
-        whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
+        whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         className="lg:col-span-5 flex flex-col gap-4 justify-center"
       >
         <JourneyArtifact type={stage.visualType} title={stage.title} />
 
         {/* Subtle Milestone Cameo for Robotics */}
         {isRoboticsMilestone && (
-          <div className="p-3 rounded-lg bg-surface/50 border border-border/80 flex items-center gap-3">
+          <div className="p-3 rounded-md bg-elevated border border-border flex items-center gap-3 shadow-subtle">
             <div className="w-10 h-10 shrink-0">
               <Character
                 lookAngle={{

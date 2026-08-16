@@ -28,7 +28,7 @@ export const CharacterEyes: React.FC<CharacterEyesProps> = ({ offsetX, offsetY }
         {/* Light reflection glint */}
         <circle cx="73.5" cy="86.5" r="1.3" fill="#FFFFFF" opacity="0.9" />
         {/* Accent iris rim */}
-        <circle cx="75" cy="88" r="4.2" stroke="hsl(var(--accent))" strokeWidth="0.8" fill="none" opacity="0.6" />
+        <circle cx="75" cy="88" r="4.2" stroke="var(--accent)" strokeWidth="0.8" fill="none" opacity="0.6" />
       </motion.g>
 
       {/* Right Eye Socket */}
@@ -50,7 +50,7 @@ export const CharacterEyes: React.FC<CharacterEyesProps> = ({ offsetX, offsetY }
         {/* Light reflection glint */}
         <circle cx="123.5" cy="86.5" r="1.3" fill="#FFFFFF" opacity="0.9" />
         {/* Accent iris rim */}
-        <circle cx="125" cy="88" r="4.2" stroke="hsl(var(--accent))" strokeWidth="0.8" fill="none" opacity="0.6" />
+        <circle cx="125" cy="88" r="4.2" stroke="var(--accent)" strokeWidth="0.8" fill="none" opacity="0.6" />
       </motion.g>
     </g>
   );

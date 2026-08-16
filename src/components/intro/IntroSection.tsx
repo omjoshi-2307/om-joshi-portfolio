@@ -18,7 +18,7 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ className }) => {
       id="intro"
       aria-label="Om Joshi Current Identity and Focus"
       className={cn(
-        'relative py-20 sm:py-28 md:py-32 bg-surface/25 dark:bg-surface/10 border-t border-border/60 transition-colors',
+        'relative py-20 sm:py-28 md:py-32 bg-surface-soft border-t border-border transition-colors',
         className
       )}
     >

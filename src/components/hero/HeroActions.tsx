@@ -36,8 +36,8 @@ export const HeroActions: React.FC<HeroActionsProps> = ({
     <motion.div
       initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
       animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={cn('flex flex-wrap items-center gap-4 pt-2', className)}
+      transition={{ duration: 0.7, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className={cn('flex flex-wrap items-center gap-3.5 pt-2', className)}
     >
       {/* Primary Action */}
       <a
@@ -47,10 +47,10 @@ export const HeroActions: React.FC<HeroActionsProps> = ({
         onMouseLeave={() => onHoverPrimary?.(false)}
         onFocus={() => onHoverPrimary?.(true)}
         onBlur={() => onHoverPrimary?.(false)}
-        className="group relative inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg bg-accent text-accent-foreground text-sm font-medium transition-all duration-200 shadow-sm hover:brightness-110 active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
+        className="group relative inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-sm font-semibold transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
       >
         <span>View selected work</span>
-        <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+        <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-1" />
       </a>
 
       {/* Secondary Action */}
@@ -61,7 +61,7 @@ export const HeroActions: React.FC<HeroActionsProps> = ({
         onMouseLeave={() => onHoverSecondary?.(false)}
         onFocus={() => onHoverSecondary?.(true)}
         onBlur={() => onHoverSecondary?.(false)}
-        className="group inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-lg border border-border bg-card/80 hover:bg-surface text-foreground text-sm font-medium transition-all duration-200 active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
+        className="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-border hover:border-border-strong bg-card hover:bg-elevated text-foreground text-sm font-medium transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
       >
         <Compass className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors" />
         <span>Explore my journey</span>

@@ -15,7 +15,7 @@ const META_ITEMS = [
   },
   {
     label: 'ACTIVE EXPLORATIONS',
-    value: 'Full-Stack • Web3 • AI • Cybersecurity',
+    value: 'Full-Stack • Web3 • AI • Security',
     detail: 'Practical implementation & experiments',
   },
   {
@@ -29,7 +29,7 @@ export const IntroMeta: React.FC<IntroMetaProps> = ({ className }) => {
   const prefersReduced = useReducedMotion();
 
   return (
-    <div className={cn('grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-border/60', className)}>
+    <div className={cn('grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-8 border-t border-border', className)}>
       {META_ITEMS.map((item, index) => (
         <motion.div
           key={item.label}
@@ -39,17 +39,18 @@ export const IntroMeta: React.FC<IntroMetaProps> = ({ className }) => {
           transition={{
             duration: 0.6,
             delay: prefersReduced ? 0 : 0.4 + index * 0.1,
-            ease: [0.22, 1, 0.36, 1],
+            ease: [0.16, 1, 0.3, 1],
           }}
-          className="group flex flex-col gap-1.5 p-4 rounded-lg bg-card/50 border border-border hover:border-border/90 transition-colors"
+          className="flex flex-col gap-1.5"
         >
-          <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
+          <span className="technical-eyebrow text-muted-subtle flex items-center gap-2">
+            <span className="w-1 h-1 rounded-full bg-accent inline-block" />
             {item.label}
           </span>
-          <span className="text-sm font-semibold text-foreground">
+          <span className="text-base font-bold text-foreground font-display tracking-tight">
             {item.value}
           </span>
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs text-muted-foreground font-sans">
             {item.detail}
           </span>
         </motion.div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '@/components/layout/Container';
 import { ToolboxHeader } from './ToolboxHeader';
-import { SkillCategoryCard } from './SkillCategoryCard';
+import { TechnicalIndexGroup } from './TechnicalIndexGroup';
 import { ExplorationMatrix } from './ExplorationMatrix';
 import { SKILL_CATEGORIES } from '@/data/skills';
 import { ArrowDownRight } from 'lucide-react';
@@ -36,19 +36,25 @@ export const ToolboxSection: React.FC<ToolboxSectionProps> = ({ className }) => 
         className
       )}
     >
-      <Container className="flex flex-col gap-16 sm:gap-20">
+      <Container className="flex flex-col gap-14 sm:gap-18">
         {/* Section Header */}
         <ToolboxHeader />
 
-        {/* 1. Core Technical Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8">
-          {SKILL_CATEGORIES.map((category) => (
-            <SkillCategoryCard key={category.id} category={category} />
+        {/* 1. Structured Technical Index (Editorial Layout) */}
+        <div className="flex flex-col">
+          {SKILL_CATEGORIES.map((category, index) => (
+            <TechnicalIndexGroup
+              key={category.id}
+              category={category}
+              isFirst={index === 0}
+            />
           ))}
         </div>
 
-        {/* 2. Active Research & Frontier Exploration Matrix */}
-        <ExplorationMatrix />
+        {/* 2. Frontier Exploration Matrix Preview */}
+        <div className="pt-6">
+          <ExplorationMatrix />
+        </div>
 
         {/* 3. Transition Bridge to Currently Exploring Section */}
         <div className="pt-12 mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-dashed border-border/80 text-xs font-mono">

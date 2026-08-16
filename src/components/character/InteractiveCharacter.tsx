@@ -47,26 +47,20 @@ export const InteractiveCharacter: React.FC<InteractiveCharacterProps> = ({
   return (
     <motion.div
       ref={containerRef}
-      initial={prefersReduced ? { opacity: 0 } : { opacity: 0, scale: 0.94, y: 20 }}
+      initial={prefersReduced ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 16 }}
       animate={prefersReduced ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
       className={cn('relative flex flex-col items-center select-none group', className)}
     >
-      {/* Editorial Decorative Coordinates / Frame Pedestal */}
+      {/* Editorial Decorative Coordinates / Frame Pedestal with subtle lavender atmosphere */}
       {showPedestal && (
         <div
           aria-hidden="true"
-          className="absolute inset-0 rounded-3xl border border-border/70 bg-gradient-to-b from-surface/40 via-surface/20 to-transparent -z-10 transition-colors duration-300"
+          className="absolute inset-0 rounded-xl border border-border-lavender bg-surface-lavender shadow-warm -z-10 transition-colors duration-150 group-hover:border-border-strong"
         >
-          {/* Subtle Corner Crosshairs */}
-          <div className="absolute top-2 left-2 w-2.5 h-2.5 border-t border-l border-accent/40" />
-          <div className="absolute top-2 right-2 w-2.5 h-2.5 border-t border-r border-accent/40" />
-          <div className="absolute bottom-2 left-2 w-2.5 h-2.5 border-b border-l border-accent/40" />
-          <div className="absolute bottom-2 right-2 w-2.5 h-2.5 border-b border-r border-accent/40" />
-
-          {/* Coordinate Tag */}
-          <div className="absolute -top-2.5 left-6 px-2 py-0.5 rounded bg-card border border-border text-[9px] font-mono text-muted-foreground uppercase tracking-wider">
-            AVATAR // 18.5204° N, 73.8567° E
+          {/* Subtle Coordinate Tag */}
+          <div className="absolute -top-2.5 left-6 px-2 py-0.5 rounded-sm bg-surface border border-border text-[9px] font-mono text-muted-subtle uppercase tracking-wider">
+            AVATAR // 18.52° N, 73.85° E
           </div>
         </div>
       )}
@@ -77,20 +71,20 @@ export const InteractiveCharacter: React.FC<InteractiveCharacterProps> = ({
         animate={isWaving ? { rotate: [0, -6, 6, -4, 4, 0] } : {}}
         transition={{ duration: 0.6 }}
         className={cn(
-          'relative flex items-center justify-center p-4 cursor-pointer transition-transform duration-300',
+          'relative flex items-center justify-center p-4 cursor-pointer transition-transform duration-150',
           sizeMap[size]
         )}
       >
         <Character lookAngle={lookAngle} />
       </motion.div>
 
-      {/* Minimal Status Beacon (Bottom Pill) */}
+      {/* Minimal Status Beacon */}
       {showStatusBadge && (
-        <div className="mt-2 flex items-center gap-2 px-2.5 py-1 rounded-full bg-card/80 border border-border/80 text-[10px] font-mono text-muted-foreground backdrop-blur-xs shadow-xs">
+        <div className="mt-2 flex items-center gap-2 px-2.5 py-1 rounded-sm bg-surface border border-border text-[10px] font-mono text-muted-foreground shadow-subtle">
           <span
             className={cn(
               'w-1.5 h-1.5 rounded-full transition-colors',
-              lookAngle.isTracking ? 'bg-emerald-500 animate-pulse' : 'bg-muted-foreground'
+              lookAngle.isTracking ? 'bg-signal' : 'bg-muted-subtle'
             )}
           />
           <span className="tracking-wider uppercase">

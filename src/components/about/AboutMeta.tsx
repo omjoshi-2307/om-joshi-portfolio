@@ -33,18 +33,18 @@ export const AboutMeta: React.FC<AboutMetaProps> = ({ metadata, className }) => 
             transition={{
               duration: 0.5,
               delay: 0.2 + index * 0.08,
-              ease: [0.22, 1, 0.36, 1],
+              ease: [0.16, 1, 0.3, 1],
             }}
-            className="p-4 sm:p-5 rounded-xl border border-border/80 bg-card/60 dark:bg-card/40 backdrop-blur-xs flex flex-col gap-2 transition-all duration-200 hover:border-accent/40"
+            className="p-4 sm:p-5 rounded-md border border-border bg-card shadow-subtle flex flex-col gap-2 transition-colors duration-150 hover:border-border-strong"
           >
             {/* Header: Icon + Label */}
-            <div className="flex items-center gap-2 text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
               <Icon className="w-3.5 h-3.5 text-accent" />
               <span>{item.data.label}</span>
             </div>
 
             {/* Value */}
-            <div className="text-sm sm:text-base font-semibold text-foreground tracking-tight">
+            <div className="text-sm sm:text-base font-semibold text-foreground tracking-tight font-display">
               {item.data.value}
             </div>
 

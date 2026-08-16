@@ -11,34 +11,36 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({ className }) => 
   const prefersReduced = useReducedMotion();
 
   return (
-    <div className={cn('flex flex-col gap-4 max-w-3xl mb-16 sm:mb-20', className)}>
+    <div className={cn('flex flex-col gap-6 max-w-4xl mb-16 sm:mb-24', className)}>
       <motion.div
         initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 12 }}
         whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-widest"
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="flex items-center gap-2.5 technical-eyebrow text-muted-subtle"
       >
-        <span className="w-2 h-2 rounded-sm bg-accent inline-block" />
-        <span>03 // SELECTED WORK</span>
+        <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
+        <span>03 // SELECTED BUILDS</span>
       </motion.div>
 
       <motion.h2
-        initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
+        initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
         whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="section-display text-foreground font-bold tracking-tight"
+        transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        className="section-monumental text-foreground uppercase tracking-tight"
       >
-        Featured Engineering & Artifacts
+        <span>SELECTED</span>
+        <br />
+        <span>WORK.</span>
       </motion.h2>
 
       <motion.p
         initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
         whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className="editorial-lead text-muted-foreground"
+        transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        className="editorial-lead text-muted-foreground max-w-2xl"
       >
         These are some of the things I've built along the way — from physical autonomous robots and rapid hackathon prototypes to collaborative decentralized products.
       </motion.p>

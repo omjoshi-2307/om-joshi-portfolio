@@ -33,17 +33,17 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
       initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
       whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        'relative flex flex-col justify-between p-6 sm:p-8 rounded-3xl border border-border bg-card/60 backdrop-blur-xs shadow-xs',
+        'relative flex flex-col justify-between p-6 sm:p-8 rounded-xl border border-border bg-card shadow-subtle hover:border-border-strong transition-colors',
         className
       )}
     >
       <div className="flex flex-col gap-6">
         {/* Context Tag */}
-        <div className="flex items-center justify-between pb-4 border-b border-border/70 text-xs font-mono text-muted-foreground">
+        <div className="flex items-center justify-between pb-4 border-b border-border text-xs font-mono text-muted-foreground">
           <span className="text-foreground font-semibold uppercase">{project.context}</span>
-          <span className="px-2 py-0.5 rounded bg-surface border border-border text-[10px] uppercase">
+          <span className="px-2 py-0.5 rounded-sm bg-elevated border border-border text-[10px] uppercase font-mono">
             {project.category}
           </span>
         </div>
@@ -53,7 +53,7 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
           <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">
             {project.title}
           </h3>
-          <p className="text-sm sm:text-base font-medium text-foreground/90">
+          <p className="text-sm sm:text-base font-medium text-foreground/90 font-display">
             {project.subtitle}
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed">
@@ -86,7 +86,7 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
           {project.mainTechnologies.map((tech) => (
             <span
               key={tech}
-              className="px-2.5 py-1 rounded bg-surface border border-border text-[11px] font-mono text-foreground font-medium"
+              className="px-2.5 py-1 rounded-sm bg-elevated border border-border text-[11px] font-mono text-foreground font-medium"
             >
               {tech}
             </span>
@@ -94,7 +94,7 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
           {project.supportingTechnologies?.map((tech) => (
             <span
               key={tech}
-              className="px-2 py-1 rounded bg-surface/50 border border-border text-[10px] font-mono text-muted-foreground"
+              className="px-2 py-1 rounded-sm bg-card border border-border text-[10px] font-mono text-muted-foreground"
             >
               {tech}
             </span>
@@ -104,12 +104,12 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
 
       {/* Repository Action Button */}
       {project.repositoryUrl && (
-        <div className="pt-6 mt-6 border-t border-border/70">
+        <div className="pt-6 mt-6 border-t border-border">
           <a
             href={project.repositoryUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="group inline-flex items-center justify-between w-full px-4 py-3 rounded-lg border border-border bg-surface/80 hover:bg-surface text-foreground text-xs font-mono font-medium transition-all duration-200 active:scale-[0.98] cursor-pointer"
+            className="group inline-flex items-center justify-between w-full px-4 py-2.5 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer"
           >
             <div className="flex items-center gap-2">
               <GitHubIcon className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />

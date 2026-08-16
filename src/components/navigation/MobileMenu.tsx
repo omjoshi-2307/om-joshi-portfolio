@@ -79,10 +79,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation Menu"
-          className="fixed inset-0 z-50 md:hidden flex flex-col justify-between bg-background/98 backdrop-blur-xl"
+          className="fixed inset-0 z-50 md:hidden flex flex-col justify-between bg-background"
         >
           {/* Mobile Header Bar */}
-          <div className="flex items-center justify-between px-6 h-20 border-b border-border/60">
+          <div className="flex items-center justify-between px-6 h-20 border-b border-border">
             <Brand onClick={onClose} showLocation={false} />
 
             <div className="flex items-center gap-3">
@@ -94,7 +94,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                 type="button"
                 onClick={onClose}
                 aria-label="Close navigation menu"
-                className="w-10 h-10 rounded-md border border-border/80 bg-surface/60 flex items-center justify-center text-foreground hover:bg-surface transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
+                className="w-10 h-10 rounded-sm border border-border bg-elevated flex items-center justify-center text-foreground hover:bg-card transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent shadow-subtle"
               >
                 <svg
                   className="w-5 h-5"
@@ -124,14 +124,14 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                     transition={{
                       duration: 0.3,
                       delay: prefersReduced ? 0 : index * 0.06,
-                      ease: [0.22, 1, 0.36, 1],
+                      ease: [0.16, 1, 0.3, 1],
                     }}
                   >
                     <a
                       href={item.href}
                       onClick={(e) => handleLinkClick(e, item.href)}
                       className={cn(
-                        'group flex items-center justify-between py-2 text-2xl font-display font-semibold transition-colors',
+                        'group flex items-center justify-between py-2 text-2xl font-display font-semibold transition-colors duration-150',
                         isActive
                           ? 'text-accent'
                           : 'text-foreground hover:text-accent'
@@ -155,9 +155,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           </nav>
 
           {/* Mobile Footer Meta */}
-          <div className="px-8 py-6 border-t border-border/60 bg-surface/30 flex items-center justify-between text-xs font-mono text-muted-foreground">
+          <div className="px-8 py-6 border-t border-border bg-surface flex items-center justify-between text-xs font-mono text-muted-foreground">
             <span>B.Tech IT • Pune</span>
-            <span className="text-[10px] text-accent">Interactive Portfolio</span>
+            <span className="text-[10px] text-accent font-semibold tracking-wider">ELECTRIC PINK / LAVENDER</span>
           </div>
         </div>
       )}

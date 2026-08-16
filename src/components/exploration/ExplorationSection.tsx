@@ -33,7 +33,7 @@ export const ExplorationSection: React.FC<ExplorationSectionProps> = ({ classNam
       id="exploration"
       aria-label="Om Joshi Current Research and Technical Exploration"
       className={cn(
-        'relative py-24 sm:py-32 md:py-36 bg-surface/20 dark:bg-surface/10 border-t border-border/60 transition-colors',
+        'relative py-24 sm:py-32 md:py-36 bg-surface-lavender border-t border-border transition-colors',
         className
       )}
     >
@@ -59,7 +59,7 @@ export const ExplorationSection: React.FC<ExplorationSectionProps> = ({ classNam
         <ExplorationCameo />
 
         {/* 4. Transition Bridge to About Section */}
-        <div className="pt-12 mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-dashed border-border/80 text-xs font-mono">
+        <div className="pt-12 mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-dashed border-border text-xs font-mono">
           <div className="flex items-center gap-2.5 text-muted-foreground">
             <span className="text-accent font-semibold">06 // NEXT CHAPTER</span>
             <span>•</span>

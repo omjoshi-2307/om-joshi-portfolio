@@ -35,7 +35,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ className }) =
       id="projects"
       aria-label="Om Joshi Selected Work and Engineering Projects"
       className={cn(
-        'relative py-24 sm:py-32 md:py-36 bg-surface/20 dark:bg-surface/10 border-t border-border/60 transition-colors',
+        'relative py-24 sm:py-32 md:py-36 bg-surface-soft border-t border-border transition-colors',
         className
       )}
     >
@@ -54,7 +54,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ className }) =
         </div>
 
         {/* 3. Transition Bridge to Technical Toolbox / Skills */}
-        <div className="pt-12 mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-dashed border-border/80 text-xs font-mono">
+        <div className="pt-12 mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-border text-xs font-mono">
           <div className="flex items-center gap-2.5 text-muted-foreground">
             <span className="text-accent font-semibold">04 // NEXT CHAPTER</span>
             <span>•</span>

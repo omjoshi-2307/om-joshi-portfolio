@@ -20,7 +20,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
       id="about"
       aria-label="About Om Joshi and Personal Identity"
       className={cn(
-        'relative py-24 sm:py-32 md:py-36 bg-surface/15 dark:bg-surface/5 border-t border-border/60 transition-colors',
+        'relative py-24 sm:py-32 md:py-36 bg-background border-t border-border transition-colors',
         className
       )}
     >

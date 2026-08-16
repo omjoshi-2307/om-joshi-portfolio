@@ -18,7 +18,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ className }) => 
       id="contact"
       aria-label="Contact Om Joshi and Communication Channels"
       className={cn(
-        'relative py-24 sm:py-32 md:py-36 bg-surface/25 dark:bg-surface/10 border-t border-border/60 transition-colors',
+        'relative py-24 sm:py-32 md:py-36 bg-surface-warm border-t border-border transition-colors',
         className
       )}
     >
@@ -37,19 +37,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ className }) => 
         <SocialLinks socials={CONTACT_DATA.socials} />
 
         {/* 4. Closing Personal Narrative Callout */}
-        <div className="p-6 sm:p-8 rounded-2xl border border-accent/20 bg-accent/[0.03] dark:bg-accent/[0.05] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="p-6 sm:p-7 rounded-xl border border-border bg-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-subtle">
           <div className="flex items-center gap-3">
-            <span className="p-2 rounded-lg bg-accent/10 text-accent shrink-0">
+            <span className="w-8 h-8 rounded-sm bg-elevated border border-border text-accent shrink-0 flex items-center justify-center">
               <Terminal className="w-4 h-4" />
             </span>
-            <p className="text-sm sm:text-base font-medium text-foreground italic leading-relaxed">
+            <p className="text-sm sm:text-base font-medium text-foreground italic leading-relaxed font-sans">
               "{CONTACT_DATA.closingStatement}"
             </p>
           </div>
 
           <div className="flex items-center gap-1.5 text-[10px] font-mono text-accent uppercase tracking-wider shrink-0 self-end sm:self-center">
             <Sparkles className="w-3 h-3" />
-            <span>PORTFOLIO CHAPTER 06</span>
+            <span>PORTFOLIO CHAPTER 07</span>
           </div>
         </div>
 

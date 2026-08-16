@@ -1,83 +1,144 @@
 /* ==========================================================================
-   DESIGN TOKENS & COLOR SYSTEM
-   Om Joshi Portfolio - Scalable Foundation
+   DESIGN TOKENS & COLOR SYSTEM — OM JOSHI PORTFOLIO
+   Creative Direction:
+   - Dark: OBSIDIAN CREATIVE STUDIO (#09090B)
+   - Light: WARM IVORY EDITORIAL STUDIO (#F4F1EA)
+   - Accents: ELECTRIC PINK • LAVENDER • DEEP PURPLE • SIGNAL YELLOW
    ========================================================================== */
 
 @layer base {
   :root {
     /* ---------------------------------------------------------
-       LIGHT THEME: Clean Editorial / Studio / Documentation
+       LIGHT THEME: Warm Ivory Editorial Studio (#F4F1EA)
        --------------------------------------------------------- */
-    --background: 210 20% 98%;          /* Crisp gallery off-white #f8f9fa */
-    --foreground: 220 25% 10%;          /* Deep carbon ink #14181f */
+    --background: #F4F1EA;
+    --foreground: #15131A;
     
-    --card: 0 0% 100%;                  /* Pure white card #ffffff */
-    --card-foreground: 220 25% 10%;
+    --card: #FAF8F3;
+    --card-foreground: #15131A;
     
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 10%;
+    --surface: #FAF8F3;
+    --surface-foreground: #15131A;
+    --surface-soft: #F8F5EF;
+    --surface-elevated: #FFFFFF;
+    --surface-lavender: #F0ECFA;
+    --surface-warm: #ECE8DF;
+    --surface-footer: #E5E0D6;
     
-    --surface: 210 16% 95%;             /* Elevated sub-surface #eff2f5 */
-    --surface-foreground: 220 20% 20%;
+    --elevated: #FFFFFF;
+    --elevated-foreground: #15131A;
     
-    /* Centralized Accent System (Easy global override) */
-    --accent: 224 76% 48%;              /* Architectural Cobalt Blue #1d58d8 */
-    --accent-foreground: 0 0% 100%;     /* White */
-    --accent-muted: 224 60% 94%;        /* Soft tinted accent surface */
+    --popover: #FAF8F3;
+    --popover-foreground: #15131A;
     
-    --muted: 210 14% 91%;               /* Soft subtle neutral #e5e9ed */
-    --muted-foreground: 215 16% 42%;    /* Editorial balanced secondary #5b697a */
+    /* Primary Accent: Electric Pink */
+    --accent: #E83E8C;
+    --accent-hover: #D92F7C;
+    --accent-foreground: #FFFFFF;
+    --accent-soft: rgba(232, 62, 140, 0.08);
     
-    --border: 216 18% 88%;              /* Restrained crisp hairline border #dbe1e8 */
-    --border-subtle: 216 20% 93%;
-    --input: 216 18% 88%;
-    --ring: 224 76% 48%;
+    /* Secondary Accent: Lavender */
+    --accent-secondary: #9A86F7;
+    --accent-secondary-hover: #846DF5;
+    --accent-secondary-foreground: #15131A;
+    --accent-secondary-soft: rgba(154, 134, 247, 0.08);
+    
+    /* Deep Accent: Deep Purple */
+    --accent-depth: #6046BE;
+    --accent-depth-hover: #5039A3;
+    --accent-depth-soft: rgba(96, 70, 190, 0.08);
 
-    /* Radius & Spacing */
+    /* Signal Accent: Signal Yellow (Rare Indicator) */
+    --signal: #EABF24;
+    --signal-hover: #D6AB1A;
+    --signal-soft: rgba(234, 191, 36, 0.10);
+    
+    --muted: #ECE8DF;
+    --muted-foreground: #514D58;
+    --muted-subtle: #77717F;
+    
+    --border: #D7D1C6;
+    --border-strong: #C7BFB2;
+    --border-lavender: #D8D0EA;
+    --border-subtle: #E5E0D6;
+    --input: #D7D1C6;
+    --ring: #E83E8C;
+
+    /* Controlled Radius */
     --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 16px;
+    --radius-md: 6px;
+    --radius-lg: 10px;
+    --radius-xl: 14px;
     --radius-full: 9999px;
 
-    /* Shadow tokens */
-    --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-    --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-    --shadow-elevated: 0 12px 32px -4px rgba(0, 0, 0, 0.08);
+    /* Restrained Warm Shadows */
+    --shadow-subtle: 0 1px 2px 0 rgba(40, 30, 20, 0.04);
+    --shadow-card: 0 4px 16px -2px rgba(40, 30, 20, 0.04);
+    --shadow-warm: 0 4px 20px -2px rgba(40, 30, 20, 0.06);
+    --shadow-elevated: 0 8px 24px -4px rgba(40, 30, 20, 0.08);
   }
 
   .dark {
     /* ---------------------------------------------------------
-       DARK THEME: Technical Laboratory / Obsidian Workspace
+       DARK THEME: Obsidian Creative Studio (#09090B) — DEFAULT
        --------------------------------------------------------- */
-    --background: 220 25% 6%;           /* Deep obsidian #0b0e14 */
-    --foreground: 210 24% 94%;          /* Luminous soft white #edf2f7 */
+    --background: #09090B;
+    --foreground: #F7F7F5;
     
-    --card: 220 22% 9%;                 /* Obsidian panel #11151e */
-    --card-foreground: 210 24% 94%;
+    --card: #111114;
+    --card-foreground: #F7F7F5;
     
-    --popover: 220 22% 9%;
-    --popover-foreground: 210 24% 94%;
+    --surface: #111114;
+    --surface-foreground: #F7F7F5;
+    --surface-soft: #141418;
+    --surface-elevated: #18181D;
+    --surface-lavender: #181622;
+    --surface-warm: #131317;
+    --surface-footer: #0D0D0F;
     
-    --surface: 220 20% 13%;             /* Elevated technical surface #1a202c */
-    --surface-foreground: 210 20% 80%;
+    --elevated: #18181D;
+    --elevated-foreground: #F7F7F5;
     
-    /* Centralized Accent System (Easy global override) */
-    --accent: 217 91% 60%;              /* Luminous Electric Cobalt #3b82f6 */
-    --accent-foreground: 0 0% 100%;
-    --accent-muted: 217 40% 14%;        /* Dark muted tinted accent surface */
+    --popover: #111114;
+    --popover-foreground: #F7F7F5;
     
-    --muted: 220 18% 14%;               /* Dark muted container #191f2b */
-    --muted-foreground: 215 15% 60%;    /* Precision technical mid-gray #8c9ba8 */
+    /* Primary Accent: Electric Pink */
+    --accent: #FF4FA3;
+    --accent-hover: #FF72B5;
+    --accent-foreground: #09090B;
+    --accent-soft: rgba(255, 79, 163, 0.10);
     
-    --border: 220 18% 16%;              /* Precision technical border #1e2636 */
-    --border-subtle: 220 16% 12%;
-    --input: 220 18% 16%;
-    --ring: 217 91% 60%;
+    /* Secondary Accent: Lavender */
+    --accent-secondary: #B9A7FF;
+    --accent-secondary-hover: #CBBFFF;
+    --accent-secondary-foreground: #09090B;
+    --accent-secondary-soft: rgba(185, 167, 255, 0.10);
+    
+    /* Deep Accent: Deep Purple */
+    --accent-depth: #7657D9;
+    --accent-depth-hover: #8C6FF0;
+    --accent-depth-soft: rgba(118, 87, 217, 0.12);
 
-    /* Dark mode shadow tokens */
-    --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-card: 0 4px 24px -2px rgba(0, 0, 0, 0.45);
-    --shadow-elevated: 0 16px 40px -4px rgba(0, 0, 0, 0.6);
+    /* Signal Accent: Signal Yellow (Rare Indicator) */
+    --signal: #FFD84D;
+    --signal-hover: #FFE070;
+    --signal-soft: rgba(255, 216, 77, 0.12);
+    
+    --muted: #18181D;
+    --muted-foreground: #B5B3BE;
+    --muted-subtle: #7E7A88;
+    
+    --border: #292731;
+    --border-strong: #3A3545;
+    --border-lavender: #38324A;
+    --border-subtle: #1B1B20;
+    --input: #292731;
+    --ring: #FF4FA3;
+
+    /* Restrained Dark Shadows */
+    --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+    --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    --shadow-warm: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    --shadow-elevated: 0 12px 32px -4px rgba(0, 0, 0, 0.6);
   }
 }

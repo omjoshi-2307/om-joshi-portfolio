@@ -60,7 +60,7 @@ export const CharacterBody: React.FC = () => {
         y1="154"
         x2="100"
         y2="198"
-        stroke="hsl(var(--border))"
+        stroke="var(--border)"
         strokeWidth="1.5"
         strokeDasharray="2 2"
         className="opacity-70"
@@ -69,7 +69,7 @@ export const CharacterBody: React.FC = () => {
         cx="100"
         cy="154"
         r="2"
-        fill="hsl(var(--accent))"
+        fill="var(--accent)"
       />
 
       {/* Shoulder Raglan Seams */}
@@ -95,7 +95,7 @@ export const CharacterBody: React.FC = () => {
         width="10"
         height="2"
         rx="1"
-        fill="hsl(var(--accent))"
+        fill="var(--accent)"
         opacity="0.8"
       />
     </motion.g>

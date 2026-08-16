@@ -21,37 +21,33 @@ export const EmailLink: React.FC<EmailLinkProps> = ({
   return (
     <div
       className={cn(
-        'relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 sm:p-8 rounded-2xl border border-border/80 bg-card/70 dark:bg-card/40 backdrop-blur-xs shadow-xs transition-all duration-300 hover:border-accent/40 group',
+        'relative flex flex-col sm:flex-row sm:items-center justify-between gap-8 p-8 sm:p-12 md:p-14 rounded-xl border border-border bg-card shadow-subtle transition-colors duration-200 hover:border-border-strong group',
         className
       )}
       onMouseEnter={() => onHoverStateChange?.(true)}
       onMouseLeave={() => onHoverStateChange?.(false)}
     >
-      {/* Corner crosshairs */}
-      <div aria-hidden="true" className="absolute top-2 left-2 w-2 h-2 border-t border-l border-accent/40" />
-      <div aria-hidden="true" className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-accent/40" />
-
-      {/* Left: Email Primary Link */}
-      <div className="flex flex-col gap-1.5 min-w-0">
-        <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest flex items-center gap-1.5">
-          <Mail className="w-3 h-3 text-accent" />
-          <span>PRIMARY CONTACT INBOX</span>
+      {/* Left: Email Monumental Link */}
+      <div className="flex flex-col gap-3 min-w-0">
+        <span className="technical-eyebrow text-muted-subtle flex items-center gap-2">
+          <Mail className="w-3.5 h-3.5 text-accent" />
+          <span>PRIMARY COMMUNICATION INBOX</span>
         </span>
 
         <a
           href={`mailto:${email}`}
           aria-label={`Send email to ${email} (opens default mail client)`}
-          className="inline-flex items-center gap-2 group/link select-all focus-visible:outline-2 focus-visible:outline-accent rounded-sm"
+          className="inline-flex items-center gap-3 group/link select-all focus-visible:outline-2 focus-visible:outline-accent rounded-sm"
         >
-          <span className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-foreground tracking-tight group-hover/link:text-accent transition-colors duration-200 break-all">
+          <span className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-foreground tracking-tight group-hover/link:text-accent transition-colors duration-150 break-all leading-none">
             {email}
           </span>
           <motion.span
-            animate={prefersReduced ? {} : { x: [0, 2, 0], y: [0, -2, 0] }}
+            animate={prefersReduced ? {} : { x: [0, 3, 0], y: [0, -3, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             className="text-accent shrink-0 hidden sm:inline-flex"
           >
-            <ArrowUpRight className="w-5 h-5 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+            <ArrowUpRight className="w-8 h-8 transition-transform duration-150 group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
           </motion.span>
         </a>
       </div>

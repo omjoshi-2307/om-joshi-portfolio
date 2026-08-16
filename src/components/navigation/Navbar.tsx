@@ -27,9 +27,9 @@ export const Navbar: React.FC<NavbarProps> = ({
     <>
       <header
         className={cn(
-          'fixed top-0 inset-x-0 z-40 w-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
+          'fixed top-0 inset-x-0 z-40 w-full transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]',
           isScrolled
-            ? 'h-16 bg-background/85 backdrop-blur-md border-b border-border/80 shadow-xs'
+            ? 'h-16 bg-background/95 border-b border-border shadow-subtle'
             : 'h-20 bg-transparent border-b border-transparent',
           className
         )}
@@ -56,7 +56,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
-              className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-md border border-border/80 bg-surface/50 hover:bg-surface text-foreground transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
+              className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-sm border border-border bg-elevated hover:bg-card text-foreground transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent shadow-subtle"
             >
               <svg
                 className="w-4 h-4"

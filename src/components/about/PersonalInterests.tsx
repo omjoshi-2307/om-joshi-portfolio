@@ -29,7 +29,7 @@ export const PersonalInterests: React.FC<PersonalInterestsProps> = ({
   return (
     <div className={cn('flex flex-col gap-6', className)}>
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-border/80 pb-3">
+      <div className="flex items-center justify-between border-b border-border pb-3">
         <div className="flex items-center gap-2">
           <Heart className="w-3.5 h-3.5 text-accent" />
           <h3 className="text-sm font-mono uppercase tracking-widest text-foreground font-semibold">
@@ -55,24 +55,24 @@ export const PersonalInterests: React.FC<PersonalInterestsProps> = ({
               transition={{
                 duration: 0.5,
                 delay: 0.15 + index * 0.08,
-                ease: [0.22, 1, 0.36, 1],
+                ease: [0.16, 1, 0.3, 1],
               }}
               whileHover={prefersReduced ? {} : { y: -2 }}
-              className="p-5 sm:p-6 rounded-2xl border border-border/80 bg-card/60 dark:bg-card/40 backdrop-blur-xs flex flex-col gap-3 group transition-all duration-300 hover:border-accent/40 hover:shadow-xs"
+              className="p-5 sm:p-6 rounded-xl border border-border bg-card shadow-subtle flex flex-col gap-3 group transition-colors duration-150 hover:border-border-strong"
             >
               {/* Icon & Category Pill */}
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-200">
+                <div className="w-8 h-8 rounded-sm bg-elevated border border-border flex items-center justify-center text-accent group-hover:border-accent transition-colors duration-150">
                   <Icon className="w-4 h-4" />
                 </div>
-                <span className="text-[10px] font-mono text-muted-foreground uppercase px-2 py-0.5 rounded-full bg-surface border border-border/60">
+                <span className="text-[10px] font-mono text-muted-foreground uppercase px-2 py-0.5 rounded-sm bg-elevated border border-border">
                   {interest.category}
                 </span>
               </div>
 
               {/* Title & Tagline */}
               <div className="flex flex-col gap-0.5">
-                <span className="text-base font-display font-semibold text-foreground group-hover:text-accent transition-colors">
+                <span className="text-base font-display font-semibold text-foreground group-hover:text-accent transition-colors duration-150">
                   {interest.name}
                 </span>
                 <span className="text-xs font-mono text-accent">
@@ -81,7 +81,7 @@ export const PersonalInterests: React.FC<PersonalInterestsProps> = ({
               </div>
 
               {/* Description */}
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-sans">
                 {interest.description}
               </p>
             </motion.div>

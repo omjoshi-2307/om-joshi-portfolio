@@ -14,38 +14,39 @@ export const ExplorationVisualMotif: React.FC<ExplorationVisualMotifProps> = ({ 
     <div
       aria-hidden="true"
       className={cn(
-        'relative w-full h-32 sm:h-40 rounded-2xl border border-border/70 bg-surface/30 dark:bg-surface/10 overflow-hidden flex items-center justify-between px-6 sm:px-12 font-mono text-[10px] text-muted-foreground select-none',
+        'relative w-full h-28 sm:h-32 rounded-xl border border-border bg-card shadow-subtle overflow-hidden flex items-center justify-between px-6 sm:px-10 font-mono text-[10px] text-muted-foreground select-none',
         className
       )}
     >
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06] bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-[size:1.25rem_1.25rem]" />
-
-      {/* Origin Node */}
+      {/* 1. Origin Node (Electric Pink starting point) */}
       <div className="relative z-10 flex items-center gap-3">
-        <div className="w-3 h-3 rounded-full bg-accent animate-pulse shadow-xs" />
+        <div className="w-2.5 h-2.5 rounded-full bg-accent shadow-subtle" />
         <div className="flex flex-col">
-          <span className="text-foreground font-bold text-xs">FOUNDATION</span>
-          <span className="text-[10px] text-muted-foreground">Pune, MH • Core CS</span>
+          <span className="text-foreground font-bold text-xs font-display">FOUNDATION</span>
+          <span className="text-[10px] text-muted-foreground">Pune, MH • Core Systems</span>
         </div>
       </div>
 
-      {/* Branching Connecting Line */}
-      <div className="relative flex-1 mx-6 h-px bg-gradient-to-r from-accent via-border to-accent/40 overflow-hidden">
+      {/* 2. Branching Connecting Line (Lavender / Purple gradient trace) */}
+      <div className="relative flex-1 mx-6 h-px bg-border overflow-hidden">
         <motion.div
           animate={prefersReduced ? {} : { x: ['-100%', '100%'] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-          className="w-24 h-full bg-gradient-to-r from-transparent via-accent to-transparent"
+          transition={{ duration: 3.5, repeat: Infinity, ease: 'linear' }}
+          className="w-24 h-full bg-gradient-to-r from-transparent via-accent-secondary to-transparent"
         />
       </div>
 
-      {/* Frontier Nodes */}
-      <div className="relative z-10 flex items-center gap-4 text-right">
+      {/* 3. Frontier Destination (Lavender + Tiny Signal Yellow beacon) */}
+      <div className="relative z-10 flex items-center gap-3 text-right">
         <div className="flex flex-col">
-          <span className="text-accent font-bold text-xs">OPEN FRONTIER</span>
+          <span className="text-accent-secondary font-bold text-xs font-display">OPEN FRONTIER</span>
           <span className="text-[10px] text-muted-foreground">AI • Security • Systems • Web3</span>
         </div>
-        <div className="w-3 h-3 rounded-full border-2 border-dashed border-accent" />
+        <div className="relative flex items-center justify-center">
+          <div className="w-3.5 h-3.5 rounded-full border border-dashed border-accent-secondary flex items-center justify-center">
+            <span className="w-1.5 h-1.5 rounded-full bg-signal" />
+          </div>
+        </div>
       </div>
     </div>
   );

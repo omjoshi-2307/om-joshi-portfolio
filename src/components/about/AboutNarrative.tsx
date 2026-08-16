@@ -31,23 +31,23 @@ export const AboutNarrative: React.FC<AboutNarrativeProps> = ({
             transition={{
               duration: 0.6,
               delay: 0.15 + index * 0.1,
-              ease: [0.22, 1, 0.36, 1],
+              ease: [0.16, 1, 0.3, 1],
             }}
             className="flex flex-col gap-3 group"
           >
             {/* Stage Eyebrow */}
             <div className="flex items-center gap-2 text-[11px] font-mono text-accent">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent/60 group-hover:bg-accent transition-colors" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <span className="tracking-wider uppercase font-semibold">{item.stageLabel}</span>
             </div>
 
             {/* Headline */}
-            <h3 className="text-lg sm:text-xl font-display font-semibold text-foreground tracking-tight group-hover:text-accent transition-colors duration-200">
+            <h3 className="text-lg sm:text-xl font-display font-semibold text-foreground tracking-tight group-hover:text-accent transition-colors duration-150">
               {item.headline}
             </h3>
 
             {/* Content Paragraph */}
-            <p className="text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
+            <p className="text-sm sm:text-[15px] text-muted-foreground leading-relaxed font-sans">
               {item.content}
             </p>
           </motion.div>
@@ -60,15 +60,15 @@ export const AboutNarrative: React.FC<AboutNarrativeProps> = ({
           initial={prefersReduced ? { opacity: 0 } : { opacity: 0, scale: 0.98 }}
           whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="relative p-6 sm:p-8 rounded-2xl border border-accent/20 bg-accent/[0.03] dark:bg-accent/[0.05] overflow-hidden"
+          transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="relative p-6 sm:p-7 rounded-xl border border-border bg-card shadow-subtle overflow-hidden"
         >
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-            <div className="p-3 rounded-xl bg-accent/10 border border-accent/20 text-accent shrink-0">
-              <Lightbulb className="w-5 h-5" />
+            <div className="w-9 h-9 rounded-sm bg-elevated border border-border flex items-center justify-center text-accent shrink-0">
+              <Lightbulb className="w-4 h-4" />
             </div>
 
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1">
               <span className="text-[10px] font-mono text-accent uppercase tracking-widest font-semibold">
                 {reflectionQuote.context}
               </span>

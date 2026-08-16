@@ -24,7 +24,7 @@ export const Character: React.FC<CharacterProps> = ({ lookAngle, className }) =>
         cx="100"
         cy="100"
         r="75"
-        fill="hsl(var(--accent))"
+        fill="var(--accent)"
         fillOpacity="0.04"
       />
 
