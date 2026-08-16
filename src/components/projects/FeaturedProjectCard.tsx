@@ -5,6 +5,7 @@ import { ProjectVisual } from './ProjectVisual';
 import type { ProjectItem } from '@/types/projects';
 import { useRouter } from '@/hooks/useRouter';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { usePointer } from '@/hooks/usePointer';
 import { cn } from '@/utils/cn';
 
 const GitHubIcon = ({ className }: { className?: string }) => (
@@ -29,6 +30,7 @@ export interface FeaturedProjectCardProps {
 export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ project, className }) => {
   const prefersReduced = useReducedMotion();
   const { navigate } = useRouter();
+  const { setPointerState, resetPointerState } = usePointer();
 
   return (
     <motion.article
@@ -78,6 +80,8 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
               e.preventDefault();
               navigate(project.slug);
             }}
+            onMouseEnter={() => setPointerState('link')}
+            onMouseLeave={resetPointerState}
             className="group/btn inline-flex items-center gap-2 px-5 py-3 rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer"
           >
             <span>Read Case Study</span>
@@ -88,6 +92,8 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
             href="https://sure-d.vercel.app/"
             target="_blank"
             rel="noreferrer noopener"
+            onMouseEnter={() => setPointerState('link')}
+            onMouseLeave={resetPointerState}
             className="inline-flex items-center gap-2 px-4 py-3 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer"
           >
             <span>Live Demo</span>
@@ -99,6 +105,8 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
               href={project.repositoryUrl}
               target="_blank"
               rel="noreferrer noopener"
+              onMouseEnter={() => setPointerState('link')}
+              onMouseLeave={resetPointerState}
               className="inline-flex items-center gap-2 px-4 py-3 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer"
             >
               <GitHubIcon className="w-3.5 h-3.5 text-muted-foreground" />
@@ -108,8 +116,18 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
         </div>
       </div>
 
-      {/* 3. Interactive Visual Architecture Showcase */}
-      <ProjectVisual type={project.visualType} />
+      {/* 3. Interactive Visual Architecture Showcase with VIEW Pointer State */}
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={() => navigate(project.slug)}
+        onKeyDown={(e) => e.key === 'Enter' && navigate(project.slug)}
+        onMouseEnter={() => setPointerState('view', 'VIEW')}
+        onMouseLeave={resetPointerState}
+        className="cursor-pointer transition-transform duration-200 group-hover/featured:scale-[1.005]"
+      >
+        <ProjectVisual type={project.visualType} />
+      </div>
 
       {/* 4. Problem & Solution Breakdown Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">

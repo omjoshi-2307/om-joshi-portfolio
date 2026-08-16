@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, ArrowUpRight } from 'lucide-react';
 import { CopyEmailButton } from './CopyEmailButton';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { usePointer } from '@/hooks/usePointer';
 import { cn } from '@/utils/cn';
 
 export interface EmailLinkProps {
@@ -17,6 +18,7 @@ export const EmailLink: React.FC<EmailLinkProps> = ({
   onHoverStateChange,
 }) => {
   const prefersReduced = useReducedMotion();
+  const { setPointerState, resetPointerState } = usePointer();
 
   return (
     <div
@@ -37,6 +39,8 @@ export const EmailLink: React.FC<EmailLinkProps> = ({
         <a
           href={`mailto:${email}`}
           aria-label={`Send email to ${email} (opens default mail client)`}
+          onMouseEnter={() => setPointerState('email', 'EMAIL')}
+          onMouseLeave={resetPointerState}
           className="inline-flex items-center gap-3 group/link select-all focus-visible:outline-2 focus-visible:outline-accent rounded-sm"
         >
           <span className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-foreground tracking-tight group-hover/link:text-accent transition-colors duration-150 break-all leading-none">

@@ -5,6 +5,7 @@ import { ProjectVisual } from './ProjectVisual';
 import type { ProjectItem } from '@/types/projects';
 import { useRouter } from '@/hooks/useRouter';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { usePointer } from '@/hooks/usePointer';
 import { cn } from '@/utils/cn';
 
 const GitHubIcon = ({ className }: { className?: string }) => (
@@ -29,6 +30,7 @@ export interface SecondaryProjectCardProps {
 export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ project, className }) => {
   const prefersReduced = useReducedMotion();
   const { navigate } = useRouter();
+  const { setPointerState, resetPointerState } = usePointer();
 
   return (
     <motion.article
@@ -37,7 +39,7 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        'relative flex flex-col justify-between p-6 sm:p-8 rounded-xl border border-border bg-card shadow-subtle hover:border-border-strong transition-colors',
+        'group/card relative flex flex-col justify-between p-6 sm:p-8 rounded-xl border border-border bg-card shadow-subtle hover:border-border-strong transition-colors',
         className
       )}
     >
@@ -63,8 +65,18 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
           </p>
         </div>
 
-        {/* Visual Motif */}
-        <ProjectVisual type={project.visualType} />
+        {/* Visual Motif with VIEW Pointer Trigger */}
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => navigate(project.slug)}
+          onKeyDown={(e) => e.key === 'Enter' && navigate(project.slug)}
+          onMouseEnter={() => setPointerState('view', 'VIEW')}
+          onMouseLeave={resetPointerState}
+          className="cursor-pointer transition-transform duration-200 group-hover/card:scale-[1.01]"
+        >
+          <ProjectVisual type={project.visualType} />
+        </div>
 
         {/* Key Contributions */}
         {project.myContributions && project.myContributions.length > 0 && (
@@ -112,6 +124,8 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
             e.preventDefault();
             navigate(project.slug);
           }}
+          onMouseEnter={() => setPointerState('link')}
+          onMouseLeave={resetPointerState}
           className="group inline-flex items-center justify-center gap-2 w-full min-h-[44px] px-4 py-2.5 rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors duration-150 active:scale-[0.98] cursor-pointer"
         >
           <span>Read Case Study</span>
@@ -123,6 +137,8 @@ export const SecondaryProjectCard: React.FC<SecondaryProjectCardProps> = ({ proj
             href={project.repositoryUrl}
             target="_blank"
             rel="noreferrer noopener"
+            onMouseEnter={() => setPointerState('link')}
+            onMouseLeave={resetPointerState}
             className="group inline-flex items-center justify-between w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer shrink-0"
           >
             <div className="flex items-center gap-2">

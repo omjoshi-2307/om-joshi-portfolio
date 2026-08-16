@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { useRouter } from '@/hooks/useRouter';
+import { usePointer } from '@/hooks/usePointer';
 import { cn } from '@/utils/cn';
 import { DEFAULT_NAV_ITEMS } from '@/config/navigation';
 import type { NavItem, SectionId } from '@/types';
@@ -21,6 +22,7 @@ export const NavLinks: React.FC<NavLinksProps> = ({
 }) => {
   const prefersReduced = useReducedMotion();
   const { navigate } = useRouter();
+  const { setPointerState, resetPointerState } = usePointer();
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string, item: NavItem) => {
     e.preventDefault();
@@ -40,6 +42,8 @@ export const NavLinks: React.FC<NavLinksProps> = ({
             <a
               href={item.href}
               onClick={(e) => handleScrollTo(e, item.href, item)}
+              onMouseEnter={() => setPointerState('link')}
+              onMouseLeave={resetPointerState}
               aria-current={isActive ? 'page' : undefined}
               className={cn(
                 'group relative inline-flex items-center px-3.5 py-1.5 text-sm font-medium transition-colors duration-200 cursor-pointer rounded-sm focus-visible:outline-2 focus-visible:outline-accent',

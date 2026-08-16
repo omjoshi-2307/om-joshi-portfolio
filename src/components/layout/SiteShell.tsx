@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from '@/components/navigation/Navbar';
 import { FooterSection } from '@/components/sections/FooterSection';
+import { PointerIndicator } from '@/components/pointer/PointerIndicator';
 import { cn } from '@/utils/cn';
 
 export interface SiteShellProps {
@@ -26,6 +27,9 @@ export const SiteShell: React.FC<SiteShellProps> = ({
         className
       )}
     >
+      {/* Desktop Fine Pointer Micro-interaction Layer */}
+      <PointerIndicator />
+
       {/* Accessible Skip Link */}
       <a
         href="#main-content"

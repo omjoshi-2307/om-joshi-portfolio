@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Compass } from 'lucide-react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useMagneticEffect } from '@/hooks/useMagneticEffect';
+import { usePointer } from '@/hooks/usePointer';
 import { cn } from '@/utils/cn';
 
 export interface HeroActionsProps {
@@ -16,6 +18,8 @@ export const HeroActions: React.FC<HeroActionsProps> = ({
   onHoverSecondary,
 }) => {
   const prefersReduced = useReducedMotion();
+  const magneticRef = useMagneticEffect<HTMLAnchorElement>({ strength: 0.18, maxDistance: 5 });
+  const { setPointerState, resetPointerState } = usePointer();
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -39,12 +43,19 @@ export const HeroActions: React.FC<HeroActionsProps> = ({
       transition={{ duration: 0.7, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={cn('flex flex-wrap items-center gap-3.5 pt-2', className)}
     >
-      {/* Primary Action */}
+      {/* Primary Action (with subtle magnetic interaction) */}
       <a
+        ref={magneticRef}
         href="#projects"
         onClick={(e) => handleScrollTo(e, 'projects')}
-        onMouseEnter={() => onHoverPrimary?.(true)}
-        onMouseLeave={() => onHoverPrimary?.(false)}
+        onMouseEnter={() => {
+          onHoverPrimary?.(true);
+          setPointerState('link');
+        }}
+        onMouseLeave={() => {
+          onHoverPrimary?.(false);
+          resetPointerState();
+        }}
         onFocus={() => onHoverPrimary?.(true)}
         onBlur={() => onHoverPrimary?.(false)}
         className="group relative inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-sm font-semibold transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
@@ -57,8 +68,14 @@ export const HeroActions: React.FC<HeroActionsProps> = ({
       <a
         href="#journey"
         onClick={(e) => handleScrollTo(e, 'journey')}
-        onMouseEnter={() => onHoverSecondary?.(true)}
-        onMouseLeave={() => onHoverSecondary?.(false)}
+        onMouseEnter={() => {
+          onHoverSecondary?.(true);
+          setPointerState('link');
+        }}
+        onMouseLeave={() => {
+          onHoverSecondary?.(false);
+          resetPointerState();
+        }}
         onFocus={() => onHoverSecondary?.(true)}
         onBlur={() => onHoverSecondary?.(false)}
         className="group inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-md border border-border hover:border-border-strong bg-card hover:bg-elevated text-foreground text-sm font-medium transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from '@/context/ThemeContext';
+import { PointerProvider } from '@/context/PointerContext';
 import { SiteShell } from '@/components/layout/SiteShell';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { IntroSection } from '@/components/intro/IntroSection';
@@ -91,7 +92,9 @@ const HomepageView: React.FC = () => {
 export function App() {
   return (
     <ThemeProvider defaultTheme="dark">
-      <PortfolioShellView />
+      <PointerProvider>
+        <PortfolioShellView />
+      </PointerProvider>
     </ThemeProvider>
   );
 }

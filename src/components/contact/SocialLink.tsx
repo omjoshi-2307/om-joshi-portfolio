@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight, Lock } from 'lucide-react';
+import { usePointer } from '@/hooks/usePointer';
 import { cn } from '@/utils/cn';
 import type { SocialLinkItem } from '@/types/contact';
 
@@ -10,6 +11,7 @@ export interface SocialLinkProps {
 
 export const SocialLink: React.FC<SocialLinkProps> = ({ item, className }) => {
   const isPublic = item.isPublic !== false;
+  const { setPointerState, resetPointerState } = usePointer();
 
   if (!isPublic) {
     return (
@@ -44,6 +46,8 @@ export const SocialLink: React.FC<SocialLinkProps> = ({ item, className }) => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={item.ariaLabel}
+      onMouseEnter={() => setPointerState('link')}
+      onMouseLeave={resetPointerState}
       className={cn(
         'group relative p-4 sm:p-5 rounded-md border border-border bg-card shadow-subtle flex flex-col justify-between gap-3 transition-colors duration-150 hover:border-border-strong hover:bg-elevated focus-visible:outline-2 focus-visible:outline-accent',
         className

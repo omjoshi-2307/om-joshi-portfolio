@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from '@/hooks/useRouter';
+import { usePointer } from '@/hooks/usePointer';
 import { cn } from '@/utils/cn';
 
 export interface BrandProps {
@@ -14,6 +15,7 @@ export const Brand: React.FC<BrandProps> = ({
   showLocation = true,
 }) => {
   const { navigate } = useRouter();
+  const { setPointerState, resetPointerState } = usePointer();
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -27,6 +29,8 @@ export const Brand: React.FC<BrandProps> = ({
     <a
       href="/"
       onClick={handleClick}
+      onMouseEnter={() => setPointerState('link')}
+      onMouseLeave={resetPointerState}
       aria-label="Om Joshi — Home"
       className={cn(
         'group inline-flex items-center gap-3 py-1 cursor-pointer select-none focus-visible:outline-2 focus-visible:outline-accent rounded-sm',
