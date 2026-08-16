@@ -64,7 +64,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
 
       {/* Bottom Minimal Scroll Indicator */}
       <Container className="flex justify-center sm:justify-start pt-4 z-10">
-        <ScrollCue targetSectionId="foundation-status" />
+        <ScrollCue targetSectionId="intro" />
       </Container>
     </section>
   );

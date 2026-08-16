@@ -2,14 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { cn } from '@/utils/cn';
+import { DEFAULT_NAV_ITEMS } from '@/config/navigation';
 import type { NavItem, SectionId } from '@/types';
-
-export const DEFAULT_NAV_ITEMS: NavItem[] = [
-  { label: 'Work', href: '#projects', sectionId: 'projects' },
-  { label: 'Journey', href: '#journey', sectionId: 'journey' },
-  { label: 'About', href: '#about', sectionId: 'about' },
-  { label: 'Contact', href: '#contact', sectionId: 'contact' },
-];
 
 export interface NavLinksProps {
   items?: NavItem[];

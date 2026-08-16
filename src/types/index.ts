@@ -2,6 +2,8 @@ export type { JourneyVisualType, JourneyStage } from './journey';
 export type { ProjectVisualType, ProjectCategory, ProjectItem } from './projects';
 export type { SkillTier, SkillCategoryType, TechnologyItem, SkillCategory, ExplorationDomain } from './skills';
 export type { ExplorationVisualCategory, ExplorationArea } from './exploration';
+export type { PersonalInterest, AboutMetadataItem, AboutSectionData } from './about';
+export type { SocialLinkItem, ContactSectionData } from './contact';
 
 export type ThemeMode = 'light' | 'dark' | 'system';
 
@@ -17,10 +19,10 @@ export type SectionId =
   | 'intro'
   | 'projects'
   | 'journey'
-  | 'about'
-  | 'character'
+  | 'toolbox'
   | 'skills'
   | 'exploration'
+  | 'about'
   | 'contact'
   | 'footer';
 

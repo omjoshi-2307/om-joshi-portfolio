@@ -10,7 +10,7 @@ export interface ScrollCueProps {
 
 export const ScrollCue: React.FC<ScrollCueProps> = ({
   className,
-  targetSectionId = 'foundation-status',
+  targetSectionId = 'intro',
 }) => {
   const prefersReduced = useReducedMotion();
 

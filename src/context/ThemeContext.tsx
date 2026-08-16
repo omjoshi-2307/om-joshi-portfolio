@@ -1,9 +1,8 @@
-import React, { createContext, useEffect, useState, useTransition } from 'react';
-import type { ThemeMode, ThemeContextValue } from '@/types';
+import React, { useEffect, useState, useTransition } from 'react';
+import { ThemeContext } from './theme-context-def';
+import type { ThemeMode } from '@/types';
 
 const STORAGE_KEY = 'om_portfolio_theme';
-
-export const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode; defaultTheme?: ThemeMode }> = ({
   children,

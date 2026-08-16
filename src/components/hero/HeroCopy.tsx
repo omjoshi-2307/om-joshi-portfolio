@@ -18,8 +18,8 @@ export const HeroCopy: React.FC<HeroCopyProps> = ({ className }) => {
       className={cn('max-w-xl flex flex-col gap-3', className)}
     >
       <p className="editorial-lead text-muted-foreground leading-relaxed">
-        Engineering software across modern web stacks, distributed systems, and creative technology.
-        Driven by deliberate craft — exploring how intelligent tools, Web3 protocols, and resilient architectures shape what comes next.
+        Building software across modern web stacks, hardware interfaces, and creative technology.
+        Driven by curiosity — exploring how modern web tools, Web3 protocols, AI assistance, and core systems shape what comes next.
       </p>
     </motion.div>
   );

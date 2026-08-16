@@ -12,9 +12,9 @@ export interface ToolboxSectionProps {
 }
 
 export const ToolboxSection: React.FC<ToolboxSectionProps> = ({ className }) => {
-  const handleScrollToAbout = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollToExploration = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const element = document.getElementById('about');
+    const element = document.getElementById('exploration');
     if (element) {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
@@ -29,7 +29,7 @@ export const ToolboxSection: React.FC<ToolboxSectionProps> = ({ className }) => 
 
   return (
     <section
-      id="skills"
+      id="toolbox"
       aria-label="Om Joshi Technical Toolbox and Skills Inventory"
       className={cn(
         'relative py-24 sm:py-32 md:py-36 bg-background border-t border-border/60 transition-colors',
@@ -50,20 +50,20 @@ export const ToolboxSection: React.FC<ToolboxSectionProps> = ({ className }) => 
         {/* 2. Active Research & Frontier Exploration Matrix */}
         <ExplorationMatrix />
 
-        {/* 3. Transition Bridge to About Section */}
+        {/* 3. Transition Bridge to Currently Exploring Section */}
         <div className="pt-12 mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-dashed border-border/80 text-xs font-mono">
           <div className="flex items-center gap-2.5 text-muted-foreground">
             <span className="text-accent font-semibold">05 // NEXT CHAPTER</span>
             <span>•</span>
-            <span>The toolbox keeps evolving with every build — context, principles & background</span>
+            <span>Active learning & experimentation across emerging frontiers</span>
           </div>
 
           <a
-            href="#about"
-            onClick={handleScrollToAbout}
+            href="#exploration"
+            onClick={handleScrollToExploration}
             className="group inline-flex items-center gap-2 text-foreground hover:text-accent font-semibold transition-colors cursor-pointer select-none"
           >
-            <span>Read background & philosophy</span>
+            <span>Proceed to current exploration</span>
             <ArrowDownRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
           </a>
         </div>

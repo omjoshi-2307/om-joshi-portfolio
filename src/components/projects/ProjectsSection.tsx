@@ -15,9 +15,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ className }) =
   const featuredProject = PROJECTS_DATA.find((p) => p.featured) || PROJECTS_DATA[0];
   const secondaryProjects = PROJECTS_DATA.filter((p) => !p.featured);
 
-  const handleScrollToSkills = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollToToolbox = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const element = document.getElementById('skills');
+    const element = document.getElementById('toolbox') || document.getElementById('skills');
     if (element) {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
@@ -62,8 +62,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ className }) =
           </div>
 
           <a
-            href="#skills"
-            onClick={handleScrollToSkills}
+            href="#toolbox"
+            onClick={handleScrollToToolbox}
             className="group inline-flex items-center gap-2 text-foreground hover:text-accent font-semibold transition-colors cursor-pointer select-none"
           >
             <span>Explore technical matrix</span>

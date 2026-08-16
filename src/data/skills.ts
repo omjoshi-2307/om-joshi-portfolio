@@ -103,22 +103,22 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 export const EXPLORATION_DOMAINS: ExplorationDomain[] = [
   {
     id: 'ai-local-llms',
-    title: 'AI & Local LLM Systems',
-    badge: 'ACTIVE R&D',
-    description: 'Experimenting with local inference engines, agent architectures, and LLM-assisted workflows.',
+    title: 'AI & Local LLM Workflows',
+    badge: 'ACTIVE EXPLORATION',
+    description: 'Experimenting with local model runtimes, assistant tooling, and AI-assisted development workflows.',
     topics: [
       'Local LLM Experimentation',
       'llama.cpp Runtime',
-      'AI Coding Agents',
-      'Agentic Tooling & Workflows',
-      'Generative AI Integrations',
+      'AI-Assisted Debugging',
+      'Developer Tooling Workflows',
+      'Generative UI Experiments',
     ],
   },
   {
     id: 'systems-security',
     title: 'Systems, DSA & Security',
-    badge: 'FOUNDATIONAL',
-    description: 'Deepening core computer science foundations, algorithm efficiency, and security vectors.',
+    badge: 'FOUNDATIONS',
+    description: 'Strengthening core computer science foundations, algorithm efficiency, and practical security concepts.',
     topics: [
       'Cybersecurity Fundamentals',
       'Data Structures & Algorithms (DSA)',
@@ -132,12 +132,12 @@ export const EXPLORATION_DOMAINS: ExplorationDomain[] = [
     id: 'web3-protocols',
     title: 'Distributed Protocols',
     badge: 'EXPLORATORY',
-    description: 'Expanding smart contract architecture and transparent trustless state management.',
+    description: 'Expanding smart contract architecture and transparent state management experiments.',
     topics: [
       'Stellar & Soroban Ecosystem',
       'Rust-based Contract Logic',
-      'Decentralized Identity & Escrow',
-      'Modern Web3 Tooling',
+      'Decentralized Escrow Concepts',
+      'Web3 Client Tooling',
     ],
   },
 ];

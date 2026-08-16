@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { Container } from '@/components/layout/Container';
 import { Brand } from './Brand';
-import { NavLinks, DEFAULT_NAV_ITEMS } from './NavLinks';
+import { NavLinks } from './NavLinks';
 import { ThemeControl } from './ThemeControl';
 import { MobileMenu } from './MobileMenu';
+import { DEFAULT_NAV_ITEMS, TRACKED_SECTIONS } from '@/config/navigation';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { cn } from '@/utils/cn';
-import type { NavItem, SectionId } from '@/types';
+import type { NavItem } from '@/types';
 
 export interface NavbarProps {
   items?: NavItem[];
   className?: string;
 }
-
-const TRACKED_SECTIONS: SectionId[] = ['hero', 'projects', 'journey', 'about', 'contact'];
 
 export const Navbar: React.FC<NavbarProps> = ({
   items = DEFAULT_NAV_ITEMS,

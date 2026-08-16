@@ -11,22 +11,22 @@ export const PROJECTS_DATA: ProjectItem[] = [
     featured: true,
     category: 'product',
     summary:
-      'A decentralized escrow application designed to eliminate deposit disputes and trust friction between tenants and landlords through transparent smart contracts.',
+      'A decentralized escrow application designed to address deposit disputes and trust friction between tenants and landlords through smart contracts.',
     problem:
-      'Rental deposit management frequently creates disputes, unilateral deductions, and return delays between landlords and tenants without an impartial trust mechanism.',
+      'Rental deposit management frequently creates disputes, unilateral deductions, and return delays between landlords and tenants without an impartial mechanism.',
     solution:
-      'A blockchain-based escrow protocol where rental security deposits are locked in smart contracts and released based on mutually verified tenancy conditions.',
+      'A blockchain-based escrow prototype where rental security deposits are held in smart contracts and released based on mutually agreed tenancy conditions.',
     mainTechnologies: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Express.js'],
     supportingTechnologies: ['Stellar Blockchain', 'Soroban / Rust', 'MongoDB', 'Freighter Wallet'],
     myContributions: [
-      'Engineered the responsive client frontend and state management in React & TypeScript',
-      'Designed the end-to-end UI/UX user flows, typography system, and product design tokens',
-      'Developed product presentation materials, branding assets, and pitch architecture',
-      'Integrated frontend wallet connectors with Freighter for transaction signing',
+      'Engineered the responsive client frontend and user interface in React & TypeScript',
+      'Designed the end-to-end UI/UX user flows, typography system, and styling tokens in Figma',
+      'Developed product presentation materials, branding assets, and deck architecture',
+      'Integrated frontend wallet connectors with Freighter for smart contract interaction',
       'Collaborated closely across the team to align interface requirements with contract logic',
     ],
     teamContext:
-      'Collaborative team product build; smart-contract architecture and backend APIs were co-developed with team members.',
+      'Collaborative team product build; smart-contract logic and backend APIs were co-developed with team members.',
     repositoryUrl: externalLinks.projects.sured.repository,
     repositoryName: externalLinks.projects.sured.name,
     visualType: 'sured',
@@ -40,17 +40,17 @@ export const PROJECTS_DATA: ProjectItem[] = [
     featured: false,
     category: 'hardware',
     summary:
-      'An autonomous mobile robotic platform integrating ultrasonic rangefinders and motor drivers to navigate physical obstacles in real time.',
+      'An autonomous mobile robotic platform integrating ultrasonic sensors and motor drivers to navigate around physical obstacles.',
     problem:
-      'Translating software conditional logic into immediate physical actuation and spatial awareness in an unpredictable physical environment.',
+      'Connecting software conditional logic to physical motor actuation and real-time obstacle sensing in a physical environment.',
     solution:
-      'A wheeled robotic system running custom obstacle detection routines on an Arduino microcontroller to steer away from detected barriers.',
-    mainTechnologies: ['Arduino', 'Embedded C++', 'Robotics Kinematics'],
-    supportingTechnologies: ['Ultrasonic Sensors', 'Motor Drivers', 'Physical Chassis Assembly'],
+      'A wheeled robotic prototype running an obstacle detection loop on an Arduino microcontroller to steer away from detected barriers.',
+    mainTechnologies: ['Arduino', 'Embedded C++', 'Sensor Integration'],
+    supportingTechnologies: ['Ultrasonic Sensors', 'Motor Drivers', 'Chassis Prototyping'],
     myContributions: [
-      'Assembled and wired the microcontroller, motor driver, and sensor hardware layers',
-      'Programmed the obstacle detection loop and directional motor evasion routines',
-      'Collaborated on physical chassis testing, weight balancing, and obstacle calibration',
+      'Assembled and wired the microcontroller, motor driver, and ultrasonic sensor hardware',
+      'Programmed the obstacle detection loop and directional steering routines in Embedded C++',
+      'Collaborated on physical chassis testing, weight balancing, and sensor calibration',
     ],
     repositoryUrl: externalLinks.projects.wallE.repository,
     repositoryName: externalLinks.projects.wallE.name,
@@ -69,13 +69,13 @@ export const PROJECTS_DATA: ProjectItem[] = [
     problem:
       'Developing an integrated monitoring concept for urban water conservation within the compressed time window of a competitive hackathon.',
     solution:
-      'A collaborative prototype combining IoT sensor logic with client monitoring interfaces, serving as a pivotal lesson in architecture and rapid execution.',
-    mainTechnologies: ['Rapid Prototyping', 'IoT Sensor Logic', 'Team Collaboration'],
-    supportingTechnologies: ['System Architecture', 'Time-Constrained Execution'],
+      'A collaborative prototype combining sensor concepts with client monitoring interfaces, serving as a formative lesson in scope control and rapid teamwork.',
+    mainTechnologies: ['Rapid Prototyping', 'IoT Sensor Concepts', 'Team Collaboration'],
+    supportingTechnologies: ['Interface Mockups', 'Time-Constrained Sprint'],
     myContributions: [
-      'Collaborated on the problem-statement breakdown and technical workflow architecture',
-      'Contributed to the interface mockups and sensor data flow specifications',
-      'Participated in rapid feature prioritization under strict hackathon deadlines',
+      'Collaborated on problem-statement analysis and prototype scope definition',
+      'Contributed to interface mockups and sensor data flow concepts',
+      'Participated in rapid team iteration under strict hackathon deadlines',
     ],
     repositoryUrl: externalLinks.projects.jalSanchaeeNavachar.repository,
     repositoryName: externalLinks.projects.jalSanchaeeNavachar.name,

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { ThemeControl } from './ThemeControl';
 import { Brand } from './Brand';
-import { DEFAULT_NAV_ITEMS } from './NavLinks';
+import { DEFAULT_NAV_ITEMS } from '@/config/navigation';
 import { cn } from '@/utils/cn';
 import type { NavItem, SectionId } from '@/types';
 
@@ -112,7 +112,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           {/* Navigation Links List */}
           <nav className="flex-1 px-8 py-12 flex flex-col justify-center">
             <ul className="flex flex-col gap-6">
-              {items.map((item, index) => {
+              {items.map((item: NavItem, index: number) => {
                 const isActive = activeSection === item.sectionId;
 
                 return (
