@@ -7,6 +7,7 @@ import { CaseStudyContributions } from '@/components/casestudy/CaseStudyContribu
 import { CaseStudyLearnings } from '@/components/casestudy/CaseStudyLearnings';
 import { CaseStudyNav } from '@/components/casestudy/CaseStudyNav';
 import { ProjectVisual } from '@/components/projects/ProjectVisual';
+import { usePageMetadata } from '@/hooks/usePageMetadata';
 import type { ProjectCaseStudy } from '@/types/projects';
 import { cn } from '@/utils/cn';
 
@@ -21,9 +22,10 @@ export const ProjectCaseStudyPage: React.FC<ProjectCaseStudyPageProps> = ({
   onNavigate,
   className,
 }) => {
-  // Set dynamic document title for SEO and browser tab identity
+  // Sync page metadata, Open Graph tags, canonical link, and JSON-LD schema
+  usePageMetadata(undefined, caseStudy.id as 'sured' | 'walle' | 'jalsanchaee');
+
   useEffect(() => {
-    document.title = `${caseStudy.title} — ${caseStudy.subtitle} | Om Joshi`;
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, [caseStudy]);
 

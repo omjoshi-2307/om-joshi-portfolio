@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap');
+      .title { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 800; font-size: 80px; fill: #F7F7F5; letter-spacing: -0.04em; }
+      .role { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 600; font-size: 28px; fill: #FF4FA3; }
+      .desc { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 400; font-size: 22px; fill: #B5B3BE; }
+      .mono { font-family: 'JetBrains Mono', monospace; font-size: 15px; fill: #7E7A88; letter-spacing: 0.12em; text-transform: uppercase; }
+      .tag { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; fill: #F7F7F5; }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="630" fill="#09090B" />
+  
+  <!-- Subtle Outer Border Frame -->
+  <rect x="24" y="24" width="1152" height="582" rx="16" fill="none" stroke="#292731" stroke-width="2" />
+  
+  <!-- Grid Lines -->
+  <line x1="24" y1="120" x2="1176" y2="120" stroke="#292731" stroke-width="1" />
+  <line x1="24" y1="510" x2="1176" y2="510" stroke="#292731" stroke-width="1" />
+  <line x1="880" y1="120" x2="880" y2="510" stroke="#292731" stroke-width="1" />
+
+  <!-- Top Header Metadata Bar -->
+  <g transform="translate(64, 76)">
+    <!-- OJ Monogram Icon -->
+    <rect width="36" height="36" rx="8" fill="#111114" stroke="#3A3545" stroke-width="1.5" />
+    <rect x="6" y="10" width="10" height="16" rx="5" fill="none" stroke="#FF4FA3" stroke-width="2.5" />
+    <path d="M24 10v11a5 5 0 0 1-7 4.5" fill="none" stroke="#FF4FA3" stroke-width="2.5" stroke-linecap="round" />
+    <circle cx="28" cy="8" r="2" fill="#B9A7FF" />
+
+    <text x="52" y="24" class="mono" fill="#F7F7F5" font-weight="bold">OM JOSHI // PORTFOLIO</text>
+    <text x="800" y="24" class="mono">PUNE, MH • 18.52° N, 73.85° E</text>
+  </g>
+
+  <!-- Main Hero Headline & Copy -->
+  <g transform="translate(64, 230)">
+    <text x="0" y="0" class="role">B.Tech IT Student &amp; Software Builder</text>
+    <text x="0" y="76" class="title">OM JOSHI</text>
+    <text x="0" y="132" class="desc">Engineering performant web applications, decentralized protocols,</text>
+    <text x="0" y="166" class="desc">and embedded physical robotics through honest experimentation.</text>
+  </g>
+
+  <!-- Right Decorative Compass Card -->
+  <g transform="translate(920, 200)">
+    <rect width="216" height="260" rx="12" fill="#111114" stroke="#3A3545" stroke-width="1.5" />
+    <text x="24" y="44" class="mono" fill="#FF4FA3">ACTIVE DOMAINS</text>
+    
+    <text x="24" y="90" class="tag">• Web Development</text>
+    <text x="24" y="126" class="tag">• Stellar / Soroban</text>
+    <text x="24" y="162" class="tag">• Embedded C++</text>
+    <text x="24" y="198" class="tag">• Systems &amp; AI</text>
+    
+    <circle cx="24" cy="232" r="4" fill="#FFD84D" />
+    <text x="36" y="236" class="mono" font-size="11">OPEN TO COLLABORATE</text>
+  </g>
+
+  <!-- Bottom Tech Stack Pill Highlights -->
+  <g transform="translate(64, 550)">
+    <rect x="0" y="0" width="80" height="32" rx="4" fill="#18181D" stroke="#292731" stroke-width="1" />
+    <text x="40" y="20" class="mono" fill="#F7F7F5" text-anchor="middle" font-size="12">REACT</text>
+
+    <rect x="92" y="0" width="112" height="32" rx="4" fill="#18181D" stroke="#292731" stroke-width="1" />
+    <text x="148" y="20" class="mono" fill="#F7F7F5" text-anchor="middle" font-size="12">TYPESCRIPT</text>
+
+    <rect x="216" y="0" width="96" height="32" rx="4" fill="#18181D" stroke="#292731" stroke-width="1" />
+    <text x="264" y="20" class="mono" fill="#F7F7F5" text-anchor="middle" font-size="12">STELLAR</text>
+
+    <rect x="324" y="0" width="86" height="32" rx="4" fill="#18181D" stroke="#292731" stroke-width="1" />
+    <text x="367" y="20" class="mono" fill="#F7F7F5" text-anchor="middle" font-size="12">ARDUINO</text>
+
+    <text x="800" y="22" class="mono" fill="#FF4FA3">OMJOSHI.DEV</text>
+  </g>
+</svg>

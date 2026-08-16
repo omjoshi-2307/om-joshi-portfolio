@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { SiteShell } from '@/components/layout/SiteShell';
 import { HeroSection } from '@/components/sections/HeroSection';
@@ -13,16 +13,10 @@ import { ProjectCaseStudyPage } from '@/pages/ProjectCaseStudyPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { CASE_STUDIES } from '@/data/caseStudies';
 import { useRouter } from '@/hooks/useRouter';
+import { usePageMetadata } from '@/hooks/usePageMetadata';
 
 const PortfolioShellView: React.FC = () => {
   const { currentPath, navigate } = useRouter();
-
-  // Reset default title when on homepage
-  useEffect(() => {
-    if (currentPath === '/' || currentPath === '') {
-      document.title = 'Om Joshi — B.Tech IT Student & Builder';
-    }
-  }, [currentPath]);
 
   // Route: /work/:slug Case Studies
   if (currentPath.startsWith('/work/')) {
@@ -57,6 +51,13 @@ const PortfolioShellView: React.FC = () => {
       </SiteShell>
     );
   }
+
+  // Set default homepage metadata
+  return <HomepageView />;
+};
+
+const HomepageView: React.FC = () => {
+  usePageMetadata();
 
   return (
     <SiteShell>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap');
+      .title { font-family: 'Inter', system-ui, sans-serif; font-weight: 800; font-size: 84px; fill: #F7F7F5; letter-spacing: -0.04em; }
+      .role { font-family: 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 26px; fill: #FF4FA3; }
+      .desc { font-family: 'Inter', system-ui, sans-serif; font-weight: 400; font-size: 22px; fill: #B5B3BE; }
+      .mono { font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: #7E7A88; letter-spacing: 0.12em; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="630" fill="#09090B" />
+  <rect x="24" y="24" width="1152" height="582" rx="16" fill="none" stroke="#292731" stroke-width="2" />
+  <line x1="24" y1="120" x2="1176" y2="120" stroke="#292731" stroke-width="1" />
+  <line x1="24" y1="510" x2="1176" y2="510" stroke="#292731" stroke-width="1" />
+
+  <!-- Header -->
+  <g transform="translate(64, 76)">
+    <text x="0" y="24" class="mono" fill="#FF4FA3" font-weight="bold">CASE STUDY // STELLAR BUILD STATION PUNE</text>
+    <text x="800" y="24" class="mono">OM JOSHI • SELECTED WORK</text>
+  </g>
+
+  <!-- Content -->
+  <g transform="translate(64, 220)">
+    <text x="0" y="0" class="role">Decentralized Tenancy Deposit Protocol</text>
+    <text x="0" y="80" class="title">SURED</text>
+    <text x="0" y="136" class="desc">A blockchain-based escrow application designed to address rental deposit friction</text>
+    <text x="0" y="170" class="desc">and dispute vulnerability through Soroban smart contracts on Stellar.</text>
+  </g>
+
+  <!-- Stack Pills -->
+  <g transform="translate(64, 550)">
+    <rect x="0" y="0" width="80" height="32" rx="4" fill="#18181D" stroke="#292731" stroke-width="1" />
+    <text x="40" y="20" class="mono" fill="#F7F7F5" text-anchor="middle">REACT</text>
+
+    <rect x="92" y="0" width="110" height="32" rx="4" fill="#18181D" stroke="#292731" stroke-width="1" />
+    <text x="147" y="20" class="mono" fill="#F7F7F5" text-anchor="middle">TYPESCRIPT</text>
+
+    <rect x="214" y="0" width="96" height="32" rx="4" fill="#18181D" stroke="#292731" stroke-width="1" />
+    <text x="262" y="20" class="mono" fill="#FF4FA3" text-anchor="middle">SOROBAN</text>
+
+    <rect x="322" y="0" width="96" height="32" rx="4" fill="#18181D" stroke="#292731" stroke-width="1" />
+    <text x="370" y="20" class="mono" fill="#B9A7FF" text-anchor="middle">STELLAR</text>
+
+    <text x="820" y="22" class="mono" fill="#FF4FA3">SURE-D.VERCEL.APP</text>
+  </g>
+</svg>
