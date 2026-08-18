@@ -15,7 +15,13 @@ export const CaseStudyNav: React.FC<CaseStudyNavProps> = ({
   className,
 }) => {
   return (
-    <nav aria-label="Case Study Pagination" className={cn('grid grid-cols-1 sm:grid-cols-2 gap-4 pt-12 pb-16', className)}>
+    <nav
+      aria-label="Case Study Pagination"
+      className={cn(
+        'flex flex-col sm:flex-row items-center justify-between gap-6 pt-12 pb-16 border-t border-border mt-8',
+        className
+      )}
+    >
       {/* Previous Project Link */}
       <a
         href={navigation.previous.slug}
@@ -24,15 +30,28 @@ export const CaseStudyNav: React.FC<CaseStudyNavProps> = ({
           onNavigate(navigation.previous.slug);
         }}
         aria-label={`Previous case study: ${navigation.previous.title}`}
-        className="group relative p-6 sm:p-8 rounded-xl border border-border bg-card hover:border-border-strong hover:bg-elevated transition-colors text-left flex flex-col justify-between gap-4 cursor-pointer shadow-subtle focus-visible:outline-2 focus-visible:outline-accent active:scale-[0.99]"
+        className="group flex flex-col items-start gap-1 p-3 rounded-lg hover:bg-surface transition-colors text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-accent w-full sm:w-auto"
       >
-        <span className="flex items-center gap-2 text-xs font-mono text-muted-subtle uppercase tracking-widest">
+        <span className="flex items-center gap-1.5 text-[11px] font-mono text-muted-subtle uppercase tracking-wider">
           <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-150 group-hover:-translate-x-1 text-accent" aria-hidden="true" />
-          <span>PREVIOUS CASE STUDY</span>
+          <span>PREVIOUS</span>
         </span>
-        <span className="text-xl sm:text-2xl font-display font-bold text-foreground group-hover:text-accent transition-colors">
+        <span className="text-lg sm:text-xl font-display font-bold text-foreground group-hover:text-accent transition-colors">
           {navigation.previous.title}
         </span>
+      </a>
+
+      {/* Middle: Back to All Work */}
+      <a
+        href="/#projects"
+        onClick={(e) => {
+          e.preventDefault();
+          onNavigate('/#projects');
+        }}
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border bg-card hover:bg-elevated text-xs font-mono text-muted-foreground hover:text-foreground transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
+        aria-label="Return to all selected projects on homepage"
+      >
+        <span>Back to Selected Work</span>
       </a>
 
       {/* Next Project Link */}
@@ -43,13 +62,13 @@ export const CaseStudyNav: React.FC<CaseStudyNavProps> = ({
           onNavigate(navigation.next.slug);
         }}
         aria-label={`Next case study: ${navigation.next.title}`}
-        className="group relative p-6 sm:p-8 rounded-xl border border-border bg-card hover:border-border-strong hover:bg-elevated transition-colors text-right flex flex-col justify-between items-end gap-4 cursor-pointer shadow-subtle focus-visible:outline-2 focus-visible:outline-accent active:scale-[0.99]"
+        className="group flex flex-col items-end gap-1 p-3 rounded-lg hover:bg-surface transition-colors text-right cursor-pointer focus-visible:outline-2 focus-visible:outline-accent w-full sm:w-auto"
       >
-        <span className="flex items-center gap-2 text-xs font-mono text-muted-subtle uppercase tracking-widest">
-          <span>NEXT CASE STUDY</span>
+        <span className="flex items-center gap-1.5 text-[11px] font-mono text-muted-subtle uppercase tracking-wider">
+          <span>NEXT</span>
           <ArrowRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-1 text-accent" aria-hidden="true" />
         </span>
-        <span className="text-xl sm:text-2xl font-display font-bold text-foreground group-hover:text-accent transition-colors">
+        <span className="text-lg sm:text-xl font-display font-bold text-foreground group-hover:text-accent transition-colors">
           {navigation.next.title}
         </span>
       </a>

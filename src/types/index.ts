@@ -19,12 +19,15 @@ export type SectionId =
   | 'intro'
   | 'projects'
   | 'journey'
+  | 'stage-walle'
+  | 'stage-techathon'
   | 'toolbox'
   | 'skills'
   | 'exploration'
   | 'about'
   | 'contact'
   | 'footer';
+
 
 export interface NavItem {
   label: string;

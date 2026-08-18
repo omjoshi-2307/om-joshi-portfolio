@@ -1,7 +1,9 @@
 import React, { Suspense, lazy } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { PointerProvider } from '@/context/PointerContext';
 import { SiteShell } from '@/components/layout/SiteShell';
+import { PageTransition } from '@/components/layout/PageTransition';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { IntroSection } from '@/components/intro/IntroSection';
 import { JourneySection } from '@/components/journey/JourneySection';
@@ -13,6 +15,8 @@ import { ContactSection } from '@/components/sections/ContactSection';
 import { CASE_STUDIES } from '@/data/caseStudies';
 import { useRouter } from '@/hooks/useRouter';
 import { usePageMetadata } from '@/hooks/usePageMetadata';
+
+
 
 // Route-level code splitting for case studies and fallback pages
 const ProjectCaseStudyPage = lazy(() =>
@@ -28,7 +32,7 @@ const NotFoundPage = lazy(() =>
 );
 
 const CaseStudyLoadingFallback: React.FC = () => (
-  <div className="min-h-screen py-24 flex items-center justify-center bg-background">
+  <div className="min-h-[60vh] py-24 flex items-center justify-center bg-background">
     <div className="flex flex-col items-center gap-4">
       <div className="w-8 h-8 rounded-full border-2 border-accent border-t-transparent animate-spin" />
       <span className="font-mono text-xs text-muted-subtle tracking-widest uppercase">
@@ -41,53 +45,78 @@ const CaseStudyLoadingFallback: React.FC = () => (
 const PortfolioShellView: React.FC = () => {
   const { currentPath, navigate } = useRouter();
 
-  // Route: /work/:slug Case Studies
-  if (currentPath.startsWith('/work/')) {
-    const slugKey = currentPath.replace('/work/', '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const renderActiveView = () => {
+    // Route: /work/:slug Case Studies
+    if (currentPath.startsWith('/work/')) {
+      const slugKey = currentPath.replace('/work/', '').toLowerCase().replace(/[^a-z0-9]/g, '');
 
-    // Map normalized slugs: 'sured', 'walle', 'jalsanchaeenavachar' -> 'jalsanchaee'
-    let caseStudyKey = slugKey;
-    if (slugKey.includes('jalsanchaee') || slugKey.includes('navachar')) {
-      caseStudyKey = 'jalsanchaee';
-    } else if (slugKey.includes('wall') || slugKey.includes('walle')) {
-      caseStudyKey = 'walle';
-    } else if (slugKey.includes('sure') || slugKey.includes('sured')) {
-      caseStudyKey = 'sured';
-    }
+      // Map normalized slugs: 'sured', 'walle', 'jalsanchaeenavachar' -> 'jalsanchaee'
+      let caseStudyKey = slugKey;
+      if (slugKey.includes('jalsanchaee') || slugKey.includes('navachar')) {
+        caseStudyKey = 'jalsanchaee';
+      } else if (slugKey.includes('wall') || slugKey.includes('walle')) {
+        caseStudyKey = 'walle';
+      } else if (slugKey.includes('sure') || slugKey.includes('sured')) {
+        caseStudyKey = 'sured';
+      }
 
-    const caseStudy = CASE_STUDIES[caseStudyKey];
+      const caseStudy = CASE_STUDIES[caseStudyKey];
 
-    if (caseStudy) {
+      if (caseStudy) {
+        return (
+          <PageTransition key={`casestudy-${caseStudy.id}`} routeKey={`casestudy-${caseStudy.id}`}>
+            <Suspense fallback={<CaseStudyLoadingFallback />}>
+              <ProjectCaseStudyPage
+                caseStudy={caseStudy}
+                onNavigate={(to) => navigate(to)}
+              />
+            </Suspense>
+          </PageTransition>
+        );
+      }
+
       return (
-        <SiteShell>
+        <PageTransition key="404" routeKey="404">
           <Suspense fallback={<CaseStudyLoadingFallback />}>
-            <ProjectCaseStudyPage
-              caseStudy={caseStudy}
-              onNavigate={(to) => navigate(to)}
-            />
+            <NotFoundPage onGoHome={() => navigate('/')} />
           </Suspense>
-        </SiteShell>
+        </PageTransition>
       );
     }
 
+    // Root / Homepage
+    if (currentPath === '/' || currentPath === '' || currentPath.startsWith('/#')) {
+      return (
+        <PageTransition key="home" routeKey="home">
+          <HomepageView />
+        </PageTransition>
+      );
+    }
+
+    // Fallback 404 for any other unrecognized route
     return (
-      <SiteShell>
+      <PageTransition key="404" routeKey="404">
         <Suspense fallback={<CaseStudyLoadingFallback />}>
           <NotFoundPage onGoHome={() => navigate('/')} />
         </Suspense>
-      </SiteShell>
+      </PageTransition>
     );
-  }
+  };
 
-  // Default homepage view
-  return <HomepageView />;
+  return (
+    <SiteShell>
+      <AnimatePresence mode="wait" initial={false}>
+        {renderActiveView()}
+      </AnimatePresence>
+    </SiteShell>
+  );
 };
 
 const HomepageView: React.FC = () => {
   usePageMetadata();
 
   return (
-    <SiteShell>
+    <div className="flex flex-col">
       {/* 1. HERO */}
       <HeroSection />
 
@@ -111,9 +140,11 @@ const HomepageView: React.FC = () => {
 
       {/* 8. CONTACT */}
       <ContactSection />
-    </SiteShell>
+    </div>
   );
 };
+
+
 
 export function App() {
   return (

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from '@/components/layout/Container';
 import { JourneyHeader } from './JourneyHeader';
-import { JourneyChapter } from './JourneyChapter';
+import { JourneyImageMarquee } from './JourneyImageMarquee';
+import { JourneyActiveContent } from './JourneyActiveContent';
 import { JOURNEY_STAGES } from '@/data/journey';
 import { ArrowDownRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
@@ -10,7 +11,25 @@ export interface JourneySectionProps {
   className?: string;
 }
 
+/**
+ * Technical Evolution & Journey Section.
+ * Open editorial composition featuring a continuous Right-to-Left moving gallery
+ * of large rectangular visual panels and selected chapter storytelling below.
+ */
 export const JourneySection: React.FC<JourneySectionProps> = ({ className }) => {
+  const [selectedStageId, setSelectedStageId] = useState<string>(JOURNEY_STAGES[0].id);
+
+  const selectedStage =
+    JOURNEY_STAGES.find((s) => s.id === selectedStageId) || JOURNEY_STAGES[0];
+  const currentStageIndex = JOURNEY_STAGES.findIndex(
+    (s) => s.id === selectedStageId
+  );
+
+  const handleNextStage = () => {
+    const nextIndex = (currentStageIndex + 1) % JOURNEY_STAGES.length;
+    setSelectedStageId(JOURNEY_STAGES[nextIndex].id);
+  };
+
   const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const element = document.getElementById('projects');
@@ -36,22 +55,27 @@ export const JourneySection: React.FC<JourneySectionProps> = ({ className }) => 
       )}
     >
       <Container className="flex flex-col">
-        {/* Section Header */}
+        {/* 1. Section Eyebrow & Headline */}
         <JourneyHeader />
 
-        {/* Chapters Stack */}
-        <div className="flex flex-col gap-20 sm:gap-28">
-          {JOURNEY_STAGES.map((stage, index) => (
-            <JourneyChapter
-              key={stage.id}
-              stage={stage}
-              isLast={index === JOURNEY_STAGES.length - 1}
-            />
-          ))}
+        {/* 2. Large Rectangular Image Marquee Gallery (Open layout) */}
+        <JourneyImageMarquee
+          stages={JOURNEY_STAGES}
+          selectedStageId={selectedStage.id}
+          onSelectStage={setSelectedStageId}
+          className="my-4 sm:my-6 md:my-8"
+        />
+
+        {/* 3. Selected Chapter Content Area */}
+        <div className="pt-10 sm:pt-14 md:pt-18">
+          <JourneyActiveContent
+            stage={selectedStage}
+            onNextStage={handleNextStage}
+          />
         </div>
 
-        {/* Transition Bridge to Projects Section */}
-        <div className="pt-16 mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-dashed border-border/80 text-xs font-mono">
+        {/* 4. Transition Bridge to Projects Section */}
+        <div className="pt-16 mt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-dashed border-border/80 text-xs font-mono">
           <div className="flex items-center gap-2.5 text-muted-foreground">
             <span className="text-accent font-semibold">03 // NEXT CHAPTER</span>
             <span>•</span>

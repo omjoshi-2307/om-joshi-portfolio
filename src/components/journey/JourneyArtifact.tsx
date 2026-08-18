@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Cpu, Bot, Gauge, Lock, Compass } from 'lucide-react';
+import { Terminal, Cpu, Bot, Gauge, Lock, Compass, Sparkles } from 'lucide-react';
 import type { JourneyVisualType } from '@/types/journey';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { cn } from '@/utils/cn';
@@ -16,229 +16,402 @@ export const JourneyArtifact: React.FC<JourneyArtifactProps> = ({ type, classNam
 
   switch (type) {
     case 'code':
-      // Milestone 01 Discovery: Mostly monochrome neutral
+      // Milestone 01 Discovery: Early computing terminal + registers + logic architecture
       return (
-        <div className={cn('p-5 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle', className)}>
-          {/* Header Bar */}
-          <div className="flex items-center justify-between pb-3 mb-3 border-b border-border text-muted-foreground text-[10px]">
+        <div
+          className={cn(
+            'p-5 sm:p-6 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle flex flex-col gap-4 overflow-hidden',
+            className
+          )}
+        >
+          {/* Terminal Window Header */}
+          <div className="flex items-center justify-between pb-3 border-b border-border text-[10px] text-muted-foreground">
             <div className="flex items-center gap-2">
-              <Terminal className="w-3.5 h-3.5 text-muted-foreground" />
-              <span>discovery.cpp // ASM_8086</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-border-strong inline-block" />
+              <span className="w-2.5 h-2.5 rounded-full bg-border-strong inline-block" />
+              <span className="w-2.5 h-2.5 rounded-full bg-border-strong inline-block" />
+              <span className="text-foreground font-semibold ml-2 flex items-center gap-1.5">
+                <Terminal className="w-3.5 h-3.5 text-muted-foreground" aria-hidden="true" />
+                <span>discovery_core.cpp</span>
+              </span>
             </div>
-            <span className="text-muted-foreground font-semibold">COMPILED</span>
+            <span className="px-2 py-0.5 rounded-sm bg-elevated border border-border text-[10px] font-semibold text-foreground">
+              ASM_8086 • 16-BIT
+            </span>
           </div>
 
-          {/* Code Body */}
-          <div className="space-y-1.5 text-[11px] text-muted-foreground leading-relaxed">
-            <p><span className="text-foreground font-medium">#include</span> <span className="text-foreground/90">&lt;iostream&gt;</span></p>
-            <p><span className="text-foreground font-medium">int</span> <span className="text-foreground">main</span>() &#123;</p>
-            <p className="pl-4 text-muted-subtle">// Understanding logic, memory & registers</p>
-            <p className="pl-4"><span className="text-foreground/80">std::cout</span> &lt;&lt; <span className="text-muted-foreground">"Hello, Hardware!\n"</span>;</p>
-            <p className="pl-4"><span className="text-foreground font-medium">__asm__</span>(<span className="text-muted-foreground">"MOV AX, 0x01"</span>);</p>
-            <p className="pl-4"><span className="text-foreground font-medium">return</span> 0;</p>
-            <p>&#125;</p>
+          {/* Code Window with Syntax Highlighting */}
+          <div className="p-3.5 rounded-md bg-surface-soft border border-border text-[11px] leading-relaxed font-mono space-y-1">
+            <div className="text-muted-subtle">// First low-level computing experiments</div>
+            <div>
+              <span className="text-accent font-medium">#include</span>{' '}
+              <span className="text-foreground/90">&lt;iostream&gt;</span>
+            </div>
+            <div>
+              <span className="text-accent-secondary font-medium">int</span>{' '}
+              <span className="text-foreground font-semibold">main</span>() &#123;
+            </div>
+            <div className="pl-4">
+              <span className="text-muted-foreground">std::cout &lt;&lt;</span>{' '}
+              <span className="text-foreground font-medium">"Hello, Hardware!\n"</span>;
+            </div>
+            <div className="pl-4">
+              <span className="text-accent-depth font-medium">__asm__</span> (
+              <span className="text-accent font-medium">"MOV AX, 0x01\n\t"</span>
+              <span className="text-accent font-medium">"MOV BX, 0x04"</span>);
+            </div>
+            <div className="pl-4">
+              <span className="text-accent-secondary font-medium">return</span> 0;
+            </div>
+            <div>&#125;</div>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-border flex items-center justify-between text-[10px] text-muted-foreground">
-            <span>RAM: 64KB</span>
-            <span>CLOCK: 8MHz</span>
+          {/* Register State Grid (Visualizing CPU memory architecture) */}
+          <div className="grid grid-cols-4 gap-2 pt-1 text-[10px]">
+            <div className="p-2 rounded-sm bg-elevated border border-border flex flex-col">
+              <span className="text-muted-subtle">REG AX</span>
+              <span className="font-bold text-foreground font-mono">0x0001</span>
+            </div>
+            <div className="p-2 rounded-sm bg-elevated border border-border flex flex-col">
+              <span className="text-muted-subtle">REG BX</span>
+              <span className="font-bold text-foreground font-mono">0x0004</span>
+            </div>
+            <div className="p-2 rounded-sm bg-elevated border border-border flex flex-col">
+              <span className="text-muted-subtle">REG SP</span>
+              <span className="font-bold text-foreground font-mono">0xFFFE</span>
+            </div>
+            <div className="p-2 rounded-sm bg-elevated border border-border flex flex-col">
+              <span className="text-muted-subtle">CLOCK</span>
+              <span className="font-bold text-accent font-mono">8.00 MHz</span>
+            </div>
+          </div>
+
+          {/* Schematic Footnote */}
+          <div className="pt-2 border-t border-border flex items-center justify-between text-[10px] text-muted-foreground">
+            <span>LOGIC: Memory, Pointers, Registers & Web Basics</span>
+            <span className="text-foreground font-medium">FOUNDATION</span>
           </div>
         </div>
       );
 
     case 'hardware':
-      // Milestone 02 First Build: Tiny Lavender accent
+      // Milestone 02 First Build: Conceptual Hardware Schematic
       return (
-        <div className={cn('p-5 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle', className)}>
-          <div className="flex items-center justify-between pb-3 mb-3 border-b border-border text-muted-foreground text-[10px]">
+        <div
+          className={cn(
+            'p-5 sm:p-6 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle flex flex-col gap-4 overflow-hidden',
+            className
+          )}
+        >
+          {/* Header Bar */}
+          <div className="flex items-center justify-between pb-3 border-b border-border text-[10px] text-muted-foreground">
+            <div className="flex items-center gap-2 text-foreground font-semibold">
+              <Cpu className="w-3.5 h-3.5 text-accent-secondary" aria-hidden="true" />
+              <span>HARDWARE SCHEMATIC // ARDUINO UNO</span>
+            </div>
+            <span className="px-2 py-0.5 rounded-sm bg-accent-secondary-soft text-accent-secondary border border-accent-secondary/20 text-[9px] font-semibold">
+              CONCEPTUAL SCHEMATIC
+            </span>
+          </div>
+
+          {/* Hardware Flow Diagram: Sensor -> Arduino -> Actuator */}
+          <div className="grid grid-cols-3 gap-2.5 items-center my-1 text-[11px]">
+            {/* Sensor Input */}
+            <div className="p-3 rounded-md bg-elevated border border-border flex flex-col gap-1 text-center shadow-subtle">
+              <span className="text-[9px] font-mono text-muted-foreground uppercase">TRIGGER SENSOR</span>
+              <span className="font-bold text-foreground text-xs">ADC Input A0</span>
+              <span className="text-[9px] text-accent-secondary">● Active Level</span>
+            </div>
+
+            {/* Central MCU Silhouette */}
+            <div className="p-3.5 rounded-md bg-accent-secondary-soft border border-accent-secondary/30 flex flex-col items-center justify-center text-center gap-1 shadow-subtle">
+              <span className="font-mono text-[9px] font-bold text-accent-secondary uppercase">
+                ATMEGA328P
+              </span>
+              <span className="font-bold text-foreground text-xs font-mono">Arduino Core</span>
+              <span className="text-[8px] text-muted-foreground font-mono">GPIO_07 CONTROL</span>
+            </div>
+
+            {/* Relay Actuator */}
+            <div className="p-3 rounded-md bg-elevated border border-border flex flex-col gap-1 text-center shadow-subtle">
+              <span className="text-[9px] font-mono text-muted-foreground uppercase">RELAY ACTUATION</span>
+              <span className="font-bold text-foreground text-xs">Heating Element</span>
+              <span className="text-[9px] text-accent">● Opto-Isolated</span>
+            </div>
+          </div>
+
+          {/* Control Logic State Pipeline */}
+          <div className="p-3 rounded-md bg-surface-soft border border-border flex items-center justify-between text-[10px]">
             <div className="flex items-center gap-2">
-              <Cpu className="w-3.5 h-3.5 text-accent-secondary" />
-              <span>ARDUINO_UNO // HARDWARE SCHEMATIC</span>
+              <span className="w-2 h-2 rounded-full bg-accent-secondary animate-pulse" />
+              <span className="font-semibold text-foreground">DISCRETE CONTROL LOOP</span>
             </div>
-            <span className="text-accent-secondary font-semibold">PINOUT_ACTIVE</span>
+            <span className="text-muted-foreground font-mono">INTERRUPT &rarr; TIMED HEAT &rarr; SAFE SHUTOFF</span>
           </div>
 
-          {/* Schematic Diagram Grid */}
-          <div className="grid grid-cols-2 gap-3 my-2 text-[11px]">
-            <div className="p-3 rounded-md bg-elevated border border-border flex flex-col gap-1">
-              <span className="text-muted-foreground text-[10px]">DISPOSAL_UNIT</span>
-              <span className="font-semibold text-foreground">Relay Actuator</span>
-              <span className="text-accent-secondary text-[10px]">● GPIO_07 (HIGH)</span>
-            </div>
-
-            <div className="p-3 rounded-md bg-elevated border border-border flex flex-col gap-1">
-              <span className="text-muted-foreground text-[10px]">SENSOR_INPUT</span>
-              <span className="font-semibold text-foreground">Trigger Detection</span>
-              <span className="text-accent-secondary text-[10px]">● ADC_PIN A0</span>
-            </div>
-          </div>
-
-          <div className="mt-3 p-2.5 rounded-sm bg-elevated border border-border text-[10px] text-muted-foreground">
-            <span>LOGIC: Discrete timer loop • Hardware interrupt routine</span>
+          {/* Clarification Label for Honesty */}
+          <div className="pt-2 border-t border-border flex items-center justify-between text-[10px] text-muted-subtle">
+            <span>First physical software experiment</span>
+            <span>Arduino UNO • Embedded C++</span>
           </div>
         </div>
       );
 
     case 'robotics':
-      // Milestone 03 WALL-E: Lavender + Deep Purple depth + Signal Yellow radar
+      // Milestone 03 WALL-E: High-Impact Robotics & Ultrasonic Radar Visual
       return (
-        <div className={cn('p-5 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle overflow-hidden', className)}>
-          <div className="flex items-center justify-between pb-3 mb-3 border-b border-border text-muted-foreground text-[10px]">
-            <div className="flex items-center gap-2">
-              <Bot className="w-3.5 h-3.5 text-accent-secondary" />
-              <span>WALL-E // RADAR TELEMETRY</span>
+        <div
+          className={cn(
+            'p-5 sm:p-6 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle flex flex-col gap-4 overflow-hidden',
+            className
+          )}
+        >
+          {/* Header Bar */}
+          <div className="flex items-center justify-between pb-3 border-b border-border text-[10px] text-muted-foreground">
+            <div className="flex items-center gap-2 text-foreground font-semibold">
+              <Bot className="w-4 h-4 text-accent-secondary" aria-hidden="true" />
+              <span>WALL-E // AUTONOMOUS KINEMATICS</span>
             </div>
-            <span className="text-accent-secondary flex items-center gap-1.5 font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-signal inline-block" />
-              AUTONOMOUS
+            <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-signal-soft text-signal border border-signal/20 text-[9px] font-semibold">
+              <span className="w-1.5 h-1.5 rounded-full bg-signal" aria-hidden="true" />
+              OBSTACLE AVOIDANCE LOOP
             </span>
           </div>
 
-          {/* Ultrasonic Radar Sweep Visualizer */}
-          <div className="relative h-28 my-2 rounded-md bg-elevated border border-border flex items-center justify-center overflow-hidden">
-            {/* Radar concentric arcs in Deep Purple / Lavender */}
-            <div className="absolute w-20 h-20 rounded-full border border-dashed border-accent-depth/40" />
-            <div className="absolute w-36 h-36 rounded-full border border-dashed border-accent-secondary/30" />
-            
-            {/* Sensor Beam sweep */}
+          {/* Visual Radar & Chassis Graphic Container */}
+          <div className="relative h-44 rounded-lg bg-surface-soft border border-border flex items-center justify-center overflow-hidden">
+            {/* Concentric Sonar Distance Arcs */}
+            <div aria-hidden="true" className="absolute w-24 h-24 rounded-full border border-dashed border-accent-depth/30" />
+            <div aria-hidden="true" className="absolute w-44 h-44 rounded-full border border-dashed border-accent-secondary/20" />
+            <div aria-hidden="true" className="absolute w-64 h-64 rounded-full border border-dashed border-accent-secondary/10" />
+
+            {/* Sweep Sonar Beam */}
             <motion.div
-              animate={prefersReduced ? {} : { rotate: [ -45, 45, -45 ] }}
+              aria-hidden="true"
+              animate={prefersReduced ? {} : { rotate: [-42, 42, -42] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               style={{ transformOrigin: 'bottom center' }}
-              className="absolute bottom-3 w-0.5 h-20 bg-gradient-to-t from-accent-secondary to-transparent"
+              className="absolute bottom-4 w-1 h-32 bg-gradient-to-t from-accent-secondary via-accent-secondary/40 to-transparent"
             />
 
-            {/* Target indicator */}
-            <div className="absolute top-3 right-8 flex items-center gap-1 bg-card px-2 py-0.5 rounded-sm border border-border text-[9px] text-foreground shadow-subtle">
-              <span className="w-1 h-1 rounded-full bg-signal inline-block" />
-              <span>OBSTACLE: 18.4cm</span>
+            {/* Obstacle Target Lock Marker */}
+            <div className="absolute top-4 right-8 flex items-center gap-1.5 bg-card/90 backdrop-blur-sm px-2.5 py-1 rounded-sm border border-border text-[10px] text-foreground shadow-subtle">
+              <span className="w-1.5 h-1.5 rounded-full bg-signal" aria-hidden="true" />
+              <span className="font-bold">OBSTACLE: 18.4 cm</span>
             </div>
 
-            <div className="absolute bottom-2 font-mono text-[10px] text-muted-foreground">
-              HC-SR04 • Dual DC Motor Drive
+            {/* Wheeled Robot Chassis Diagram Vector */}
+            <div className="absolute bottom-4 flex flex-col items-center">
+              <div className="w-20 h-10 rounded-t-md bg-elevated border border-border flex items-center justify-around px-1 text-[8px] font-mono text-muted-foreground shadow-subtle">
+                <span className="text-accent-secondary font-bold">L_MTR</span>
+                <span className="text-[7px] text-foreground font-semibold">HC-SR04</span>
+                <span className="text-accent font-bold">R_MTR</span>
+              </div>
+              <div className="w-24 h-3 bg-border rounded-full flex justify-between px-1">
+                <span className="w-3 h-2 bg-foreground rounded-xs" />
+                <span className="w-3 h-2 bg-foreground rounded-xs" />
+              </div>
+            </div>
+
+            {/* Real-Time Telemetry Coordinates */}
+            <div className="absolute top-4 left-4 text-[9px] font-mono text-muted-subtle flex flex-col gap-0.5">
+              <span>ECHO_TIME: 1070 µs</span>
+              <span>ANGLE: +28°</span>
             </div>
           </div>
 
-          <div className="mt-3 flex items-center justify-between text-[10px] text-muted-foreground">
-            <span>MOTOR_L: PWM 180</span>
-            <span>MOTOR_R: PWM 180</span>
-            <span>ACTION: EVADE</span>
+          {/* Motor Actuation Telemetry Footer */}
+          <div className="grid grid-cols-3 gap-2 text-[10px]">
+            <div className="p-2 rounded-sm bg-elevated border border-border flex flex-col">
+              <span className="text-muted-subtle">LEFT MOTOR</span>
+              <span className="font-bold text-foreground">PWM 180 (FWD)</span>
+            </div>
+            <div className="p-2 rounded-sm bg-elevated border border-border flex flex-col">
+              <span className="text-muted-subtle">RIGHT MOTOR</span>
+              <span className="font-bold text-accent">PWM 0 (BRAKE)</span>
+            </div>
+            <div className="p-2 rounded-sm bg-elevated border border-border flex flex-col">
+              <span className="text-muted-subtle">KINEMATICS</span>
+              <span className="font-bold text-accent-secondary">STEER RIGHT</span>
+            </div>
           </div>
         </div>
       );
 
     case 'hackathon':
-      // Milestone 04 Hackathon: Electric Pink appears
+      // Milestone 04 Hackathon: JalSanchaee Water Telemetry & Rapid Iteration
       return (
-        <div className={cn('p-5 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle', className)}>
-          <div className="flex items-center justify-between pb-3 mb-3 border-b border-border text-muted-foreground text-[10px]">
-            <div className="flex items-center gap-2">
-              <Gauge className="w-3.5 h-3.5 text-accent" />
-              <span>AISSMS_TECHATHON_3.0 // SPRINT</span>
+        <div
+          className={cn(
+            'p-5 sm:p-6 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle flex flex-col gap-4 overflow-hidden',
+            className
+          )}
+        >
+          {/* Header Bar */}
+          <div className="flex items-center justify-between pb-3 border-b border-border text-[10px] text-muted-foreground">
+            <div className="flex items-center gap-2 text-foreground font-semibold">
+              <Gauge className="w-4 h-4 text-accent" aria-hidden="true" />
+              <span>JALSANCHAEE // IOT WATER TELEMETRY</span>
             </div>
-            <span className="text-accent font-semibold">RAPID_PROTOTYPE</span>
+            <span className="px-2 py-0.5 rounded-sm bg-accent-soft text-accent border border-accent/20 text-[9px] font-semibold">
+              TECHATHON 3.0 SPRINT
+            </span>
           </div>
 
-          {/* Hackathon constraint & telemetry matrix */}
-          <div className="space-y-2.5 my-2">
-            <div className="p-3 rounded-md bg-elevated border border-border flex items-center justify-between">
-              <div>
-                <span className="text-[10px] text-muted-foreground block">DOMAIN</span>
-                <span className="text-xs font-semibold text-foreground">Water Conservation & Monitoring</span>
+          {/* Water Conservation Flow Architecture */}
+          <div className="grid grid-cols-2 gap-3 my-1">
+            <div className="p-3.5 rounded-md bg-elevated border border-border flex flex-col gap-1.5 shadow-subtle">
+              <span className="text-[9px] font-mono text-muted-foreground uppercase">NODE 01: RESERVOIR</span>
+              <div className="flex items-baseline justify-between">
+                <span className="text-base font-bold text-foreground font-mono">84.2%</span>
+                <span className="text-[9px] text-accent font-semibold">OPTIMAL LEVEL</span>
               </div>
-              <span className="text-[10px] px-2 py-0.5 rounded-sm bg-accent-soft text-accent font-medium">IoT Logic</span>
+              <div className="h-1.5 w-full bg-border rounded-full overflow-hidden">
+                <div className="h-full bg-accent-depth w-[84%] rounded-full" />
+              </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 text-[10px]">
-              <div className="p-2 rounded-sm bg-elevated border border-border">
-                <span className="text-muted-foreground block">TEAM SYNC</span>
-                <span className="text-foreground font-semibold">Continuous Sprint</span>
+            <div className="p-3.5 rounded-md bg-elevated border border-border flex flex-col gap-1.5 shadow-subtle">
+              <span className="text-[9px] font-mono text-muted-foreground uppercase">NODE 02: FLOW METRICS</span>
+              <div className="flex items-baseline justify-between">
+                <span className="text-base font-bold text-foreground font-mono">12.4 L/min</span>
+                <span className="text-[9px] text-accent-secondary font-semibold">CONSUMPTION</span>
               </div>
-              <div className="p-2 rounded-sm bg-elevated border border-border">
-                <span className="text-muted-foreground block">TIME CONSTRAINT</span>
-                <span className="text-foreground font-semibold">Multi-Hour Hack</span>
+              <div className="h-1.5 w-full bg-border rounded-full overflow-hidden">
+                <div className="h-full bg-accent-secondary w-[62%] rounded-full" />
               </div>
             </div>
           </div>
 
-          <div className="mt-3 pt-2.5 border-t border-border text-[10px] text-muted-foreground">
-            <span>LESSON: Architecture discipline & scope management under pressure.</span>
+          {/* Hackathon Constraint & Scope Discipline Box */}
+          <div className="p-3 rounded-md bg-surface-soft border border-border flex items-center justify-between text-[10px]">
+            <div className="flex flex-col">
+              <span className="text-muted-subtle uppercase text-[8px]">SPRINT CONSTRAINTS</span>
+              <span className="font-semibold text-foreground">Rapid Scope Control & IoT Modeling</span>
+            </div>
+            <span className="px-2 py-1 rounded-sm bg-elevated border border-border text-[9px] text-accent font-mono font-bold">
+              MULTI-HOUR HACK
+            </span>
+          </div>
+
+          {/* Retrospective Insight */}
+          <div className="pt-2 border-t border-border flex items-center justify-between text-[10px] text-muted-subtle">
+            <span>Collaborative rapid prototyping</span>
+            <span>AISSMS Techathon 3.0</span>
           </div>
         </div>
       );
 
     case 'product':
-      // Milestone 05 SureD: Strongest Electric Pink / Lavender treatment
+      // Milestone 05 SureD: Escrow Flow (Tenant -> Soroban Vault -> Landlord)
       return (
-        <div className={cn('p-5 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle', className)}>
-          <div className="flex items-center justify-between pb-3 mb-3 border-b border-border text-muted-foreground text-[10px]">
-            <div className="flex items-center gap-2">
-              <Lock className="w-3.5 h-3.5 text-accent" />
-              <span>SURED // STELLAR_ESCROW_CONTRACT</span>
+        <div
+          className={cn(
+            'p-5 sm:p-6 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle flex flex-col gap-4 overflow-hidden',
+            className
+          )}
+        >
+          {/* Header Bar */}
+          <div className="flex items-center justify-between pb-3 border-b border-border text-[10px] text-muted-foreground">
+            <div className="flex items-center gap-2 text-foreground font-semibold">
+              <Lock className="w-4 h-4 text-accent" aria-hidden="true" />
+              <span>SURED // SMART ESCROW FLOW</span>
             </div>
-            <span className="text-accent-secondary font-semibold">FREIGHTER_CONNECTED</span>
+            <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-accent-soft text-accent border border-accent/20 text-[9px] font-semibold">
+              <Sparkles className="w-3 h-3 text-accent" aria-hidden="true" />
+              STELLAR BUILD STATION
+            </span>
           </div>
 
-          {/* Product UI / Smart Contract State Mock */}
-          <div className="p-3.5 rounded-md bg-elevated border border-border space-y-2.5 my-2">
-            <div className="flex items-center justify-between text-[11px]">
-              <span className="text-muted-foreground">DEPOSIT_AMOUNT</span>
-              <span className="font-bold text-foreground">2,500.00 XLM</span>
+          {/* Interactive Escrow State Visualizer */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 items-center my-1">
+            {/* Party A (Tenant) */}
+            <div className="p-3 rounded-md bg-elevated border border-border flex flex-col gap-1 text-left shadow-subtle">
+              <span className="text-[9px] font-mono text-muted-foreground uppercase">PARTY A // TENANT</span>
+              <span className="font-bold text-foreground text-xs">Deposit Locked</span>
+              <span className="text-[9px] text-accent font-mono">Freighter Signed</span>
             </div>
 
-            <div className="h-1.5 w-full bg-border rounded-full overflow-hidden">
-              <div className="h-full bg-accent w-3/4 rounded-full" />
+            {/* Soroban Escrow Vault */}
+            <div className="p-3.5 rounded-md bg-accent-soft border border-accent/30 flex flex-col items-center justify-center text-center gap-1 shadow-subtle">
+              <div className="w-6 h-6 rounded-full bg-accent text-accent-foreground flex items-center justify-center">
+                <Lock className="w-3 h-3" />
+              </div>
+              <span className="font-mono text-[9px] font-bold text-accent uppercase">
+                SOROBAN ESCROW
+              </span>
+              <span className="font-mono font-bold text-foreground text-xs">
+                2,500.00 XLM
+              </span>
             </div>
 
-            <div className="flex items-center justify-between text-[10px] text-muted-foreground">
-              <span>TENANT &harr; LANDLORD</span>
-              <span className="text-accent font-semibold">ESCROW_LOCKED</span>
+            {/* Party B (Landlord) */}
+            <div className="p-3 rounded-md bg-elevated border border-border flex flex-col gap-1 text-left shadow-subtle">
+              <span className="text-[9px] font-mono text-muted-foreground uppercase">PARTY B // LANDLORD</span>
+              <span className="font-bold text-foreground text-xs">Claim Release</span>
+              <span className="text-[9px] text-accent-secondary font-mono">Mutual Approval</span>
             </div>
           </div>
 
-          <div className="mt-3 flex items-center justify-between text-[10px] text-muted-foreground">
-            <span>SOROBAN / RUST</span>
-            <span>REACT + TS CLIENT</span>
+          {/* Smart Contract State Meta */}
+          <div className="p-3 rounded-md bg-surface-soft border border-border flex items-center justify-between text-[10px]">
+            <span className="text-muted-foreground">STELLAR TESTNET PROTOCOL</span>
+            <span className="font-bold text-foreground font-mono">STATUS: ESCROW_ACTIVE</span>
+          </div>
+
+          {/* Stack Summary */}
+          <div className="pt-2 border-t border-border flex items-center justify-between text-[10px] text-muted-subtle">
+            <span>React • TypeScript • Tailwind • Soroban</span>
+            <span className="text-accent font-semibold">SURE-D</span>
           </div>
         </div>
       );
 
     case 'exploration':
-      // Milestone 06 Now: Pink + Deep Purple into neutral space
+      // Milestone 06 Now: Open Frontier Constellation
       return (
-        <div className={cn('p-5 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle', className)}>
-          <div className="flex items-center justify-between pb-3 mb-3 border-b border-border text-muted-foreground text-[10px]">
-            <div className="flex items-center gap-2">
-              <Compass className="w-3.5 h-3.5 text-accent" />
-              <span>FRONTIER_MATRIX // CURRENT_FOCUS</span>
+        <div
+          className={cn(
+            'p-5 sm:p-6 rounded-xl border border-border bg-card font-mono text-xs shadow-subtle flex flex-col gap-4 overflow-hidden',
+            className
+          )}
+        >
+          {/* Header Bar */}
+          <div className="flex items-center justify-between pb-3 border-b border-border text-[10px] text-muted-foreground">
+            <div className="flex items-center gap-2 text-foreground font-semibold">
+              <Compass className="w-4 h-4 text-accent" aria-hidden="true" />
+              <span>FRONTIER MAP // ACTIVE RESEARCH</span>
             </div>
-            <span className="text-accent flex items-center gap-1.5 font-semibold">
+            <span className="flex items-center gap-1.5 text-accent font-semibold text-[9px]">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping inline-block" />
               ACTIVE LAB
             </span>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 my-2 text-[10px]">
-            <div className="p-2.5 rounded-sm bg-elevated border border-border">
-              <span className="text-accent font-semibold block">Full-Stack Web</span>
-              <span className="text-muted-foreground">React, TypeScript, Node</span>
+          {/* 4 Pillars Constellation Grid */}
+          <div className="grid grid-cols-2 gap-2 text-[10px] my-1">
+            <div className="p-3 rounded-sm bg-elevated border border-border flex flex-col gap-1">
+              <span className="text-accent font-bold">01 / Full-Stack Web</span>
+              <span className="text-muted-foreground text-[9px]">React, TypeScript, Node & Scalable UI</span>
             </div>
-            <div className="p-2.5 rounded-sm bg-elevated border border-border">
-              <span className="text-accent-secondary font-semibold block">Web3 Protocols</span>
-              <span className="text-muted-foreground">Stellar, Smart Contracts</span>
+            <div className="p-3 rounded-sm bg-elevated border border-border flex flex-col gap-1">
+              <span className="text-accent-secondary font-bold">02 / Web3 Protocols</span>
+              <span className="text-muted-foreground text-[9px]">Stellar, Soroban & Escrow Logic</span>
             </div>
-            <div className="p-2.5 rounded-sm bg-elevated border border-border">
-              <span className="text-accent font-semibold block">AI Tooling</span>
-              <span className="text-muted-foreground">Agentic & LLM Systems</span>
+            <div className="p-3 rounded-sm bg-elevated border border-border flex flex-col gap-1">
+              <span className="text-accent font-bold">03 / AI Workflows</span>
+              <span className="text-muted-foreground text-[9px]">Local LLMs, Agentic Tools & Runtimes</span>
             </div>
-            <div className="p-2.5 rounded-sm bg-elevated border border-border">
-              <span className="text-accent-depth font-semibold block">Cybersecurity</span>
-              <span className="text-muted-foreground">Network & App Security</span>
+            <div className="p-3 rounded-sm bg-elevated border border-border flex flex-col gap-1">
+              <span className="text-accent-depth font-bold">04 / Cybersecurity</span>
+              <span className="text-muted-foreground text-[9px]">AppSec, OWASP & Secure Systems</span>
             </div>
           </div>
 
-          <div className="mt-3 pt-2.5 border-t border-border text-[10px] text-muted-foreground">
-            <span>TRAJECTORY: Crafting durable, high-performance software.</span>
+          {/* Continuous Evolution Footnote */}
+          <div className="pt-2 border-t border-border flex items-center justify-between text-[10px] text-muted-subtle">
+            <span>Continuous hands-on experimentation</span>
+            <span className="text-foreground font-medium">B.Tech IT • Pune</span>
           </div>
         </div>
       );

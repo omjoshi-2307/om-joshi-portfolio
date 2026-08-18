@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160" fill="none">
+  <rect width="240" height="160" rx="12" fill="#09090B"/>
+  <rect width="238" height="158" x="1" y="1" rx="11" stroke="#26262B" stroke-width="1.5"/>
+  
+  <!-- Coordinate Axis Matrix -->
+  <line x1="20" y1="125" x2="220" y2="125" stroke="#2D2D35" stroke-width="1"/>
+  <line x1="120" y1="30" x2="120" y2="135" stroke="#2D2D35" stroke-width="1"/>
+  
+  <!-- Pune Geo Pin Marker -->
+  <circle cx="120" cy="65" r="28" fill="#FF4FA3" fill-opacity="0.08"/>
+  <circle cx="120" cy="65" r="16" fill="#16161A" stroke="#FF4FA3" stroke-width="2"/>
+  <circle cx="120" cy="65" r="5" fill="#FF4FA3"/>
+  <line x1="120" y1="81" x2="120" y2="105" stroke="#FF4FA3" stroke-width="2"/>
+  <circle cx="120" cy="107" r="3" fill="#FFD84D"/>
+  
+  <!-- Technical Spec Labels -->
+  <text x="120" y="120" fill="#E4E4E7" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle">PUNE, INDIA // 18.5204° N, 73.8567° E</text>
+  <text x="120" y="135" fill="#A1A1AA" font-family="monospace" font-size="7" text-anchor="middle">B.Tech IT • 2026 • AISSMS IOIT</text>
+  
+  <!-- Chapter Badge Pill -->
+  <rect x="12" y="8" width="85" height="16" rx="4" fill="#16161A" stroke="#2D2D35" stroke-width="1"/>
+  <text x="54" y="19" fill="#FF4FA3" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle" letter-spacing="1">07 // ABOUT</text>
+</svg>

@@ -6,7 +6,7 @@ import { CaseStudyStorySection } from '@/components/casestudy/CaseStudyStorySect
 import { CaseStudyContributions } from '@/components/casestudy/CaseStudyContributions';
 import { CaseStudyLearnings } from '@/components/casestudy/CaseStudyLearnings';
 import { CaseStudyNav } from '@/components/casestudy/CaseStudyNav';
-import { ProjectVisual } from '@/components/projects/ProjectVisual';
+import { ProjectMedia } from '@/components/projects/ProjectMedia';
 import { usePageMetadata } from '@/hooks/usePageMetadata';
 import type { ProjectCaseStudy } from '@/types/projects';
 import { cn } from '@/utils/cn';
@@ -29,6 +29,32 @@ export const ProjectCaseStudyPage: React.FC<ProjectCaseStudyPageProps> = ({
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, [caseStudy]);
 
+  const getMediaBadge = () => {
+    switch (caseStudy.id) {
+      case 'sured':
+        return 'SMART ESCROW PROTOCOL';
+      case 'walle':
+        return 'AUTONOMOUS ROBOTICS KINEMATICS';
+      case 'jalsanchaee':
+        return 'IOT WATER TELEMETRY';
+      default:
+        return 'TECHNICAL SCHEMATIC';
+    }
+  };
+
+  const getMediaCaption = () => {
+    switch (caseStudy.id) {
+      case 'sured':
+        return 'SureD multi-party Soroban escrow transaction pipeline on Stellar testnet';
+      case 'walle':
+        return 'WALL-E obstacle detection sensor loop, HC-SR04 telemetry, and steering routines';
+      case 'jalsanchaee':
+        return 'JalSanchaee reservoir depth and flow consumption telemetry architecture';
+      default:
+        return undefined;
+    }
+  };
+
   return (
     <article className={cn('relative min-h-screen pt-4 pb-16 bg-background', className)}>
       <Container size="xl">
@@ -39,12 +65,12 @@ export const ProjectCaseStudyPage: React.FC<ProjectCaseStudyPageProps> = ({
         />
 
         {/* 2. Primary Architectural Visual */}
-        <div className="py-10 border-b border-border">
-          <div className="flex items-center justify-between pb-4 text-xs font-mono text-muted-subtle uppercase tracking-widest">
-            <span>ARCHITECTURAL SCHEMATIC & FLOW</span>
-            <span>SYSTEM PREVIEW</span>
-          </div>
-          <ProjectVisual type={caseStudy.heroVisual} />
+        <div className="py-8 border-b border-border">
+          <ProjectMedia
+            visualType={caseStudy.heroVisual}
+            badge={getMediaBadge()}
+            caption={getMediaCaption()}
+          />
         </div>
 
         {/* 3. Role, Stack, and Problem / Solution Overview */}

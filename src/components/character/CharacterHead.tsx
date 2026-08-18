@@ -106,7 +106,7 @@ export const CharacterHead: React.FC<CharacterHeadProps> = memo(({ lookAngle }) 
           strokeWidth="3"
           className="dark:stroke-[#E2E8F0]"
         />
-        {/* Left Lens Subtle Blue Tint / Highlight */}
+        {/* Left Lens Subtle Accent Tint / Highlight */}
         <rect
           x="61.5"
           y="77.5"
@@ -140,7 +140,7 @@ export const CharacterHead: React.FC<CharacterHeadProps> = memo(({ lookAngle }) 
           strokeWidth="3"
           className="dark:stroke-[#E2E8F0]"
         />
-        {/* Right Lens Subtle Blue Tint */}
+        {/* Right Lens Subtle Accent Tint */}
         <rect
           x="111.5"
           y="77.5"

@@ -2,8 +2,8 @@ import { siteIdentity } from '@/config/identity';
 import type { ContactSectionData } from '@/types/contact';
 
 export const CONTACT_DATA: ContactSectionData = {
-  eyebrow: "06 // WHAT'S NEXT?",
-  chapterNumber: '06',
+  eyebrow: "07 // WHAT'S NEXT?",
+  chapterNumber: '07',
   heading: "Let's Build Something.",
   subheading:
     'Whether you have an interesting idea to discuss, a complex system to engineer, or just want to talk tech—my inbox is always open.',
@@ -45,10 +45,10 @@ export const CONTACT_DATA: ContactSectionData = {
       id: 'social-credly',
       label: 'Credly',
       href: siteIdentity.socials.credly.rawUrl,
-      handle: 'om-joshi23207',
+      handle: 'om-joshi2623',
       isPublic: siteIdentity.socials.credly.isPublic,
       platform: 'credly',
-      ariaLabel: 'Credly certification profile (Public profile pending verification)',
+      ariaLabel: 'View Om Joshi credentials on Credly (opens in new tab)',
     },
   ],
 };

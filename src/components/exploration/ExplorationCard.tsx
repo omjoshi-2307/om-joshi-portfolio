@@ -31,18 +31,18 @@ export const ExplorationCard: React.FC<ExplorationCardProps> = ({ area, classNam
 
   return (
     <motion.article
-      initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
+      initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 20 }}
       whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        'group relative flex flex-col justify-between p-6 sm:p-7 rounded-xl border border-border bg-card shadow-subtle transition-colors duration-150 hover:border-border-strong',
+        'group relative flex flex-col justify-between p-6 rounded-xl border border-border bg-card shadow-subtle transition-colors duration-150 hover:border-border-strong',
         className
       )}
     >
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-4">
         {/* Card Header Bar */}
-        <div className="flex items-center justify-between pb-4 border-b border-border text-xs font-mono">
+        <div className="flex items-center justify-between pb-3 border-b border-border text-xs font-mono">
           <div className="flex items-center gap-3">
             <span className="font-display font-black text-xl text-accent tracking-tighter" aria-hidden="true">
               {area.number}
@@ -62,7 +62,7 @@ export const ExplorationCard: React.FC<ExplorationCardProps> = ({ area, classNam
           <h3 className="text-xl sm:text-2xl font-display font-bold text-foreground tracking-tight group-hover:text-accent transition-colors duration-150">
             {area.title}
           </h3>
-          <p className="text-xs sm:text-sm font-medium text-foreground/80 font-mono">
+          <p className="text-xs font-mono text-muted-foreground">
             {area.subtitle}
           </p>
         </div>
@@ -72,17 +72,12 @@ export const ExplorationCard: React.FC<ExplorationCardProps> = ({ area, classNam
           "{area.conceptQuote}"
         </blockquote>
 
-        {/* Narrative Description */}
-        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-sans">
-          {area.narrative}
-        </p>
-
         {/* Topic Chips */}
         <div className="flex flex-wrap gap-1.5 pt-1">
           {area.topics.map((topic) => (
             <span
               key={topic}
-              className="px-2 py-0.5 rounded-sm bg-elevated border border-border text-[11px] font-mono text-muted-foreground group-hover:text-foreground transition-colors duration-150"
+              className="px-2 py-0.5 rounded-sm bg-elevated border border-border text-[10px] font-mono text-muted-foreground group-hover:text-foreground transition-colors duration-150"
             >
               {topic}
             </span>
@@ -91,10 +86,10 @@ export const ExplorationCard: React.FC<ExplorationCardProps> = ({ area, classNam
       </div>
 
       {/* Footer Tag */}
-      <div className="mt-6 pt-4 border-t border-border flex items-center justify-between text-[10px] font-mono text-muted-foreground">
+      <div className="mt-5 pt-3 border-t border-border flex items-center justify-between text-[10px] font-mono text-muted-foreground">
         <span>FRONTIER: ACTIVE LAB</span>
-        <span className="flex items-center gap-1 text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-150">
-          <span>INVESTIGATING</span>
+        <span className="flex items-center gap-1 text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-150 font-semibold">
+          <span>EXPLORING</span>
           <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
         </span>
       </div>

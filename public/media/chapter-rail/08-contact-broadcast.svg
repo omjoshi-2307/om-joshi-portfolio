@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160" fill="none">
+  <rect width="240" height="160" rx="12" fill="#09090B"/>
+  <rect width="238" height="158" x="1" y="1" rx="11" stroke="#26262B" stroke-width="1.5"/>
+  
+  <!-- Signal Radiating Concentric Arcs -->
+  <path d="M120 70 A25 25 0 0 1 145 95" stroke="#FF4FA3" stroke-width="1.5" fill="none"/>
+  <path d="M120 70 A25 25 0 0 0 95 95" stroke="#FF4FA3" stroke-width="1.5" fill="none"/>
+  <path d="M120 55 A40 40 0 0 1 160 95" stroke="#FF4FA3" stroke-width="1.5" stroke-dasharray="3 2" fill="none" opacity="0.7"/>
+  <path d="M120 55 A40 40 0 0 0 80 95" stroke="#FF4FA3" stroke-width="1.5" stroke-dasharray="3 2" fill="none" opacity="0.7"/>
+  <path d="M120 40 A55 55 0 0 1 175 95" stroke="#B9A7FF" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.5"/>
+  <path d="M120 40 A55 55 0 0 0 65 95" stroke="#B9A7FF" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.5"/>
+  
+  <!-- Central Transmission Tower / Envelope Node -->
+  <rect x="96" y="80" width="48" height="32" rx="4" fill="#16161A" stroke="#FF4FA3" stroke-width="2"/>
+  <path d="M98 82 L120 98 L142 82" stroke="#FF4FA3" stroke-width="1.5" fill="none"/>
+  <circle cx="120" cy="95" r="3" fill="#FFD84D"/>
+  
+  <!-- Direct Protocol Text -->
+  <text x="120" y="130" fill="#E4E4E7" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">onjoshi2307@gmail.com</text>
+  <text x="120" y="142" fill="#B9A7FF" font-family="monospace" font-size="7" text-anchor="middle">STATUS: READY TO COLLABORATE</text>
+  
+  <!-- Chapter Badge Pill -->
+  <rect x="12" y="8" width="95" height="16" rx="4" fill="#16161A" stroke="#2D2D35" stroke-width="1"/>
+  <text x="59" y="19" fill="#FF4FA3" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle" letter-spacing="1">08 // CONTACT</text>
+</svg>

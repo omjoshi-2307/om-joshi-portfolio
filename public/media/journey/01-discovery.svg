@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160" fill="none">
+  <rect width="240" height="160" rx="12" fill="#09090B"/>
+  <rect width="238" height="158" x="1" y="1" rx="11" stroke="#26262B" stroke-width="1.5"/>
+  
+  <!-- Terminal Window Shell -->
+  <rect x="16" y="24" width="208" height="118" rx="8" fill="#111114" stroke="#2D2D35" stroke-width="1.5"/>
+  
+  <!-- Window Header -->
+  <rect x="16" y="24" width="208" height="22" rx="8" fill="#18181D"/>
+  <circle cx="28" cy="35" r="3" fill="#FF4FA3"/>
+  <circle cx="38" cy="35" r="3" fill="#FFD84D"/>
+  <circle cx="48" cy="35" r="3" fill="#B9A7FF"/>
+  <text x="120" y="38" fill="#A1A1AA" font-family="monospace" font-size="8" text-anchor="middle">discovery_core.cpp</text>
+  
+  <!-- Syntax Code Lines -->
+  <text x="28" y="60" fill="#FF4FA3" font-family="monospace" font-size="9" font-weight="bold">#include &lt;iostream&gt;</text>
+  <text x="28" y="74" fill="#B9A7FF" font-family="monospace" font-size="9">int main() {</text>
+  <text x="40" y="88" fill="#E4E4E7" font-family="monospace" font-size="9">  uint16_t ptr = <tspan fill="#FFD84D">0x7FFF</tspan>;</text>
+  <text x="40" y="102" fill="#A1A1AA" font-family="monospace" font-size="9">  init_logic_gates();</text>
+  <text x="40" y="116" fill="#FF4FA3" font-family="monospace" font-size="9">  return <tspan fill="#FFD84D">0</tspan>;</text>
+  <text x="28" y="130" fill="#B9A7FF" font-family="monospace" font-size="9">}</text>
+  
+  <!-- Blinking Cursor -->
+  <rect x="52" y="122" width="5" height="10" fill="#FF4FA3" opacity="0.9"/>
+  
+  <!-- Chapter Badge Pill -->
+  <rect x="12" y="8" width="102" height="16" rx="4" fill="#16161A" stroke="#2D2D35" stroke-width="1"/>
+  <text x="63" y="19" fill="#FF4FA3" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle" letter-spacing="1">01 // DISCOVERY</text>
+</svg>

@@ -26,10 +26,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   const isScrolled = useIsScrolled(24);
   const activeSection = useActiveSection(TRACKED_SECTIONS, 'hero');
 
+  const isMac = typeof navigator !== 'undefined' && /Mac|iPod|iPhone|iPad/.test(navigator.userAgent || '');
+
   // Listen for Cmd+K / Ctrl+K keyboard shortcut
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         setCommandPaletteOpen((prev) => !prev);
       }
@@ -68,13 +70,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={() => setCommandPaletteOpen(true)}
-              aria-label="Open command palette (Ctrl+K or Cmd+K)"
+              aria-label={`Open command palette (${isMac ? 'Cmd+K' : 'Ctrl+K'})`}
               className="hidden sm:inline-flex items-center gap-2 px-2.5 py-1.5 min-h-[36px] rounded-sm border border-border bg-elevated hover:bg-card text-muted-foreground hover:text-foreground text-xs font-mono transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent shadow-subtle"
             >
               <Search className="w-3.5 h-3.5 text-accent" />
               <span className="hidden lg:inline text-[11px]">Command</span>
-              <kbd className="px-1.5 py-0.5 rounded bg-surface border border-border text-[10px] font-mono text-muted-subtle">
-                ⌘K
+              <kbd className="px-1.5 py-0.5 rounded bg-surface border border-border text-[10px] font-mono text-muted-subtle font-medium">
+                {isMac ? '⌘K' : 'Ctrl K'}
               </kbd>
             </button>
 
@@ -111,6 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         onClose={() => setMobileMenuOpen(false)}
         activeSection={activeSection}
         items={items}
+        onOpenCommandPalette={() => setCommandPaletteOpen(true)}
       />
 
       {/* Global Command Palette */}

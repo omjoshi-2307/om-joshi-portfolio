@@ -35,90 +35,111 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
     <div
       id={stage.id}
       className={cn(
-        'relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pb-24 sm:pb-32',
+        'relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center pb-20 sm:pb-28',
         !isLast && 'border-b border-border'
       )}
     >
-      {/* Left Column: Stage Metadata & Narrative (7 cols) */}
+      {/* 1. VISUAL ARTIFACT (Rendered First on Mobile & Primary Visual Column) */}
       <motion.div
-        initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
-        whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+        initial={prefersReduced ? { opacity: 0 } : { opacity: 0, scale: 0.97, y: 20 }}
+        whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="lg:col-span-7 flex flex-col gap-6"
+        className="order-1 lg:order-2 lg:col-span-6 flex flex-col gap-3 justify-center"
       >
-        {/* Enormous Chapter Numeral & Metadata */}
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-3">
-            <span className="chapter-monumental text-accent tracking-tighter" aria-hidden="true">
-              {stage.number}
-            </span>
-            <div className="flex flex-col">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-subtle font-semibold">
-                CHAPTER STAGE
-              </span>
-              <span className="font-display text-sm font-bold text-foreground uppercase tracking-wider">
-                {stage.stageLabel}
-              </span>
+        <JourneyArtifact type={stage.visualType} title={stage.title} />
+
+        {/* Milestone Cameo for Robotics */}
+        {isRoboticsMilestone && (
+          <div className="p-3 rounded-md bg-elevated border border-border flex items-center gap-3 shadow-subtle">
+            <div className="w-9 h-9 shrink-0">
+              <Character
+                lookAngle={{
+                  headYaw: 10,
+                  headPitch: 6,
+                  eyeOffsetX: 2,
+                  eyeOffsetY: 1.5,
+                  distance: 80,
+                  isTracking: true,
+                }}
+              />
             </div>
+            <div className="text-[11px] font-mono text-muted-foreground">
+              <span className="text-foreground font-semibold block">Milestone 03: Physical Loop</span>
+              <span>Perception, sensing & autonomous motor kinematics</span>
+            </div>
+          </div>
+        )}
+      </motion.div>
+
+      {/* 2. CHAPTER METADATA, TITLE & SHORT NARRATIVE */}
+      <motion.div
+        initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 20 }}
+        whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        className="order-2 lg:order-1 lg:col-span-6 flex flex-col gap-4 sm:gap-5"
+      >
+        {/* Chapter Numeral & Stage Header */}
+        <div className="flex items-center gap-3">
+          <span className="chapter-monumental text-accent tracking-tighter" aria-hidden="true">
+            {stage.number}
+          </span>
+          <div className="flex flex-col">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-muted-subtle font-semibold">
+              CHAPTER STAGE // {stage.timeframe}
+            </span>
+            <span className="font-display text-xs sm:text-sm font-bold text-foreground uppercase tracking-wider">
+              {stage.stageLabel}
+            </span>
           </div>
         </div>
 
         {/* Stage Title */}
-        <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground tracking-tight">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground tracking-tight">
           {stage.title}
         </h3>
 
-        {/* Narrative Quote / Philosophy */}
+        {/* Narrative Quote */}
         {stage.quote && (
-          <blockquote className="p-4 sm:p-5 rounded-md bg-card border-l-2 border-accent text-sm sm:text-base font-medium text-foreground italic shadow-subtle">
+          <p className="text-sm sm:text-base font-semibold text-foreground/90 font-display italic">
             "{stage.quote}"
-          </blockquote>
+          </p>
         )}
 
-        {/* Narrative Paragraphs */}
-        <div className="space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed font-sans">
+        {/* Short Narrative */}
+        <div className="text-muted-foreground text-sm sm:text-[15px] leading-relaxed font-sans">
           {stage.narrative.map((p, idx) => (
             <p key={idx}>{p}</p>
           ))}
         </div>
 
-        {/* Role Contributions (if present) */}
+        {/* Compact Role Contributions (SureD) */}
         {stage.roleContributions && (
-          <div className="p-5 rounded-md bg-card border border-border space-y-3 shadow-subtle">
-            <span className="technical-eyebrow text-muted-subtle block">
-              PRIMARY ROLE & CONTRIBUTIONS
-            </span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {stage.roleContributions.map((role) => (
-                <div key={role} className="flex items-center gap-2 text-xs sm:text-sm text-foreground">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" aria-hidden="true" />
-                  <span>{role}</span>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+            {stage.roleContributions.map((role) => (
+              <div key={role} className="flex items-center gap-2 text-xs text-foreground">
+                <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" aria-hidden="true" />
+                <span>{role}</span>
+              </div>
+            ))}
           </div>
         )}
 
-        {/* Key Learning Callout (e.g. Hackathon) */}
+        {/* Key Learning (if present) */}
         {stage.keyLearning && (
-          <div className="p-5 rounded-md bg-elevated border border-border text-xs sm:text-sm text-muted-foreground space-y-1.5 shadow-subtle">
-            <span className="technical-eyebrow text-accent block">
-              RETROSPECTIVE INSIGHT
-            </span>
-            <p className="text-foreground/90 leading-relaxed font-medium">
-              {stage.keyLearning}
-            </p>
-          </div>
+          <p className="text-xs font-mono text-muted-foreground border-l-2 border-accent pl-3 py-0.5">
+            Insight: {stage.keyLearning}
+          </p>
         )}
 
-        {/* Technologies List */}
+        {/* Technologies Pills */}
         {stage.technologies && stage.technologies.length > 0 && (
-          <div className="flex flex-wrap gap-2 pt-2">
+          <div className="flex flex-wrap gap-1.5 pt-1">
             {stage.technologies.map((tech) => (
               <span
                 key={tech}
-                className="px-2.5 py-1 rounded-sm bg-elevated border border-border text-[11px] font-mono text-muted-foreground"
+                className="px-2.5 py-1 rounded-sm bg-elevated border border-border text-[10px] font-mono text-muted-foreground"
               >
                 {tech}
               </span>
@@ -126,7 +147,7 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
           </div>
         )}
 
-        {/* Repository Link (if present) */}
+        {/* Repository Action */}
         {stage.repositoryUrl && (
           <div className="pt-2">
             <a
@@ -140,39 +161,6 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
               <span>{stage.repositoryName || 'View Source Repository'}</span>
               <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-accent transition-colors ml-1" aria-hidden="true" />
             </a>
-          </div>
-        )}
-      </motion.div>
-
-      {/* Right Column: Visual Artifact & Cameo (5 cols) */}
-      <motion.div
-        initial={prefersReduced ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 24 }}
-        whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-        className="lg:col-span-5 flex flex-col gap-4 justify-center"
-      >
-        <JourneyArtifact type={stage.visualType} title={stage.title} />
-
-        {/* Subtle Milestone Cameo for Robotics */}
-        {isRoboticsMilestone && (
-          <div className="p-3 rounded-md bg-elevated border border-border flex items-center gap-3 shadow-subtle">
-            <div className="w-10 h-10 shrink-0">
-              <Character
-                lookAngle={{
-                  headYaw: 10,
-                  headPitch: 6,
-                  eyeOffsetX: 2,
-                  eyeOffsetY: 1.5,
-                  distance: 80,
-                  isTracking: true,
-                }}
-              />
-            </div>
-            <div className="text-[11px] font-mono text-muted-foreground">
-              <span className="text-foreground font-semibold block">Milestone 03: Autonomous Loop</span>
-              <span>Physical obstacle evasion & hardware assembly</span>
-            </div>
           </div>
         )}
       </motion.div>

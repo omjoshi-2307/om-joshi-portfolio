@@ -18,6 +18,7 @@ import {
   CornerDownLeft,
   X,
   BookOpen,
+  ArrowUp,
 } from 'lucide-react';
 import { useTheme } from '@/hooks/useTheme';
 import { useRouter } from '@/hooks/useRouter';
@@ -33,7 +34,8 @@ export interface CommandPaletteProps {
 interface CommandItem {
   id: string;
   label: string;
-  category: 'Navigation' | 'Case Studies' | 'Actions' | 'Social Links';
+  category: 'Navigation' | 'Projects' | 'Actions' | 'Social Links';
+  keywords: string[];
   shortcut?: string;
   icon: React.ComponentType<{ className?: string; 'aria-hidden'?: boolean | 'true' | 'false' }>;
   perform: () => void;
@@ -74,11 +76,64 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
 
   const allCommands: CommandItem[] = useMemo(
     () => [
-      // Case Studies
+      // Navigation
+      {
+        id: 'nav-work',
+        label: 'Work (Selected Projects)',
+        category: 'Navigation',
+        keywords: ['work', 'projects', 'featured', 'portfolio', 'sured', 'walle', 'jalsanchaee'],
+        icon: FolderGit2,
+        perform: () => scrollToSection('projects'),
+      },
+      {
+        id: 'nav-journey',
+        label: 'Journey (Evolution & Milestones)',
+        category: 'Navigation',
+        keywords: ['journey', 'timeline', 'history', 'evolution', 'milestones', 'roots', 'hardware', 'walle', 'discovery'],
+        icon: Compass,
+        perform: () => scrollToSection('journey'),
+      },
+      {
+        id: 'nav-toolbox',
+        label: 'Toolbox (Technical Index & Skills)',
+        category: 'Navigation',
+        keywords: ['toolbox', 'skills', 'languages', 'frameworks', 'technologies', 'stack', 'cpp', 'react', 'rust'],
+        icon: Code2,
+        perform: () => scrollToSection('toolbox'),
+      },
+      {
+        id: 'nav-exploration',
+        label: 'Exploring (Active Research Frontiers)',
+        category: 'Navigation',
+        keywords: ['exploring', 'research', 'ai', 'systems', 'cybersecurity', 'web3', 'tooling'],
+        icon: Sparkles,
+        perform: () => scrollToSection('exploration'),
+      },
+      {
+        id: 'nav-about',
+        label: 'About (Background & Mindset)',
+        category: 'Navigation',
+        keywords: ['about', 'bio', 'who', 'mindset', 'background', 'pune', 'football', 'anime', 'music'],
+        icon: User,
+        perform: () => scrollToSection('about'),
+      },
+      {
+        id: 'nav-contact',
+        label: "Contact (Let's Build)",
+        category: 'Navigation',
+        keywords: ['contact', 'email', 'touch', 'hire', 'reach', 'message'],
+        icon: Mail,
+        perform: () => scrollToSection('contact'),
+      },
+
+
+
+      // Projects (Case Studies)
       {
         id: 'case-sured',
         label: 'SureD — Case Study (Stellar Escrow Protocol)',
-        category: 'Case Studies',
+        category: 'Projects',
+        keywords: ['sured', 'stellar', 'soroban', 'escrow', 'blockchain', 'web3', 'rust', 'freighter', 'deposit'],
         icon: BookOpen,
         perform: () => {
           onClose();
@@ -88,7 +143,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
       {
         id: 'case-walle',
         label: 'WALL-E — Case Study (Obstacle Avoiding Robot)',
-        category: 'Case Studies',
+        category: 'Projects',
+        keywords: ['walle', 'robot', 'robotics', 'arduino', 'hardware', 'embedded', 'c++', 'ultrasonic', 'sensors'],
         icon: Bot,
         perform: () => {
           onClose();
@@ -97,8 +153,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
       },
       {
         id: 'case-jalsanchaee',
-        label: 'JalSanchaeeNavachar — Case Study (Techathon 3.0 Sprint)',
-        category: 'Case Studies',
+        label: 'JalSanchaeeNavachar — Case Study (Techathon 3.0)',
+        category: 'Projects',
+        keywords: ['jalsanchaee', 'navachar', 'water', 'iot', 'telemetry', 'hackathon', 'aissms', 'conservation'],
         icon: Gauge,
         perform: () => {
           onClose();
@@ -106,69 +163,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
         },
       },
 
-      // Navigation
-      {
-        id: 'nav-hero',
-        label: 'Go to Hero & Overview',
-        category: 'Navigation',
-        icon: Sparkles,
-        perform: () => scrollToSection('hero'),
-      },
-      {
-        id: 'nav-intro',
-        label: 'Go to Current Focus & Orientation',
-        category: 'Navigation',
-        icon: User,
-        perform: () => scrollToSection('intro'),
-      },
-      {
-        id: 'nav-journey',
-        label: 'Go to Journey & Growth Timeline',
-        category: 'Navigation',
-        icon: Compass,
-        perform: () => scrollToSection('journey'),
-      },
-      {
-        id: 'nav-projects',
-        label: 'Go to Selected Work & Project Index',
-        category: 'Navigation',
-        icon: FolderGit2,
-        perform: () => scrollToSection('projects'),
-      },
-      {
-        id: 'nav-toolbox',
-        label: 'Go to Technical Toolbox & Inventory',
-        category: 'Navigation',
-        icon: Code2,
-        perform: () => scrollToSection('toolbox'),
-      },
-      {
-        id: 'nav-exploration',
-        label: 'Go to Active Frontiers & Learning Map',
-        category: 'Navigation',
-        icon: Sparkles,
-        perform: () => scrollToSection('exploration'),
-      },
-      {
-        id: 'nav-about',
-        label: 'Go to About & Mindset',
-        category: 'Navigation',
-        icon: User,
-        perform: () => scrollToSection('about'),
-      },
-      {
-        id: 'nav-contact',
-        label: "Go to Contact & Let's Build",
-        category: 'Navigation',
-        icon: Mail,
-        perform: () => scrollToSection('contact'),
-      },
-
       // Actions
       {
         id: 'action-theme',
         label: `Switch to ${isDark ? 'Light' : 'Dark'} Theme`,
         category: 'Actions',
+        keywords: ['theme', 'dark', 'light', 'mode', 'toggle', 'color'],
         shortcut: 'T',
         icon: isDark ? Sun : Moon,
         perform: () => {
@@ -180,16 +180,29 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
         id: 'action-copy-email',
         label: copied ? 'Email Copied!' : `Copy Email (${siteIdentity.email})`,
         category: 'Actions',
+        keywords: ['email', 'copy', 'mail', 'contact', 'address'],
         shortcut: 'C',
         icon: copied ? Check : Copy,
         perform: copyEmail,
+      },
+      {
+        id: 'action-top',
+        label: 'Back to Top',
+        category: 'Actions',
+        keywords: ['top', 'scroll', 'up', 'start', 'beginning'],
+        icon: ArrowUp,
+        perform: () => {
+          window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+          onClose();
+        },
       },
 
       // Social Links
       {
         id: 'link-github',
-        label: 'Open GitHub Profile (@omjoshi-2307)',
+        label: 'Open GitHub (@omjoshi-2307)',
         category: 'Social Links',
+        keywords: ['github', 'code', 'repos', 'git', 'profile'],
         icon: ExternalLink,
         perform: () => {
           window.open(siteIdentity.socials.github, '_blank', 'noopener,noreferrer');
@@ -198,8 +211,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
       },
       {
         id: 'link-linkedin',
-        label: 'Open LinkedIn Profile (Om Joshi)',
+        label: 'Open LinkedIn (Om Joshi)',
         category: 'Social Links',
+        keywords: ['linkedin', 'connect', 'career', 'network', 'profile'],
         icon: ExternalLink,
         perform: () => {
           window.open(siteIdentity.socials.linkedin, '_blank', 'noopener,noreferrer');
@@ -207,9 +221,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
         },
       },
       {
-        id: 'link-twitter',
+        id: 'link-x',
         label: 'Open X / Twitter (@omjoshi_2307)',
         category: 'Social Links',
+        keywords: ['x', 'twitter', 'social', 'posts', 'tweets'],
         icon: ExternalLink,
         perform: () => {
           window.open(siteIdentity.socials.x, '_blank', 'noopener,noreferrer');
@@ -217,7 +232,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
         },
       },
     ],
-    [isDark, copied, navigate, onClose, scrollToSection, toggleTheme, copyEmail]
+    [isDark, copied, navigate, onClose, scrollToSection, toggleTheme, copyEmail, prefersReduced]
   );
 
   const filteredCommands = useMemo(() => {
@@ -226,7 +241,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
     return allCommands.filter(
       (cmd) =>
         cmd.label.toLowerCase().includes(q) ||
-        cmd.category.toLowerCase().includes(q)
+        cmd.category.toLowerCase().includes(q) ||
+        cmd.keywords.some((k) => k.includes(q))
     );
   }, [query, allCommands]);
 
@@ -289,7 +305,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           role="dialog"
           aria-modal="true"
           aria-label="Command Palette"
-          className="fixed inset-0 z-50 flex items-start justify-center pt-[12vh] sm:pt-[16vh] px-4"
+          className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] sm:pt-[14vh] px-4"
         >
           {/* Backdrop Overlay */}
           <motion.div
@@ -304,14 +320,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
 
           {/* Modal Container */}
           <motion.div
-            initial={prefersReduced ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: -10 }}
+            initial={prefersReduced ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: -8 }}
             animate={prefersReduced ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
-            exit={prefersReduced ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: -10 }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-xl rounded-xl border border-border-strong bg-surface shadow-elevated overflow-hidden z-10 flex flex-col"
+            exit={prefersReduced ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: -8 }}
+            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-xl rounded-xl border border-border bg-card shadow-elevated overflow-hidden z-10 flex flex-col"
           >
             {/* Top Search Input Bar */}
-            <div className="flex items-center gap-3 px-4 py-3.5 border-b border-border bg-card">
+            <div className="flex items-center gap-3 px-4 py-3.5 border-b border-border bg-elevated/60">
               <Search className="w-4 h-4 text-accent shrink-0" aria-hidden="true" />
               <input
                 ref={inputRef}
@@ -321,11 +337,11 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                 aria-autocomplete="list"
                 aria-controls="command-palette-list"
                 aria-activedescendant={filteredCommands[selectedIndex]?.id}
-                aria-label="Search commands, case studies, and sections"
+                aria-label="Search or type a command"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Type a command or search case studies & sections..."
+                placeholder="Search or type a command..."
                 className="w-full bg-transparent text-sm text-foreground placeholder:text-muted-subtle focus:outline-none font-sans"
               />
               {query && (
@@ -338,7 +354,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   <X className="w-3.5 h-3.5" aria-hidden="true" />
                 </button>
               )}
-              <div className="hidden sm:flex items-center gap-1 text-[10px] font-mono text-muted-subtle bg-elevated px-2 py-0.5 rounded border border-border" aria-hidden="true">
+              <div className="hidden sm:flex items-center gap-1 text-[10px] font-mono text-muted-subtle bg-surface px-2 py-0.5 rounded border border-border" aria-hidden="true">
                 <span>ESC</span>
               </div>
             </div>
@@ -370,9 +386,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                         onClick={() => cmd.perform()}
                         onMouseEnter={() => setSelectedIndex(index)}
                         className={cn(
-                          'flex items-center justify-between gap-3 px-3 py-2.5 rounded-md text-xs transition-colors duration-100 cursor-pointer select-none',
+                          'flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg text-xs transition-colors duration-100 cursor-pointer select-none',
                           isSelected
-                            ? 'bg-accent-soft text-foreground font-semibold'
+                            ? 'bg-accent-soft text-foreground font-semibold border-l-2 border-accent'
                             : 'text-muted-foreground hover:bg-elevated hover:text-foreground'
                         )}
                       >
@@ -395,7 +411,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                             {cmd.category}
                           </span>
                           {isSelected && (
-                            <CornerDownLeft className="w-3 h-3 text-accent" aria-hidden="true" />
+                            <CornerDownLeft className="w-3.5 h-3.5 text-accent" aria-hidden="true" />
                           )}
                         </div>
                       </li>
@@ -406,14 +422,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
             </div>
 
             {/* Bottom Footer Info */}
-            <div className="px-4 py-2.5 border-t border-border bg-card flex items-center justify-between text-[11px] font-mono text-muted-subtle" aria-hidden="true">
+            <div className="px-4 py-2 border-t border-border bg-elevated/40 flex items-center justify-between text-[11px] font-mono text-muted-subtle" aria-hidden="true">
               <div className="flex items-center gap-2">
                 <span>Navigate</span>
-                <span className="px-1.5 py-0.5 rounded bg-elevated border border-border text-[9px]">↑↓</span>
+                <span className="px-1.5 py-0.5 rounded bg-surface border border-border text-[9px]">↑↓</span>
                 <span>Select</span>
-                <span className="px-1.5 py-0.5 rounded bg-elevated border border-border text-[9px]">↵</span>
+                <span className="px-1.5 py-0.5 rounded bg-surface border border-border text-[9px]">↵</span>
               </div>
-              <span className="text-accent font-semibold tracking-wider">OM JOSHI // COMMAND</span>
+              <span className="text-accent font-semibold tracking-wider text-[10px]">OM JOSHI // PALETTE</span>
             </div>
           </motion.div>
         </div>
@@ -421,3 +437,4 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
     </AnimatePresence>
   );
 };
+

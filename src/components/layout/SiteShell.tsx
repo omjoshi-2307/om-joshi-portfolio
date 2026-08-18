@@ -1,5 +1,7 @@
 import React from 'react';
 import { Navbar } from '@/components/navigation/Navbar';
+import { ScrollProgress } from '@/components/navigation/ScrollProgress';
+import { BackToTopButton } from '@/components/navigation/BackToTopButton';
 import { FooterSection } from '@/components/sections/FooterSection';
 import { PointerIndicator } from '@/components/pointer/PointerIndicator';
 import { cn } from '@/utils/cn';
@@ -27,10 +29,13 @@ export const SiteShell: React.FC<SiteShellProps> = ({
         className
       )}
     >
-      {/* Desktop Fine Pointer Micro-interaction Layer */}
+      {/* 1. Global Minimal Scroll Progress Line (Top edge) */}
+      <ScrollProgress />
+
+      {/* 2. Desktop Fine Pointer Micro-interaction Layer */}
       <PointerIndicator />
 
-      {/* Accessible Skip Link */}
+      {/* 3. Accessible Skip Link */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-elevated focus:text-foreground focus:border focus:border-accent focus:rounded-sm font-mono text-xs shadow-subtle"
@@ -38,15 +43,18 @@ export const SiteShell: React.FC<SiteShellProps> = ({
         Skip to main content
       </a>
 
-      {/* Global Navigation Header */}
+      {/* 4. Global Navigation Header */}
       {headerSlot !== undefined ? headerSlot : <Navbar />}
 
-      {/* Main Content Area */}
+      {/* 5. Main Content Area */}
       <main id="main-content" tabIndex={-1} className="relative z-10 flex-1 w-full pt-20 focus:outline-none">
         {children}
       </main>
 
-      {/* Footer Area */}
+      {/* 6. Contextual Back-to-Top Floating Trigger */}
+      <BackToTopButton />
+
+      {/* 7. Unified Global Footer */}
       {showFooter && (footerSlot !== undefined ? footerSlot : <FooterSection />)}
     </div>
   );

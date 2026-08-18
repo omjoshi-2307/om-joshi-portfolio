@@ -35,45 +35,59 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
 
   return (
     <motion.article
-      initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 28 }}
+      initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
       whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        'group/featured relative flex flex-col gap-10 p-8 sm:p-12 md:p-14 rounded-xl border border-border bg-card shadow-subtle hover:border-border-strong transition-colors',
+        'group/featured relative flex flex-col gap-8 p-6 sm:p-10 md:p-12 rounded-xl border border-border bg-card shadow-subtle hover:border-border-strong transition-colors',
         className
       )}
     >
       {/* 1. Context Marker & Status */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-border text-xs font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-border text-xs font-mono">
         <div className="flex items-center gap-2 text-accent font-semibold uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5 text-accent" aria-hidden="true" />
           <span>FEATURED BUILD // {project.context}</span>
         </div>
 
         <div className="flex items-center gap-3 text-muted-foreground">
-          <span className="px-2.5 py-0.5 rounded-sm bg-elevated border border-border text-[11px] font-semibold text-foreground">
-            WEB3 ESCROW
+          <span className="px-2.5 py-0.5 rounded-sm bg-elevated border border-border text-[10px] font-semibold text-foreground font-mono">
+            WEB3 ESCROW PROTOCOL
           </span>
-          <span className="text-[11px] font-mono">STELLAR ECOSYSTEM</span>
+          <span className="text-[11px] font-mono">STELLAR NETWORK</span>
         </div>
       </div>
 
-      {/* 2. Headline & Subtitle & Actions Bar */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-        <div className="flex flex-col gap-3 max-w-3xl">
+      {/* 2. Interactive Large Visual Architecture (Dominant Visual - 60-70%) */}
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={() => navigate(project.slug)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(project.slug)}
+        onMouseEnter={() => setPointerState('view', 'VIEW')}
+        onMouseLeave={resetPointerState}
+        aria-label={`Interactive architectural schematic for ${project.title}. Press Enter to read full case study.`}
+        className="cursor-pointer transition-transform duration-200 group-hover/featured:scale-[1.005] rounded-lg focus-visible:outline-2 focus-visible:outline-accent"
+      >
+        <ProjectVisual type={project.visualType} />
+      </div>
+
+      {/* 3. Headline & Subtitle & Actions Bar */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pt-2">
+        <div className="flex flex-col gap-2 max-w-2xl">
           <h3 className="project-monumental text-foreground uppercase tracking-tight">
             {project.title}
           </h3>
-          <p className="text-xl sm:text-2xl font-bold text-foreground/90 font-display">
+          <p className="text-lg sm:text-xl font-bold text-foreground/90 font-display">
             {project.subtitle}
           </p>
-          <p className="editorial-lead text-muted-foreground mt-1">
+          <p className="editorial-lead text-muted-foreground text-sm sm:text-base">
             {project.summary}
           </p>
         </div>
 
-        {/* Live Action Buttons */}
+        {/* Action Buttons */}
         <div className="flex flex-wrap items-center gap-3 shrink-0">
           <a
             href={project.slug}
@@ -120,96 +134,46 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
         </div>
       </div>
 
-      {/* 3. Interactive Visual Architecture Showcase with Accessible Keyboard Trigger */}
-      <div
-        role="button"
-        tabIndex={0}
-        onClick={() => navigate(project.slug)}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(project.slug)}
-        onMouseEnter={() => setPointerState('view', 'VIEW')}
-        onMouseLeave={resetPointerState}
-        aria-label={`Interactive architectural schematic for ${project.title}. Press Enter to read full case study.`}
-        className="cursor-pointer transition-transform duration-200 group-hover/featured:scale-[1.005] rounded-lg focus-visible:outline-2 focus-visible:outline-accent"
-      >
-        <ProjectVisual type={project.visualType} />
-      </div>
-
-      {/* 4. Problem & Solution Breakdown Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-        {project.problem && (
-          <div className="p-6 rounded-md bg-elevated border border-border flex flex-col gap-2">
-            <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider">
-              01 // THE CHALLENGE
-            </span>
-            <h4 className="text-base font-bold text-foreground font-display">Rental Deposit Friction</h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {project.problem}
-            </p>
-          </div>
-        )}
-
-        {project.solution && (
-          <div className="p-6 rounded-md bg-elevated border border-border flex flex-col gap-2">
-            <span className="text-[11px] font-mono text-accent uppercase tracking-wider font-semibold">
-              02 // THE ARCHITECTURAL SOLUTION
-            </span>
-            <h4 className="text-base font-bold text-foreground font-display">Decentralized Escrow Protocol</h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {project.solution}
-            </p>
-          </div>
-        )}
-      </div>
-
-      {/* 5. Dedicated Contribution Section */}
+      {/* 4. Compact Contribution & Technology Bar */}
       {project.myContributions && project.myContributions.length > 0 && (
-        <div className="p-6 sm:p-8 rounded-md bg-surface border border-border flex flex-col gap-4">
-          <div className="flex items-center justify-between border-b border-border pb-3 text-xs font-mono text-foreground font-bold uppercase tracking-wider">
-            <span>MY PRIMARY CONTRIBUTIONS</span>
-            <span className="text-muted-foreground font-normal text-[11px]">CO-DEVELOPED IN TEAM SPRINT</span>
+        <div className="p-5 rounded-lg bg-surface border border-border flex flex-col gap-3">
+          <div className="flex items-center justify-between border-b border-border pb-2 text-[11px] font-mono text-muted-foreground font-semibold uppercase tracking-wider">
+            <span>MY ROLE CONTRIBUTIONS</span>
+            <span>STELLAR BUILD STATION SPRINT</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {project.myContributions.map((contrib) => (
-              <div key={contrib} className="flex items-start gap-2 text-xs sm:text-sm text-foreground">
-                <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" aria-hidden="true" />
-                <span className="leading-snug">{contrib}</span>
+              <div key={contrib} className="flex items-center gap-2 text-xs text-foreground">
+                <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" aria-hidden="true" />
+                <span>{contrib}</span>
               </div>
             ))}
           </div>
-
-          {project.teamContext && (
-            <p className="mt-1 text-[11px] font-mono text-muted-foreground border-t border-border pt-3">
-              Context: {project.teamContext}
-            </p>
-          )}
         </div>
       )}
 
-      {/* 6. Technology Architecture Stack */}
-      <div className="flex flex-col gap-3 pt-2 border-t border-border">
-        <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider">
-          TECHNOLOGY STACK ARCHITECTURE
+      {/* 5. Technology Stack Pills */}
+      <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-border">
+        <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider mr-2">
+          STACK:
         </span>
-
-        <div className="flex flex-wrap items-center gap-2">
-          {project.mainTechnologies.map((tech) => (
-            <span
-              key={tech}
-              className="px-2.5 py-1 rounded-sm bg-elevated border border-border text-xs font-mono font-medium text-foreground"
-            >
-              {tech}
-            </span>
-          ))}
-          {project.supportingTechnologies?.map((tech) => (
-            <span
-              key={tech}
-              className="px-2.5 py-1 rounded-sm bg-card border border-border text-xs font-mono text-muted-foreground"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+        {project.mainTechnologies.map((tech) => (
+          <span
+            key={tech}
+            className="px-2.5 py-1 rounded-sm bg-elevated border border-border text-[11px] font-mono font-medium text-foreground"
+          >
+            {tech}
+          </span>
+        ))}
+        {project.supportingTechnologies?.map((tech) => (
+          <span
+            key={tech}
+            className="px-2 py-0.5 rounded-sm bg-card border border-border text-[10px] font-mono text-muted-foreground"
+          >
+            {tech}
+          </span>
+        ))}
       </div>
     </motion.article>
   );

@@ -9,7 +9,7 @@ export const ABOUT_DATA: AboutSectionData = {
   statement: {
     lead: 'I tend to understand things much better after trying to',
     highlight: 'build them myself.',
-    sub: 'For me, engineering is not an abstract theory—it is a continuous cycle of curiosity, experimentation, and finding out what actually works.',
+    sub: 'From physical microcontrollers to decentralized smart contracts, building is the fastest path to genuine understanding.',
   },
 
   reflectionQuote: {
@@ -20,24 +20,24 @@ export const ABOUT_DATA: AboutSectionData = {
   narrative: [
     {
       id: 'narrative-roots',
-      stageLabel: '01 / ROOTS & CURIOSITY',
+      stageLabel: '01 / ROOTS & HARDWARE',
       headline: 'From Hardware to Software Logic',
       content:
-        'My curiosity started with wanting to know what happens beneath the surface. Early on, that meant wiring Arduino microcontrollers, working with hardware components, and seeing code actuate physical electronics—from an automated sanitary pad disposal machine prototype to an autonomous obstacle-avoiding robot. Experiencing software control physical hardware made one thing clear: building is the fastest way to truly learn.',
+        'Started by wiring microcontrollers and writing embedded logic—moving software from the screen into physical actuators, sensors, and robotics.',
     },
     {
       id: 'narrative-pressure',
-      stageLabel: '02 / PRESSURE & COLLABORATION',
+      stageLabel: '02 / SPRINTS & COLLABORATION',
       headline: 'Hackathons & Product Velocity',
       content:
-        'Taking that curiosity into hackathons like AISSMS Techathon and product sprints like Stellar Build Station introduced the reality of engineering under constraints. Racing the clock taught me velocity, scope discipline, and trade-offs. Collaborating on SureD—building responsive frontend interfaces, design styling, and connecting wallet and escrow flows—showed me the value of clean UX and cross-functional teamwork.',
+        'Building under tight constraints at AISSMS Techathon and Stellar Build Station taught me rapid scoping, design token discipline, and cross-functional teamwork.',
     },
     {
       id: 'narrative-focus',
       stageLabel: '03 / CONTINUOUS EXPANSION',
-      headline: 'Systems, Frontiers & Craft',
+      headline: 'Frontiers, Systems & Craft',
       content:
-        'Currently pursuing my B.Tech in Information Technology in Pune, I spend my days building and exploring across modern full-stack web applications, Web3 protocols, AI-assisted developer workflows, and cybersecurity foundations. I don’t claim to have everything figured out; rather, I enjoy being in the middle of complex, evolving technologies and steadily sharpening my skills.',
+        'Currently pursuing B.Tech in IT in Pune, continuously experimenting across modern web stacks, Web3 protocols, AI developer tooling, and cybersecurity.',
     },
   ],
 

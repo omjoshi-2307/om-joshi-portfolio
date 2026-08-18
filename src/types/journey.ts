@@ -21,4 +21,7 @@ export interface JourneyStage {
   roleContributions?: string[];
   keyLearning?: string;
   visualType: JourneyVisualType;
+  imageSrc: string;
+  imageAlt: string;
 }
+

@@ -1,6 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { useRouter } from '@/hooks/useRouter';
 import { usePointer } from '@/hooks/usePointer';
 import { cn } from '@/utils/cn';
@@ -20,7 +18,6 @@ export const NavLinks: React.FC<NavLinksProps> = ({
   className,
   onLinkClick,
 }) => {
-  const prefersReduced = useReducedMotion();
   const { navigate } = useRouter();
   const { setPointerState, resetPointerState } = usePointer();
 
@@ -33,7 +30,7 @@ export const NavLinks: React.FC<NavLinksProps> = ({
   };
 
   return (
-    <ul className={cn('flex items-center gap-1 sm:gap-2', className)}>
+    <ul className={cn('flex items-center gap-1 sm:gap-1.5', className)}>
       {items.map((item) => {
         const isActive = activeSection === item.sectionId;
 
@@ -46,42 +43,24 @@ export const NavLinks: React.FC<NavLinksProps> = ({
               onMouseLeave={resetPointerState}
               aria-current={isActive ? 'page' : undefined}
               className={cn(
-                'group relative inline-flex items-center px-3.5 py-1.5 text-sm font-medium transition-colors duration-200 cursor-pointer rounded-sm focus-visible:outline-2 focus-visible:outline-accent',
+                'group relative inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium transition-colors duration-150 cursor-pointer rounded-sm focus-visible:outline-2 focus-visible:outline-accent',
                 isActive
-                  ? 'text-foreground font-semibold'
-                  : 'text-muted-foreground hover:text-foreground'
+                  ? 'text-foreground font-semibold bg-surface/80 border border-border/80 shadow-subtle'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-surface/40'
               )}
             >
-              {/* Subtle active pill background */}
+              {/* Subtle pink active indicator dot */}
               {isActive && (
-                <motion.span
-                  layoutId="activeNavBackground"
-                  transition={
-                    prefersReduced
-                      ? { duration: 0 }
-                      : { type: 'spring', stiffness: 380, damping: 30 }
-                  }
-                  className="absolute inset-0 rounded-md bg-surface/80 border border-border/80 -z-10"
-                />
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" aria-hidden="true" />
               )}
 
-              {/* Text with subtle hover motion */}
-              <span className="relative z-10 flex items-center gap-1.5">
-                <span
-                  className={cn(
-                    'inline-block transition-transform duration-200 group-hover:-translate-y-0.5',
-                    prefersReduced && 'group-hover:translate-y-0'
-                  )}
-                >
-                  {item.label}
-                </span>
+              <span>{item.label}</span>
 
-                {item.badge && (
-                  <span className="font-mono text-[9px] px-1 py-0.2 rounded bg-accent/10 text-accent border border-accent/20">
-                    {item.badge}
-                  </span>
-                )}
-              </span>
+              {item.badge && (
+                <span className="font-mono text-[9px] px-1 py-0.2 rounded bg-accent/10 text-accent border border-accent/20">
+                  {item.badge}
+                </span>
+              )}
             </a>
           </li>
         );

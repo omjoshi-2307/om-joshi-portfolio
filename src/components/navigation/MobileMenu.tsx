@@ -13,6 +13,7 @@ export interface MobileMenuProps {
   onClose: () => void;
   activeSection?: SectionId;
   items?: NavItem[];
+  onOpenCommandPalette?: () => void;
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
@@ -20,6 +21,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   onClose,
   activeSection,
   items = DEFAULT_NAV_ITEMS,
+  onOpenCommandPalette,
 }) => {
   const prefersReduced = useReducedMotion();
   const { navigate } = useRouter();
@@ -173,12 +175,37 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                 );
               })}
             </ul>
+
+            {/* Quick Mobile Command Palette Trigger */}
+            {onOpenCommandPalette && (
+              <div className="pt-6 mt-4 border-t border-border">
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    setTimeout(onOpenCommandPalette, 150);
+                  }}
+                  className="w-full flex items-center justify-between px-4 py-3 rounded-lg border border-border bg-elevated hover:bg-card text-xs font-mono text-foreground font-medium transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-accent shadow-subtle min-h-[44px]"
+                  aria-label="Open command palette search"
+                >
+                  <span className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-accent" aria-hidden="true" />
+                    <span>Search & Commands</span>
+                  </span>
+                  <span className="px-2 py-0.5 rounded bg-surface border border-border text-[10px] text-muted-foreground font-mono">
+                    ⌘K / Ctrl+K
+                  </span>
+                </button>
+              </div>
+            )}
           </nav>
 
           {/* Mobile Footer Meta with Safe Area padding */}
           <div className="px-8 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] border-t border-border bg-surface flex items-center justify-between text-xs font-mono text-muted-foreground shrink-0">
-            <span>B.Tech IT • Pune</span>
-            <span className="text-[10px] text-accent font-semibold tracking-wider uppercase">ELECTRIC PINK / LAVENDER</span>
+            <span>Pune, India // IST (UTC+5:30)</span>
+            <span className="text-[10px] text-accent font-semibold tracking-wider uppercase font-mono">
+              B.Tech IT • 2026
+            </span>
           </div>
         </div>
       )}

@@ -6,7 +6,7 @@
 export const siteIdentity = {
   name: 'Om Joshi',
   role: 'B.Tech Information Technology Student & Builder',
-  email: 'omjoshi2307@gmail.com',
+  email: 'onjoshi2307@gmail.com',
   location: 'Pune, Maharashtra, India',
   availability: 'Open to software engineering and collaborative builder opportunities',
 
@@ -16,8 +16,8 @@ export const siteIdentity = {
     github: 'https://github.com/omjoshi-2307',
     x: 'https://x.com/omjoshi_2307',
     credly: {
-      rawUrl: 'https://www.credly.com/users/om-joshi23207/edit#credly',
-      isPublic: false, // Flagged false because provided URL is an internal /edit path
+      rawUrl: 'https://www.credly.com/users/om-joshi2623',
+      isPublic: true,
     },
   },
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://omjoshi-2307.github.io/om-joshi-portfolio/sitemap.xml

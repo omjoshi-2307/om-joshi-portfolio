@@ -54,7 +54,7 @@ export const AboutTransition: React.FC<AboutTransitionProps> = ({
         </span>
         <div className="flex flex-col gap-0.5">
           <span className="text-[10px] text-accent uppercase tracking-wider font-semibold">
-            06 // {preamble}
+            07 // {preamble}
           </span>
           <span className="text-sm font-sans text-muted-foreground">
             {headline}
