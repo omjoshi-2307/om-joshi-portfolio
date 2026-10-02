@@ -1,11 +1,15 @@
 export type SkillTier = 'core' | 'familiar' | 'exploring';
 
 export type SkillCategoryType =
+  | 'development'
+  | 'security'
+  | 'ai-data'
+  | 'web3'
+  | 'tools'
   | 'languages'
   | 'frontend'
   | 'backend'
   | 'data'
-  | 'web3'
   | 'dev-tools'
   | 'design-product';
 
@@ -21,6 +25,7 @@ export interface SkillCategory {
   number: string;
   label: string;
   description: string;
+  disciplineOverview?: string;
   technologies: TechnologyItem[];
 }
 

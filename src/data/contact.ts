@@ -2,17 +2,17 @@ import { siteIdentity } from '@/config/identity';
 import type { ContactSectionData } from '@/types/contact';
 
 export const CONTACT_DATA: ContactSectionData = {
-  eyebrow: "07 // WHAT'S NEXT?",
-  chapterNumber: '07',
+  eyebrow: '06 // CONTACT',
+  chapterNumber: '06',
   heading: "Let's Build Something.",
   subheading:
-    'Whether you have an interesting idea to discuss, a complex system to engineer, or just want to talk tech—my inbox is always open.',
+    'Whether you are looking for an engineering intern, exploring a builder collaboration, or want to talk software, systems, and security—my inbox is always open.',
   closingStatement:
-    "I'm still learning, still experimenting, and always looking for thoughtful ideas and interesting projects to build.",
+    "I'm still learning, still experimenting, and always looking for thoughtful ideas and interesting engineering challenges to build.",
   email: siteIdentity.email,
   location: siteIdentity.location,
   education: 'B.Tech — Information Technology',
-  availability: 'Open to engineering conversations & collaborative builds',
+  availability: 'Open to software engineering internships & collaborative builds',
   socials: [
     {
       id: 'social-linkedin',

@@ -170,7 +170,7 @@ export const JourneyArtifact: React.FC<JourneyArtifactProps> = ({ type, classNam
           <div className="flex items-center justify-between pb-3 border-b border-border text-[10px] text-muted-foreground">
             <div className="flex items-center gap-2 text-foreground font-semibold">
               <Bot className="w-4 h-4 text-accent-secondary" aria-hidden="true" />
-              <span>WALL-E // AUTONOMOUS KINEMATICS</span>
+              <span>WALL-E // OBSTACLE AVOIDANCE ROBOT</span>
             </div>
             <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-signal-soft text-signal border border-signal/20 text-[9px] font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-signal" aria-hidden="true" />
@@ -216,7 +216,7 @@ export const JourneyArtifact: React.FC<JourneyArtifactProps> = ({ type, classNam
             {/* Real-Time Telemetry Coordinates */}
             <div className="absolute top-4 left-4 text-[9px] font-mono text-muted-subtle flex flex-col gap-0.5">
               <span>ECHO_TIME: 1070 µs</span>
-              <span>ANGLE: +28°</span>
+              <span>THRESHOLD: 20 cm</span>
             </div>
           </div>
 
@@ -231,15 +231,15 @@ export const JourneyArtifact: React.FC<JourneyArtifactProps> = ({ type, classNam
               <span className="font-bold text-accent">PWM 0 (BRAKE)</span>
             </div>
             <div className="p-2 rounded-sm bg-elevated border border-border flex flex-col">
-              <span className="text-muted-subtle">KINEMATICS</span>
-              <span className="font-bold text-accent-secondary">STEER RIGHT</span>
+              <span className="text-muted-subtle">STEERING ACTION</span>
+              <span className="font-bold text-accent-secondary">PIVOT RIGHT</span>
             </div>
           </div>
         </div>
       );
 
     case 'hackathon':
-      // Milestone 04 Hackathon: JalSanchaee Water Telemetry & Rapid Iteration
+      // Milestone 04 Hackathon: JalSanchaee Water Concept & Rapid Iteration
       return (
         <div
           className={cn(
@@ -251,7 +251,7 @@ export const JourneyArtifact: React.FC<JourneyArtifactProps> = ({ type, classNam
           <div className="flex items-center justify-between pb-3 border-b border-border text-[10px] text-muted-foreground">
             <div className="flex items-center gap-2 text-foreground font-semibold">
               <Gauge className="w-4 h-4 text-accent" aria-hidden="true" />
-              <span>JALSANCHAEE // IOT WATER TELEMETRY</span>
+              <span>JALSANCHAEE // WATER CONSERVATION CONCEPT</span>
             </div>
             <span className="px-2 py-0.5 rounded-sm bg-accent-soft text-accent border border-accent/20 text-[9px] font-semibold">
               TECHATHON 3.0 SPRINT
@@ -261,7 +261,7 @@ export const JourneyArtifact: React.FC<JourneyArtifactProps> = ({ type, classNam
           {/* Water Conservation Flow Architecture */}
           <div className="grid grid-cols-2 gap-3 my-1">
             <div className="p-3.5 rounded-md bg-elevated border border-border flex flex-col gap-1.5 shadow-subtle">
-              <span className="text-[9px] font-mono text-muted-foreground uppercase">NODE 01: RESERVOIR</span>
+              <span className="text-[9px] font-mono text-muted-foreground uppercase">RESERVOIR ESTIMATE</span>
               <div className="flex items-baseline justify-between">
                 <span className="text-base font-bold text-foreground font-mono">84.2%</span>
                 <span className="text-[9px] text-accent font-semibold">OPTIMAL LEVEL</span>
@@ -272,10 +272,10 @@ export const JourneyArtifact: React.FC<JourneyArtifactProps> = ({ type, classNam
             </div>
 
             <div className="p-3.5 rounded-md bg-elevated border border-border flex flex-col gap-1.5 shadow-subtle">
-              <span className="text-[9px] font-mono text-muted-foreground uppercase">NODE 02: FLOW METRICS</span>
+              <span className="text-[9px] font-mono text-muted-foreground uppercase">FLOW RATE CONCEPT</span>
               <div className="flex items-baseline justify-between">
                 <span className="text-base font-bold text-foreground font-mono">12.4 L/min</span>
-                <span className="text-[9px] text-accent-secondary font-semibold">CONSUMPTION</span>
+                <span className="text-[9px] text-accent-secondary font-semibold">ESTIMATED</span>
               </div>
               <div className="h-1.5 w-full bg-border rounded-full overflow-hidden">
                 <div className="h-full bg-accent-secondary w-[62%] rounded-full" />
@@ -287,10 +287,10 @@ export const JourneyArtifact: React.FC<JourneyArtifactProps> = ({ type, classNam
           <div className="p-3 rounded-md bg-surface-soft border border-border flex items-center justify-between text-[10px]">
             <div className="flex flex-col">
               <span className="text-muted-subtle uppercase text-[8px]">SPRINT CONSTRAINTS</span>
-              <span className="font-semibold text-foreground">Rapid Scope Control & IoT Modeling</span>
+              <span className="font-semibold text-foreground">Rapid Scope Control & UI Wireframing</span>
             </div>
             <span className="px-2 py-1 rounded-sm bg-elevated border border-border text-[9px] text-accent font-mono font-bold">
-              MULTI-HOUR HACK
+              24-HOUR HACK
             </span>
           </div>
 
@@ -315,7 +315,7 @@ export const JourneyArtifact: React.FC<JourneyArtifactProps> = ({ type, classNam
           <div className="flex items-center justify-between pb-3 border-b border-border text-[10px] text-muted-foreground">
             <div className="flex items-center gap-2 text-foreground font-semibold">
               <Lock className="w-4 h-4 text-accent" aria-hidden="true" />
-              <span>SURED // SMART ESCROW FLOW</span>
+              <span>SURED // RENTAL DEPOSIT ESCROW</span>
             </div>
             <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-accent-soft text-accent border border-accent/20 text-[9px] font-semibold">
               <Sparkles className="w-3 h-3 text-accent" aria-hidden="true" />
@@ -328,7 +328,7 @@ export const JourneyArtifact: React.FC<JourneyArtifactProps> = ({ type, classNam
             {/* Party A (Tenant) */}
             <div className="p-3 rounded-md bg-elevated border border-border flex flex-col gap-1 text-left shadow-subtle">
               <span className="text-[9px] font-mono text-muted-foreground uppercase">PARTY A // TENANT</span>
-              <span className="font-bold text-foreground text-xs">Deposit Locked</span>
+              <span className="font-bold text-foreground text-xs">Deposit Funded</span>
               <span className="text-[9px] text-accent font-mono">Freighter Signed</span>
             </div>
 
@@ -348,20 +348,20 @@ export const JourneyArtifact: React.FC<JourneyArtifactProps> = ({ type, classNam
             {/* Party B (Landlord) */}
             <div className="p-3 rounded-md bg-elevated border border-border flex flex-col gap-1 text-left shadow-subtle">
               <span className="text-[9px] font-mono text-muted-foreground uppercase">PARTY B // LANDLORD</span>
-              <span className="font-bold text-foreground text-xs">Claim Release</span>
+              <span className="font-bold text-foreground text-xs">Release Confirm</span>
               <span className="text-[9px] text-accent-secondary font-mono">Mutual Approval</span>
             </div>
           </div>
 
           {/* Smart Contract State Meta */}
           <div className="p-3 rounded-md bg-surface-soft border border-border flex items-center justify-between text-[10px]">
-            <span className="text-muted-foreground">STELLAR TESTNET PROTOCOL</span>
+            <span className="text-muted-foreground">STELLAR ESCROW PROTOTYPE</span>
             <span className="font-bold text-foreground font-mono">STATUS: ESCROW_ACTIVE</span>
           </div>
 
           {/* Stack Summary */}
           <div className="pt-2 border-t border-border flex items-center justify-between text-[10px] text-muted-subtle">
-            <span>React • TypeScript • Tailwind • Soroban</span>
+            <span>React • TypeScript • Tailwind • Freighter</span>
             <span className="text-accent font-semibold">SURE-D</span>
           </div>
         </div>

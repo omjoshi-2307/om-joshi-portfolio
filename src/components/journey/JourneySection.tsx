@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container } from '@/components/layout/Container';
 import { JourneyHeader } from './JourneyHeader';
-import { JourneyImageMarquee } from './JourneyImageMarquee';
-import { JourneyActiveContent } from './JourneyActiveContent';
-import { JOURNEY_STAGES } from '@/data/journey';
+import { JourneyTimeline } from './JourneyTimeline';
+import { JourneyCompanion } from './JourneyCompanion';
+import { useRouter } from '@/hooks/useRouter';
 import { ArrowDownRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
@@ -12,27 +12,17 @@ export interface JourneySectionProps {
 }
 
 /**
- * Technical Evolution & Journey Section.
- * Open editorial composition featuring a continuous Right-to-Left moving gallery
- * of large rectangular visual panels and selected chapter storytelling below.
+ * 04 — JOURNEY & MILESTONES: HOW I GOT HERE
+ * Technical progression timeline:
+ * HARDWARE → SOFTWARE → WEB → WEB3 → CYBERSECURITY
+ * Accompanied by the interactive character companion.
  */
 export const JourneySection: React.FC<JourneySectionProps> = ({ className }) => {
-  const [selectedStageId, setSelectedStageId] = useState<string>(JOURNEY_STAGES[0].id);
+  const { navigate } = useRouter();
 
-  const selectedStage =
-    JOURNEY_STAGES.find((s) => s.id === selectedStageId) || JOURNEY_STAGES[0];
-  const currentStageIndex = JOURNEY_STAGES.findIndex(
-    (s) => s.id === selectedStageId
-  );
-
-  const handleNextStage = () => {
-    const nextIndex = (currentStageIndex + 1) % JOURNEY_STAGES.length;
-    setSelectedStageId(JOURNEY_STAGES[nextIndex].id);
-  };
-
-  const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollToExploration = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const element = document.getElementById('projects');
+    const element = document.getElementById('exploration') || document.getElementById('currently');
     if (element) {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
@@ -48,46 +38,43 @@ export const JourneySection: React.FC<JourneySectionProps> = ({ className }) => 
   return (
     <section
       id="journey"
-      aria-label="Om Joshi Technical Evolution and Journey"
+      aria-label="04 — Journey: Technical Progression Timeline"
       className={cn(
-        'relative py-24 sm:py-32 md:py-36 bg-background border-t border-border/60 transition-colors',
+        'relative py-24 sm:py-32 md:py-36 bg-surface-soft border-t border-border transition-colors',
         className
       )}
     >
       <Container className="flex flex-col">
-        {/* 1. Section Eyebrow & Headline */}
+        {/* 1. Section Eyebrow, Monumental Headline & Progression Pipeline */}
         <JourneyHeader />
 
-        {/* 2. Large Rectangular Image Marquee Gallery (Open layout) */}
-        <JourneyImageMarquee
-          stages={JOURNEY_STAGES}
-          selectedStageId={selectedStage.id}
-          onSelectStage={setSelectedStageId}
-          className="my-4 sm:my-6 md:my-8"
-        />
+        {/* 2. Main Timeline & Companion Two-Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          {/* Left Column (8 cols): Chronological Progression Timeline 01 -> 06 */}
+          <div className="lg:col-span-8 order-2 lg:order-1">
+            <JourneyTimeline onNavigateCaseStudy={(to) => navigate(to)} />
+          </div>
 
-        {/* 3. Selected Chapter Content Area */}
-        <div className="pt-10 sm:pt-14 md:pt-18">
-          <JourneyActiveContent
-            stage={selectedStage}
-            onNextStage={handleNextStage}
-          />
+          {/* Right Column (4 cols): Sticky Journey Companion Housing the Same Character */}
+          <div className="lg:col-span-4 order-1 lg:order-2 lg:sticky lg:top-24 z-10 mb-8 lg:mb-0">
+            <JourneyCompanion />
+          </div>
         </div>
 
-        {/* 4. Transition Bridge to Projects Section */}
-        <div className="pt-16 mt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-dashed border-border/80 text-xs font-mono">
+        {/* 3. Transition Bridge to 05 — Currently Exploring */}
+        <div className="pt-16 mt-16 sm:mt-20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-border text-xs font-mono">
           <div className="flex items-center gap-2.5 text-muted-foreground">
-            <span className="text-accent font-semibold">03 // NEXT CHAPTER</span>
+            <span className="text-accent font-semibold">05 // NEXT CHAPTER</span>
             <span>•</span>
-            <span>Deep dives into highlighted engineering artifacts & products</span>
+            <span>Active learning radar & emerging computing frontiers</span>
           </div>
 
           <a
-            href="#projects"
-            onClick={handleScrollToProjects}
+            href="#exploration"
+            onClick={handleScrollToExploration}
             className="group inline-flex items-center gap-2 text-foreground hover:text-accent font-semibold transition-colors cursor-pointer select-none"
           >
-            <span>Proceed to selected work</span>
+            <span>Proceed to current exploration</span>
             <ArrowDownRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
           </a>
         </div>

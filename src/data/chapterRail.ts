@@ -54,7 +54,7 @@ export const CHAPTER_IMAGE_SOURCES: ChapterImageSource[] = [
     sourceName: 'WALL-E Repository & Telemetry Design',
     license: 'MIT / Author Original',
     usage: 'contextual',
-    notes: 'Ultrasonic HC-SR04 distance radar sweep, target lock (18.4cm), and differential chassis kinematics.',
+    notes: 'Ultrasonic HC-SR04 distance detection, obstacle threshold (18.4cm), and wheeled chassis steering.',
   },
   {
     id: 'src-hackathon',
@@ -64,7 +64,7 @@ export const CHAPTER_IMAGE_SOURCES: ChapterImageSource[] = [
     sourceName: 'AISSMS Techathon 3.0 Sprint System',
     license: 'Author Original',
     usage: 'illustrative',
-    notes: 'Urban water conservation reservoir depth gauge (84%) and flow telemetry sensor waves.',
+    notes: 'Urban water conservation reservoir depth concept (84%) and flow monitoring wireframe waves.',
   },
   {
     id: 'src-sured',
@@ -74,7 +74,7 @@ export const CHAPTER_IMAGE_SOURCES: ChapterImageSource[] = [
     sourceName: 'SureD Stellar Escrow Architecture',
     license: 'MIT / Author Original',
     usage: 'contextual',
-    notes: 'Soroban smart contract multi-party deposit vault (2,500 XLM) and claim release pipeline.',
+    notes: 'Tenant-landlord rental security deposit escrow workflow with Soroban smart contract vault.',
   },
   {
     id: 'src-exploring',

@@ -11,7 +11,7 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({ className }) => 
   const prefersReduced = useReducedMotion();
 
   return (
-    <div className={cn('flex flex-col gap-6 max-w-4xl mb-16 sm:mb-24', className)}>
+    <div className={cn('flex flex-col gap-6 max-w-4xl mb-12 sm:mb-16', className)}>
       <motion.div
         initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 12 }}
         whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({ className }) => 
         className="flex items-center gap-2.5 technical-eyebrow text-muted-subtle"
       >
         <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
-        <span>03 // SELECTED BUILDS</span>
+        <span>03 // SELECTED WORK</span>
       </motion.div>
 
       <motion.h2
@@ -40,9 +40,9 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({ className }) => 
         whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="editorial-lead text-muted-foreground max-w-2xl"
+        className="editorial-lead text-muted-foreground max-w-2xl text-base sm:text-lg"
       >
-        These are some of the things I've built along the way — from physical autonomous robots and rapid hackathon prototypes to collaborative decentralized products.
+        Shipped prototypes, decentralized escrow protocols, and autonomous robotics builds. Built from first principles to solve concrete problems.
       </motion.p>
     </div>
   );

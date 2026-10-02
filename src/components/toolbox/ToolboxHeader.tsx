@@ -11,7 +11,7 @@ export const ToolboxHeader: React.FC<ToolboxHeaderProps> = ({ className }) => {
   const prefersReduced = useReducedMotion();
 
   return (
-    <div className={cn('flex flex-col gap-6 max-w-4xl mb-16 sm:mb-24', className)}>
+    <div className={cn('flex flex-col gap-6 max-w-4xl mb-12 sm:mb-16', className)}>
       <motion.div
         initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 12 }}
         whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export const ToolboxHeader: React.FC<ToolboxHeaderProps> = ({ className }) => {
         className="flex items-center gap-2.5 technical-eyebrow text-muted-subtle"
       >
         <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
-        <span>04 // TECHNICAL INDEX</span>
+        <span>02 // WHAT I BUILD</span>
       </motion.div>
 
       <motion.h2
@@ -30,9 +30,7 @@ export const ToolboxHeader: React.FC<ToolboxHeaderProps> = ({ className }) => {
         transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         className="section-monumental text-foreground uppercase tracking-tight"
       >
-        <span>THE</span>
-        <br />
-        <span>TOOLBOX.</span>
+        <span>WHAT I BUILD.</span>
       </motion.h2>
 
       <motion.p
@@ -40,35 +38,29 @@ export const ToolboxHeader: React.FC<ToolboxHeaderProps> = ({ className }) => {
         whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="editorial-lead text-muted-foreground max-w-2xl"
+        className="editorial-lead text-muted-foreground max-w-2xl text-base sm:text-lg"
       >
-        The languages, frameworks, and system tools I use to turn ideas into working software — categorized by daily use, familiar ground, and active research frontiers.
+        Disciplines, systems, and technical capabilities organized conceptually rather than as an arbitrary wall of badges. Every skill here is grounded in real code and shipped repositories.
       </motion.p>
 
-      {/* Proficiency Legend */}
+      {/* Conceptual Legend */}
       <motion.div
         initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 12 }}
         whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2 text-xs font-mono text-muted-foreground"
+        className="flex flex-wrap items-center gap-4 sm:gap-6 pt-1 text-xs font-mono text-muted-foreground"
       >
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-accent inline-block" />
           <span className="text-foreground font-semibold">Core:</span>
-          <span>Primary daily build stack</span>
+          <span>Primary production & build stack</span>
         </div>
 
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-accent-secondary inline-block" />
-          <span className="text-foreground font-semibold">Familiar:</span>
-          <span>Project-proven / solid base</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full border border-dashed border-accent-depth inline-block" />
-          <span className="text-foreground font-semibold">Exploring:</span>
-          <span>Active learning frontier</span>
+          <span className="text-foreground font-semibold">Base:</span>
+          <span>Working competence / project proven</span>
         </div>
       </motion.div>
     </div>

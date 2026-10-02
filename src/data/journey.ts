@@ -1,115 +1,182 @@
-import type { JourneyStage } from '@/types/journey';
 import { externalLinks } from '@/config/links';
+import type { JourneyStage } from '@/types/journey';
 
-export const JOURNEY_STAGES: JourneyStage[] = [
+export interface TechnicalMilestone {
+  number: '01' | '02' | '03' | '04' | '05' | '06';
+  phaseBadge: string;
+  title: string;
+  subtitle: string;
+  timeframe: string;
+  shortExplanation: string;
+  narrative: string[];
+  keyHighlights: string[];
+  technologies: string[];
+  projectLink?: {
+    label: string;
+    url: string;
+    isCaseStudy?: boolean;
+    isExternal?: boolean;
+  };
+  closingRemark?: string;
+}
+
+export const TECHNICAL_PROGRESSION: string[] = [
+  'HARDWARE',
+  'SOFTWARE',
+  'WEB',
+  'WEB3',
+  'CYBERSECURITY',
+];
+
+export const JOURNEY_MILESTONES: TechnicalMilestone[] = [
   {
-    id: 'stage-discovery',
     number: '01',
-    stageLabel: 'STAGE 01 // DISCOVERY',
-    timeframe: '11th & 12th Standard',
-    title: 'Early Code & Foundations',
-    tagline: 'Figuring out what software and logic could actually do.',
-    quote: 'I was figuring out what code could actually do.',
+    phaseBadge: 'HARDWARE & FIRST EXPERIMENTS',
+    title: 'Hardware & First Experiments',
+    subtitle: 'Arduino / sensors / robotics',
+    timeframe: 'Early Exploration',
+    shortExplanation: 'Started by building physical systems and learning how software interacts with hardware.',
     narrative: [
-      'Started with core programming logic, low-level concepts in C++ and Assembly, and web fundamentals in HTML.',
+      'Started by exploring physical computing, microcontrollers, and embedded logic. Built automated prototypes and programmed WALL-E—an autonomous obstacle-avoiding rover powered by an Arduino Uno, ultrasonic distance sensor (HC-SR04), and motor drivers.',
+      'Working with physical circuits and microcontrollers taught me early on about execution loops, signal timing, and how code connects to real-world sensors.',
     ],
-    technologies: ['C++', 'Assembly', 'HTML', 'Arduino Basics', 'Programming Logic'],
-    visualType: 'code',
-    imageSrc: '/media/journey/01-discovery.svg',
-    imageAlt: 'Early C++ and Assembly programming logic terminal thumbnail',
+    keyHighlights: [
+      'WALL-E autonomous obstacle-avoiding mobile robot',
+      'Arduino Uno & embedded C++ control routines',
+      'HC-SR04 ultrasonic distance sensing & latency loops',
+      'L298N dual H-bridge motor driver actuation',
+    ],
+    technologies: ['Arduino Uno', 'Embedded C++', 'HC-SR04 Sensor', 'L298N Driver', 'Robotics'],
+    projectLink: {
+      label: 'View WALL-E on GitHub',
+      url: externalLinks.projects.wallE.repository,
+      isExternal: true,
+    },
   },
   {
-    id: 'stage-first-build',
     number: '02',
-    stageLabel: 'STAGE 02 // FIRST BUILD',
-    timeframe: 'School Hardware Project',
-    title: 'Sanitary Pad Disposal Machine',
-    tagline: 'Connecting software logic to physical electronics.',
-    quote: 'Software + electronics solving a practical problem.',
+    phaseBadge: 'SOFTWARE & WEB DEVELOPMENT',
+    title: 'Software & Web Development',
+    subtitle: 'React / TypeScript / frontend development / GitHub',
+    timeframe: 'Foundations & Transition',
+    shortExplanation: 'Moved from physical circuits to software systems, learning modern frontend development, state management, and developer workflows.',
     narrative: [
-      'Combined an Arduino UNO with control logic and electronic actuation to automate a practical disposal prototype.',
+      'Transitioned from microcontroller code toward scalable web applications. Immersed myself in the modern JavaScript ecosystem—learning React, TypeScript, responsive layouts, and version-controlled developer workflows.',
+      'Focused on component design, typed interfaces, state management, and building clean interfaces with high attention to user experience.',
     ],
-    technologies: ['Arduino UNO', 'Embedded C++', 'Relay Actuation', 'Control Logic'],
-    visualType: 'hardware',
-    imageSrc: '/media/journey/02-first-build.svg',
-    imageAlt: 'Arduino UNO hardware control and relay actuation prototype thumbnail',
+    keyHighlights: [
+      'Component architecture with React & TypeScript',
+      'Tailwind CSS and design token systems',
+      'Git branching, pull requests, and GitHub workflows',
+      'State management, API integration, and performance',
+    ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Git & GitHub', 'REST APIs'],
   },
   {
-    id: 'stage-walle',
     number: '03',
-    stageLabel: 'STAGE 03 // BUILDING SOMETHING REAL',
-    timeframe: 'First Year Engineering',
-    title: 'WALL-E — Autonomous Robot',
-    tagline: 'Making a machine perceive and react to its physical surroundings.',
-    quote: 'For the first time, I was making something react to the world.',
-    narrative: [
-      'Engineered an autonomous wheeled robot using Arduino, ultrasonic distance sensing, motor drivers, and real-time obstacle avoidance routines.',
-    ],
-    technologies: ['Arduino', 'Embedded C++', 'Ultrasonic Sensors', 'Motor Drivers', 'Kinematics'],
-    repositoryUrl: externalLinks.projects.wallE.repository,
-    repositoryName: externalLinks.projects.wallE.name,
-    visualType: 'robotics',
-    imageSrc: '/media/journey/03-walle.svg',
-    imageAlt: 'WALL-E autonomous obstacle avoiding robot radar and chassis thumbnail',
-  },
-  {
-    id: 'stage-techathon',
-    number: '04',
-    stageLabel: 'STAGE 04 // THE FIRST HACKATHON',
-    timeframe: 'AISSMS Techathon 3.0',
-    title: 'JalSanchaeeNavachar',
-    tagline: 'Building against the clock under real-world constraints.',
-    quote: 'The first time I experienced what building under pressure actually feels like.',
-    narrative: [
-      'Collaborated on an urban water conservation concept during a rapid hackathon sprint, learning velocity, scope control, and teamwork.',
-    ],
-    technologies: ['Rapid Prototyping', 'IoT Telemetry', 'Scope Control', 'Sprint Teamwork'],
-    repositoryUrl: externalLinks.projects.jalSanchaeeNavachar.repository,
-    repositoryName: externalLinks.projects.jalSanchaeeNavachar.name,
-    keyLearning: 'The sprint was a formative milestone in rapid architecture and scope discipline under tight deadlines.',
-    visualType: 'hackathon',
-    imageSrc: '/media/journey/04-hackathon.svg',
-    imageAlt: 'JalSanchaee water reservoir telemetry gauge and flow sensor thumbnail',
-  },
-  {
-    id: 'stage-sured',
-    number: '05',
-    stageLabel: 'STAGE 05 // PRODUCT DEVELOPMENT',
+    phaseBadge: 'WEB3 & SURED',
+    title: 'Web3 & SureD',
+    subtitle: 'Stellar / escrow / rental deposits',
     timeframe: 'Stellar Build Station Pune',
-    title: 'SureD — Decentralized Rental Escrow',
-    tagline: 'Building collaborative products on public blockchain infrastructure.',
-    quote: 'Now we were building something bigger.',
+    shortExplanation: 'Explored decentralized protocols by building user-facing interfaces and wallet workflows for blockchain escrow.',
     narrative: [
-      'Collaborated on SureD, a decentralized escrow platform solving rental security deposit friction using Soroban smart contracts on Stellar.',
+      'Collaborated on SureD at Stellar Build Station Pune—a blockchain-powered rental security deposit platform designed around the tenant-landlord escrow workflow. The platform uses Soroban smart contracts on the Stellar network to make rental security deposits transparent and verifiable.',
+      'My contribution focused on frontend development, UI/UX implementation, wallet integration, and testing: building the responsive dashboard and integrating the Freighter browser wallet API for signing transactions.',
     ],
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Stellar Blockchain', 'Soroban / Rust', 'Freighter'],
-    roleContributions: [
-      'Frontend Engineering & Responsive UI',
-      'UX Flows & Visual Design System',
-      'Wallet & Contract Client Connectors',
-      'Product Presentation & Branding',
+    keyHighlights: [
+      'Rental deposit escrow flow: Create → Fund → Tenant Confirmation → Landlord Confirmation → Release',
+      'Frontend application built with React, TypeScript & Tailwind CSS',
+      'Freighter browser wallet connection & transaction signing',
+      'Future direction: extending toward shared multi-tenant co-deposits (SureD 2.0)',
     ],
-    repositoryUrl: externalLinks.projects.sured.repository,
-    repositoryName: externalLinks.projects.sured.name,
-    visualType: 'product',
-    imageSrc: '/media/journey/05-sured.svg',
-    imageAlt: 'SureD Soroban smart contract escrow deposit vault thumbnail',
+    technologies: ['React', 'TypeScript', 'Freighter Wallet API', 'Stellar / Soroban', 'Tailwind CSS'],
+    projectLink: {
+      label: 'View SureD Case Study',
+      url: '/work/sured',
+      isCaseStudy: true,
+    },
   },
   {
-    id: 'stage-now',
-    number: '06',
-    stageLabel: 'STAGE 06 // NOW',
-    timeframe: 'Present Focus',
-    title: 'Full-Stack, Web3, AI & Core Systems',
-    tagline: 'Continuous experimentation across emerging computing frontiers.',
-    quote: "And now I'm figuring out what comes next.",
+    number: '04',
+    phaseBadge: 'HACKATHONS & CONSTRAINTS',
+    title: 'Hackathons & Building Under Constraints',
+    subtitle: 'AISSMS Techathon 3.0 / fast prototyping',
+    timeframe: 'AISSMS Techathon 3.0',
+    shortExplanation: 'Learned how to design, build, and pitch functional prototypes rapidly in competitive hackathon environments.',
     narrative: [
-      'Exploring full-stack web applications, decentralized protocols, AI-assisted developer tooling, and cybersecurity fundamentals.',
+      'Participated in AISSMS Techathon 3.0, collaborating with a team to conceptualize, design, and prototype JalSanchaeeNavachar—an urban rainwater harvesting and storage monitoring concept—under tight 24-hour constraints.',
+      'This sprint was a formative milestone in learning how to prioritize core features under pressure, divide team responsibilities, turn concepts into working software quickly, and pitch technical ideas with clarity to judges.',
     ],
-    technologies: ['Full-Stack Web', 'AI Tooling', 'Web3 Protocols', 'Cybersecurity', 'Systems Programming'],
-    visualType: 'exploration',
-    imageSrc: '/media/journey/06-now.svg',
-    imageAlt: 'AI neural network inference and modern systems architecture thumbnail',
+    keyHighlights: [
+      'JalSanchaeeNavachar rainwater monitoring prototype',
+      'Fast-paced prototyping and 24-hour scope discipline',
+      'Team collaboration and sprint task division',
+      'Live technical presentation and project pitching under evaluation',
+    ],
+    technologies: ['Rapid Prototyping', 'Team Collaboration', 'UI Wireframing', 'Scope Control', 'Technical Pitching'],
+    projectLink: externalLinks.projects.jalSanchaeeNavachar.repository
+      ? {
+          label: 'View JalSanchaee on GitHub',
+          url: externalLinks.projects.jalSanchaeeNavachar.repository,
+          isExternal: true,
+        }
+      : undefined,
+  },
+  {
+    number: '05',
+    phaseBadge: 'CYBERSECURITY',
+    title: 'Cybersecurity',
+    subtitle: 'Application security & systems defense',
+    timeframe: 'Active Study & Core Focus',
+    shortExplanation: 'Deepening knowledge of security fundamentals, system vulnerabilities, and building software with security in mind.',
+    narrative: [
+      'Actively studying application security, vulnerability mechanisms, and defensive principles. Good engineering requires understanding how systems fail, how attacks occur, and how data must be protected.',
+      'Deepening practical knowledge in web security (OWASP Top 10), authentication and authorization, Linux system administration, network fundamentals (TCP/IP), and cryptography basics.',
+    ],
+    keyHighlights: [
+      'Web application security & OWASP Top 10 vulnerabilities',
+      'Authentication flaws, token security, and CORS/CSRF protections',
+      'Linux system fundamentals and command-line environments',
+      'Network protocols, traffic inspection, and socket fundamentals',
+      'Foundational cryptography: public-key systems, hashing, and signatures',
+    ],
+    technologies: ['Application Security', 'OWASP Top 10', 'Linux CLI', 'Network Protocols (TCP/IP)', 'Web Security', 'Cryptography Basics'],
+  },
+  {
+    number: '06',
+    phaseBadge: 'WHAT\'S NEXT',
+    title: 'What\'s Next',
+    subtitle: 'Future direction & emerging horizons',
+    timeframe: 'Present & Beyond',
+    shortExplanation: 'Exploring the intersection of local intelligent systems, performance-oriented programming, and real-world engineering.',
+    narrative: [
+      'Continuing to broaden my engineering foundations through hands-on experiments: exploring local LLM inference tooling (Ollama), agentic workflows, data structures and systems-level programming, and computer vision experimentation.',
+      'The objective remains grounded: stay curious, master engineering foundations, and build practical tools that solve real problems.',
+    ],
+    keyHighlights: [
+      'Local LLMs and AI-assisted developer tooling',
+      'Systems programming, data structures & algorithms',
+      'Computer vision exploration with OpenCV & YOLO',
+      'Focusing on durability, privacy, and performance in software',
+    ],
+    closingRemark: 'Still learning. Still building.',
+    technologies: ['Local LLMs', 'Systems / DSA', 'Computer Vision (OpenCV)', 'Developer Tooling', 'TypeScript', 'Python'],
   },
 ];
 
+// Preserved for backwards compatibility with any legacy imports
+export const JOURNEY_STAGES: JourneyStage[] = JOURNEY_MILESTONES.map((m) => ({
+  id: `stage-${m.number}`,
+  number: m.number,
+  stageLabel: `MILESTONE ${m.number} // ${m.phaseBadge}`,
+  timeframe: m.timeframe,
+  title: m.title,
+  tagline: m.shortExplanation,
+  narrative: m.narrative,
+  technologies: m.technologies,
+  visualType: m.number === '01' ? 'hardware' : m.number === '03' ? 'product' : m.number === '04' ? 'hackathon' : 'exploration',
+  imageSrc: `/media/journey/0${m.number}-stage.svg`,
+  imageAlt: `${m.title} milestone thumbnail`,
+  repositoryUrl: m.projectLink?.url,
+  repositoryName: m.projectLink?.label,
+}));

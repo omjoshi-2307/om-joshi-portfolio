@@ -5,9 +5,9 @@ import { HeroHeading } from './HeroHeading';
 import { HeroCopy } from './HeroCopy';
 import { HeroActions } from './HeroActions';
 import { HeroBackground } from './HeroBackground';
-import { ScrollCue } from './ScrollCue';
-import { InteractiveCharacter } from '@/components/character/InteractiveCharacter';
+import { Avatar3D } from '@/components/character3d';
 import type { CharacterTargetOverride } from '@/components/character/types';
+import { ScrollCue } from './ScrollCue';
 import { cn } from '@/utils/cn';
 
 export interface HeroProps {
@@ -37,7 +37,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
       <HeroBackground />
 
       <Container className="flex-1 flex flex-col justify-center py-6 sm:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           {/* Left / Editorial Identity Column */}
           <div className="lg:col-span-7 flex flex-col gap-6 sm:gap-8 z-10">
             <HeroMeta />
@@ -49,14 +49,14 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
             />
           </div>
 
-          {/* Right / Interactive Character Column */}
+          {/* Right / Production 3D Avatar (with automatic seamless 2D fallback) */}
           <div className="lg:col-span-5 flex items-center justify-center lg:justify-end z-10">
-            <InteractiveCharacter
+            <Avatar3D
               size="hero"
               targetOverride={characterOverride}
-              showPedestal
-              showStatusBadge
-              interactive
+              showPedestal={true}
+              showStatusBadge={true}
+              interactive={true}
             />
           </div>
         </div>
@@ -64,7 +64,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
 
       {/* Bottom Minimal Scroll Indicator */}
       <Container className="flex justify-center sm:justify-start pt-4 z-10">
-        <ScrollCue targetSectionId="intro" />
+        <ScrollCue targetSectionId="about" />
       </Container>
     </section>
   );

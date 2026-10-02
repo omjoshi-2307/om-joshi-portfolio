@@ -29,6 +29,8 @@ export interface InteractiveCharacterProps {
   showPedestal?: boolean;
   showStatusBadge?: boolean;
   showDebugCoordinates?: boolean;
+  customCoordinateText?: string;
+  customBadgeText?: string;
   interactive?: boolean;
   onCharacterClick?: () => void;
 }

@@ -5,27 +5,27 @@ export const PROJECTS_DATA: ProjectItem[] = [
   {
     id: 'sured',
     title: 'SureD',
-    subtitle: 'Secure Rental Deposits on Stellar Blockchain',
+    subtitle: 'Blockchain-Powered Rental Security Deposit Platform',
     context: 'Stellar Build Station Pune',
     slug: '/work/sured',
     featured: true,
     category: 'product',
     summary:
-      'Decentralized rental deposit escrow eliminating landlord-tenant disputes through Soroban smart contracts on the Stellar network.',
+      'A rental security deposit platform designed around the tenant-landlord escrow workflow to make deposit holding transparent and dispute-free.',
     problem:
-      'Rental deposit disputes, deductions, and delays create significant financial friction and lack an impartial trust mechanism.',
+      'Tenants face arbitrary deductions and delayed deposit returns when leases end, while landlords lack an impartial system that holds agreed funds securely without custodial friction.',
     solution:
-      'Smart contract escrow on Stellar holding rental deposits until mutual tenancy verification triggers cryptographic release.',
-    mainTechnologies: ['React', 'TypeScript', 'Tailwind CSS', 'Stellar Blockchain', 'Soroban / Rust', 'Freighter'],
-    supportingTechnologies: ['Node.js', 'Express.js', 'MongoDB', 'Vite'],
+      'A structured escrow workflow (Create → Fund → Student/Tenant Confirmation → Landlord Confirmation → Release) utilizing Soroban smart contract escrow on the Stellar network.',
+    mainTechnologies: ['React', 'TypeScript', 'Tailwind CSS', 'Freighter Wallet API'],
+    supportingTechnologies: ['Node.js', 'Express.js', 'Vite', 'Stellar / Soroban'],
     myContributions: [
-      'Engineered responsive React & TypeScript web application',
-      'Designed end-to-end UI/UX user flows & design tokens',
-      'Integrated Freighter wallet connector with Soroban contracts',
-      'Created product presentation & branding architecture',
+      'Frontend development and component architecture in React & TypeScript',
+      'UI/UX design and workflow implementation for the tenant & landlord flows',
+      'Integration of Freighter wallet connection and transaction signing prompts',
+      'End-to-end user flow testing and product presentation for the showcase',
     ],
     teamContext:
-      'Collaborative team product build; smart-contract logic and backend APIs were co-developed with team members.',
+      'Built collaboratively as a hackathon prototype at Stellar Build Station Pune. Khushal engineered the Soroban smart contract backend, while I focused on the frontend, user experience, and wallet integration.',
     repositoryUrl: externalLinks.projects.sured.repository,
     repositoryName: externalLinks.projects.sured.name,
     visualType: 'sured',
@@ -39,18 +39,20 @@ export const PROJECTS_DATA: ProjectItem[] = [
     featured: false,
     category: 'hardware',
     summary:
-      'Autonomous mobile robot using ultrasonic distance sensing and motor driver logic to navigate physical obstacles in real time.',
+      'Arduino-based wheeled robot using an ultrasonic distance sensor to detect obstacles and steer away in real time.',
     problem:
-      'Connecting software conditional logic to physical motor actuation and real-time obstacle sensing in a physical environment.',
+      'Translating distance thresholds into reliable motor movement without getting stuck against barriers.',
     solution:
-      'A wheeled robotic prototype running an obstacle detection loop on an Arduino microcontroller to steer away from detected barriers.',
-    mainTechnologies: ['Arduino', 'Embedded C++', 'Ultrasonic Sensors'],
-    supportingTechnologies: ['L298N Motor Driver', 'Chassis Prototyping', 'PWM Control'],
+      'An Arduino Uno running an obstacle-detection loop with an HC-SR04 ultrasonic sensor and L298N motor driver to steer the chassis away from detected objects.',
+    mainTechnologies: ['Arduino Uno', 'C++', 'HC-SR04 Ultrasonic Sensor'],
+    supportingTechnologies: ['L298N Motor Driver', 'DC Gear Motors', 'Chassis Prototyping'],
     myContributions: [
-      'Assembled and wired microcontroller, motor driver, and sensors',
-      'Programmed obstacle detection loop and directional steering routines in C++',
-      'Calibrated sensor thresholds and physical chassis balance',
+      'Assembled and wired microcontroller, motor driver, and ultrasonic sensor',
+      'Programmed obstacle detection loop and directional steering code in C++',
+      'Calibrated distance thresholds and physical chassis balance',
     ],
+    teamContext:
+      'First-year engineering team project exploring microcontrollers, circuit wiring, and physical computing.',
     repositoryUrl: externalLinks.projects.wallE.repository,
     repositoryName: externalLinks.projects.wallE.name,
     visualType: 'walle',
@@ -58,24 +60,26 @@ export const PROJECTS_DATA: ProjectItem[] = [
   {
     id: 'jalsanchaee',
     title: 'JalSanchaeeNavachar',
-    subtitle: 'Urban Water Management & Conservation',
+    subtitle: 'Urban Water Management & Conservation Concept',
     context: 'AISSMS Techathon 3.0',
     slug: '/work/jalsanchaeenavachar',
     featured: false,
     category: 'hackathon',
     summary:
-      'Rapid hackathon IoT water telemetry and conservation concept developed under strict time and scope constraints.',
+      'Hackathon concept and UI prototype for monitoring residential water levels, developed under 24-hour sprint constraints.',
     problem:
-      'Developing an integrated monitoring concept for urban water conservation within the compressed time window of a competitive hackathon.',
+      'Urban housing societies frequently lose water to undetected tank overflows and unmonitored consumption patterns.',
     solution:
-      'A collaborative prototype combining sensor concepts with client monitoring interfaces, serving as a formative lesson in scope control and rapid teamwork.',
-    mainTechnologies: ['Rapid Prototyping', 'IoT Sensor Concepts', 'Sprint Collaboration'],
-    supportingTechnologies: ['UI Wireframing', 'Telemetry Architecture'],
+      'A proposed monitoring concept pairing tank level sensors with a web dashboard; served as a key exercise in rapid ideation and hackathon scope control.',
+    mainTechnologies: ['UI Prototyping', 'System Ideation', 'Hackathon Sprint'],
+    supportingTechnologies: ['Data Flow Mapping', 'Problem Research'],
     myContributions: [
-      'Analyzed problem statement and scoped prototype architecture',
-      'Created interface wireframes and telemetry data flow diagrams',
-      'Iterated rapidly under competitive hackathon sprint deadlines',
+      'Researched the problem statement and helped define the initial prototype scope',
+      'Created wireframe concepts for the water monitoring dashboard',
+      'Collaborated on system data flow diagrams and presentation materials',
     ],
+    teamContext:
+      'Team hackathon project at AISSMS Techathon 3.0. The full hardware-software integration was not completed within the competition window, offering valuable lessons in scope discipline.',
     repositoryUrl: externalLinks.projects.jalSanchaeeNavachar.repository,
     repositoryName: externalLinks.projects.jalSanchaeeNavachar.name,
     visualType: 'jalsanchaee',

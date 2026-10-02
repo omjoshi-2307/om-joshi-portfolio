@@ -1,67 +1,67 @@
 /* ==========================================================================
    DESIGN TOKENS & COLOR SYSTEM — OM JOSHI PORTFOLIO
-   Creative Direction:
-   - Dark: OBSIDIAN CREATIVE STUDIO (#09090B)
-   - Light: WARM IVORY EDITORIAL STUDIO (#F4F1EA)
-   - Accents: ELECTRIC PINK • LAVENDER • DEEP PURPLE • SIGNAL YELLOW
+   Creative Direction: Premium Dark Editorial Developer Aesthetic
+   - Palette: #08090C background, #F4F4F5 primary, #A1A1AA secondary, #71717A muted
+   - Subtle white opacity borders
+   - Accent: Electric Violet / Indigo (#6366F1 / #4F46E5) used with restraint
    ========================================================================== */
 
 @layer base {
   :root {
     /* ---------------------------------------------------------
-       LIGHT THEME: Warm Ivory Editorial Studio (#F4F1EA)
+       LIGHT THEME: Crisp Technical Editorial (#FAFAFA)
        --------------------------------------------------------- */
-    --background: #F4F1EA;
-    --foreground: #15131A;
+    --background: #FAFAFA;
+    --foreground: #090A0F;
     
-    --card: #FAF8F3;
-    --card-foreground: #15131A;
+    --card: #FFFFFF;
+    --card-foreground: #090A0F;
     
-    --surface: #FAF8F3;
-    --surface-foreground: #15131A;
-    --surface-soft: #F8F5EF;
+    --surface: #FFFFFF;
+    --surface-foreground: #090A0F;
+    --surface-soft: #F4F4F5;
     --surface-elevated: #FFFFFF;
-    --surface-lavender: #F0ECFA;
-    --surface-warm: #ECE8DF;
-    --surface-footer: #E5E0D6;
+    --surface-lavender: #F5F3FF;
+    --surface-warm: #F4F4F6;
+    --surface-footer: #ECECF0;
     
     --elevated: #FFFFFF;
-    --elevated-foreground: #15131A;
+    --elevated-foreground: #090A0F;
     
-    --popover: #FAF8F3;
-    --popover-foreground: #15131A;
+    --popover: #FFFFFF;
+    --popover-foreground: #090A0F;
     
-    /* Primary Accent: Electric Pink */
+    /* Primary Accent: Pink / Magenta */
     --accent: #E83E8C;
     --accent-hover: #D92F7C;
     --accent-foreground: #FFFFFF;
     --accent-soft: rgba(232, 62, 140, 0.08);
     
-    /* Secondary Accent: Lavender */
-    --accent-secondary: #9A86F7;
-    --accent-secondary-hover: #846DF5;
-    --accent-secondary-foreground: #15131A;
-    --accent-secondary-soft: rgba(154, 134, 247, 0.08);
+    /* Secondary Accent: Soft Lavender */
+    --accent-secondary: #7B61FF;
+    --accent-secondary-hover: #674DE6;
+    --accent-secondary-foreground: #FFFFFF;
+    --accent-secondary-soft: rgba(123, 97, 255, 0.08);
     
-    /* Deep Accent: Deep Purple */
-    --accent-depth: #6046BE;
-    --accent-depth-hover: #5039A3;
-    --accent-depth-soft: rgba(96, 70, 190, 0.08);
+    /* Deep Accent */
+    --accent-depth: #B8256E;
+    --accent-depth-hover: #9E1B5B;
+    --accent-depth-soft: rgba(184, 37, 110, 0.08);
 
-    /* Signal Accent: Signal Yellow (Rare Indicator) */
-    --signal: #EABF24;
-    --signal-hover: #D6AB1A;
-    --signal-soft: rgba(234, 191, 36, 0.10);
+    /* Signal Accent: Crisp Terminal Green */
+    --signal: #059669;
+    --signal-hover: #047857;
+    --signal-soft: rgba(5, 150, 105, 0.10);
     
-    --muted: #ECE8DF;
-    --muted-foreground: #514D58;
-    --muted-subtle: #635E6B;
+    --muted: #F4F4F5;
+    --muted-foreground: #52525B;
+    --muted-subtle: #71717A;
     
-    --border: #D7D1C6;
-    --border-strong: #C7BFB2;
-    --border-lavender: #D8D0EA;
-    --border-subtle: #E5E0D6;
-    --input: #D7D1C6;
+    --border: rgba(0, 0, 0, 0.08);
+    --border-strong: rgba(0, 0, 0, 0.16);
+    --border-lavender: rgba(232, 62, 140, 0.15);
+    --border-subtle: rgba(0, 0, 0, 0.04);
+    --input: rgba(0, 0, 0, 0.08);
     --ring: #E83E8C;
 
     /* Controlled Radius */
@@ -71,74 +71,74 @@
     --radius-xl: 14px;
     --radius-full: 9999px;
 
-    /* Restrained Warm Shadows */
-    --shadow-subtle: 0 1px 2px 0 rgba(40, 30, 20, 0.04);
-    --shadow-card: 0 4px 16px -2px rgba(40, 30, 20, 0.04);
-    --shadow-warm: 0 4px 20px -2px rgba(40, 30, 20, 0.06);
-    --shadow-elevated: 0 8px 24px -4px rgba(40, 30, 20, 0.08);
+    /* Restrained Shadows */
+    --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 4px 16px -2px rgba(0, 0, 0, 0.06);
+    --shadow-warm: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+    --shadow-elevated: 0 8px 24px -4px rgba(0, 0, 0, 0.10);
   }
 
   .dark {
     /* ---------------------------------------------------------
-       DARK THEME: Obsidian Creative Studio (#09090B) — DEFAULT
+       DARK THEME: Premium Dark Editorial (#08090C) — DEFAULT
        --------------------------------------------------------- */
-    --background: #09090B;
-    --foreground: #F7F7F5;
+    --background: #08090C;
+    --foreground: #F4F4F5;
     
-    --card: #111114;
-    --card-foreground: #F7F7F5;
+    --card: #0E0F14;
+    --card-foreground: #F4F4F5;
     
-    --surface: #111114;
-    --surface-foreground: #F7F7F5;
-    --surface-soft: #141418;
-    --surface-elevated: #18181D;
-    --surface-lavender: #181622;
-    --surface-warm: #131317;
-    --surface-footer: #0D0D0F;
+    --surface: #0E0F14;
+    --surface-foreground: #F4F4F5;
+    --surface-soft: #0B0C10;
+    --surface-elevated: #15161D;
+    --surface-lavender: #121017;
+    --surface-warm: #0C0D12;
+    --surface-footer: #050608;
     
-    --elevated: #18181D;
-    --elevated-foreground: #F7F7F5;
+    --elevated: #15161D;
+    --elevated-foreground: #F4F4F5;
     
-    --popover: #111114;
-    --popover-foreground: #F7F7F5;
+    --popover: #0E0F14;
+    --popover-foreground: #F4F4F5;
     
-    /* Primary Accent: Electric Pink */
+    /* Primary Accent: Signature Pink / Magenta */
     --accent: #FF4FA3;
     --accent-hover: #FF72B5;
-    --accent-foreground: #09090B;
-    --accent-soft: rgba(255, 79, 163, 0.10);
+    --accent-foreground: #090A0F;
+    --accent-soft: rgba(255, 79, 163, 0.14);
     
-    /* Secondary Accent: Lavender */
+    /* Secondary Accent: Soft Lavender / Violet */
     --accent-secondary: #B9A7FF;
-    --accent-secondary-hover: #CBBFFF;
-    --accent-secondary-foreground: #09090B;
-    --accent-secondary-soft: rgba(185, 167, 255, 0.10);
+    --accent-secondary-hover: #D4C9FF;
+    --accent-secondary-foreground: #090A0F;
+    --accent-secondary-soft: rgba(185, 167, 255, 0.12);
     
-    /* Deep Accent: Deep Purple */
-    --accent-depth: #7657D9;
-    --accent-depth-hover: #8C6FF0;
-    --accent-depth-soft: rgba(118, 87, 217, 0.12);
+    /* Deep Accent: Deep Magenta */
+    --accent-depth: #E83E8C;
+    --accent-depth-hover: #FF4FA3;
+    --accent-depth-soft: rgba(232, 62, 140, 0.16);
 
-    /* Signal Accent: Signal Yellow (Rare Indicator) */
-    --signal: #FFD84D;
-    --signal-hover: #FFE070;
-    --signal-soft: rgba(255, 216, 77, 0.12);
+    /* Signal Accent: Terminal Green / Live indicator */
+    --signal: #10B981;
+    --signal-hover: #34D399;
+    --signal-soft: rgba(16, 185, 129, 0.14);
     
-    --muted: #18181D;
-    --muted-foreground: #B5B3BE;
-    --muted-subtle: #7E7A88;
+    --muted: #121319;
+    --muted-foreground: #A1A1AA;
+    --muted-subtle: #71717A;
     
-    --border: #292731;
-    --border-strong: #3A3545;
-    --border-lavender: #38324A;
-    --border-subtle: #1B1B20;
-    --input: #292731;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.16);
+    --border-lavender: rgba(255, 79, 163, 0.20);
+    --border-subtle: rgba(255, 255, 255, 0.04);
+    --input: rgba(255, 255, 255, 0.09);
     --ring: #FF4FA3;
 
     /* Restrained Dark Shadows */
-    --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
-    --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
-    --shadow-warm: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
-    --shadow-elevated: 0 12px 32px -4px rgba(0, 0, 0, 0.6);
+    --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+    --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    --shadow-warm: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
+    --shadow-elevated: 0 12px 32px -4px rgba(0, 0, 0, 0.7);
   }
 }

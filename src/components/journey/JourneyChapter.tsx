@@ -65,8 +65,8 @@ export const JourneyChapter: React.FC<JourneyChapterProps> = ({ stage, isLast = 
               />
             </div>
             <div className="text-[11px] font-mono text-muted-foreground">
-              <span className="text-foreground font-semibold block">Milestone 03: Physical Loop</span>
-              <span>Perception, sensing & autonomous motor kinematics</span>
+              <span className="text-foreground font-semibold block">Milestone 03: Hardware Loop</span>
+              <span>Ultrasonic sensing & obstacle steering loop</span>
             </div>
           </div>
         )}

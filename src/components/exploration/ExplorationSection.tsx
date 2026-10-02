@@ -13,9 +13,9 @@ export interface ExplorationSectionProps {
 }
 
 export const ExplorationSection: React.FC<ExplorationSectionProps> = ({ className }) => {
-  const handleScrollToAbout = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const element = document.getElementById('about');
+    const element = document.getElementById('contact');
     if (element) {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
@@ -31,17 +31,17 @@ export const ExplorationSection: React.FC<ExplorationSectionProps> = ({ classNam
   return (
     <section
       id="exploration"
-      aria-label="Om Joshi Current Research and Technical Exploration"
+      aria-label="05 — Currently: Active Research and Technical Exploration"
       className={cn(
-        'relative py-24 sm:py-32 md:py-36 bg-surface-lavender border-t border-border transition-colors',
+        'relative py-24 sm:py-32 md:py-36 bg-background border-t border-border transition-colors',
         className
       )}
     >
-      <Container className="flex flex-col gap-16 sm:gap-20">
+      <Container className="flex flex-col gap-14 sm:gap-18">
         {/* Section Header */}
         <ExplorationHeader />
 
-        {/* 1. Branching Open-Ended Motif */}
+        {/* 1. Branching Open-Ended Visual Constellation Motif */}
         <ExplorationVisualMotif />
 
         {/* 2. Exploration Cards Grid */}
@@ -55,23 +55,23 @@ export const ExplorationSection: React.FC<ExplorationSectionProps> = ({ classNam
           ))}
         </div>
 
-        {/* 3. Forward-Looking Character Cameo */}
+        {/* 3. Trajectory Status Readout */}
         <ExplorationCameo />
 
-        {/* 4. Transition Bridge to About Section */}
-        <div className="pt-12 mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-dashed border-border text-xs font-mono">
+        {/* 4. Transition Bridge to 06 — Contact */}
+        <div className="pt-12 mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-border text-xs font-mono">
           <div className="flex items-center gap-2.5 text-muted-foreground">
             <span className="text-accent font-semibold">06 // NEXT CHAPTER</span>
             <span>•</span>
-            <span>The personal background, engineering principles & mindset</span>
+            <span>Reach out, discuss engineering projects, or explore opportunities</span>
           </div>
 
           <a
-            href="#about"
-            onClick={handleScrollToAbout}
+            href="#contact"
+            onClick={handleScrollToContact}
             className="group inline-flex items-center gap-2 text-foreground hover:text-accent font-semibold transition-colors cursor-pointer select-none"
           >
-            <span>Proceed to background & story</span>
+            <span>Proceed to contact</span>
             <ArrowDownRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
           </a>
         </div>

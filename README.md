@@ -11,7 +11,7 @@
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-13-FF4FA3?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 [![Oxlint](https://img.shields.io/badge/Linter-Oxlint-EC4899?style=flat-square)](https://oxc.rs/)
 
-[**Explore Live Portfolio →**](https://omjoshi-2307.github.io/om-joshi-portfolio) • [**View GitHub Repository →**](https://github.com/omjoshi-2307/om-joshi-portfolio)
+[**Explore Live Portfolio →**](https://om-joshi-portfolio.vercel.app) • [**View GitHub Repository →**](https://github.com/omjoshi-2307/om-joshi-portfolio)
 
 </div>
 
@@ -29,7 +29,7 @@ Designed with an editorial studio aesthetic, the site functions as both an inter
 
 | Environment | URL | Status |
 | :--- | :--- | :--- |
-| **Production Site** | [omjoshi-2307.github.io/om-joshi-portfolio](https://omjoshi-2307.github.io/om-joshi-portfolio) | Active |
+| **Production Site** | [om-joshi-portfolio.vercel.app](https://om-joshi-portfolio.vercel.app) | Active |
 | **Source Repository** | [github.com/omjoshi-2307/om-joshi-portfolio](https://github.com/omjoshi-2307/om-joshi-portfolio) | Public |
 
 ---
@@ -189,7 +189,7 @@ All scripts are defined in [`package.json`](file:///c:/Users/om/Documents/Github
 
 ## Connect
 
-- **Portfolio**: [omjoshi-2307.github.io/om-joshi-portfolio](https://omjoshi-2307.github.io/om-joshi-portfolio)
+- **Portfolio**: [om-joshi-portfolio.vercel.app](https://om-joshi-portfolio.vercel.app)
 - **GitHub**: [@omjoshi-2307](https://github.com/omjoshi-2307)
 - **LinkedIn**: [Om Joshi](https://www.linkedin.com/in/0m-joshi2307/)
 - **X (Twitter)**: [@omjoshi_2307](https://x.com/omjoshi_2307)

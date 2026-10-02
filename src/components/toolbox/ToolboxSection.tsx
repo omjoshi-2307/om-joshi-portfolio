@@ -2,7 +2,6 @@ import React from 'react';
 import { Container } from '@/components/layout/Container';
 import { ToolboxHeader } from './ToolboxHeader';
 import { TechnicalIndexGroup } from './TechnicalIndexGroup';
-import { ExplorationMatrix } from './ExplorationMatrix';
 import { SKILL_CATEGORIES } from '@/data/skills';
 import { ArrowDownRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
@@ -12,9 +11,9 @@ export interface ToolboxSectionProps {
 }
 
 export const ToolboxSection: React.FC<ToolboxSectionProps> = ({ className }) => {
-  const handleScrollToExploration = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const element = document.getElementById('exploration');
+    const element = document.getElementById('projects');
     if (element) {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
@@ -29,10 +28,10 @@ export const ToolboxSection: React.FC<ToolboxSectionProps> = ({ className }) => 
 
   return (
     <section
-      id="toolbox"
-      aria-label="Om Joshi Technical Toolbox and Skills Inventory"
+      id="skills"
+      aria-label="02 — What I Build: Engineering Domains & Technical Craft"
       className={cn(
-        'relative py-24 sm:py-32 md:py-36 bg-background border-t border-border/60 transition-colors',
+        'relative py-24 sm:py-32 md:py-36 bg-surface-soft border-t border-border transition-colors',
         className
       )}
     >
@@ -40,7 +39,7 @@ export const ToolboxSection: React.FC<ToolboxSectionProps> = ({ className }) => 
         {/* Section Header */}
         <ToolboxHeader />
 
-        {/* 1. Structured Technical Index (Editorial Layout) */}
+        {/* 1. Structured Technical Index (5 Conceptual Domains: Dev, Security, AI/Data, Web3, Tools) */}
         <div className="flex flex-col">
           {SKILL_CATEGORIES.map((category, index) => (
             <TechnicalIndexGroup
@@ -51,25 +50,20 @@ export const ToolboxSection: React.FC<ToolboxSectionProps> = ({ className }) => 
           ))}
         </div>
 
-        {/* 2. Frontier Exploration Matrix Preview */}
-        <div className="pt-6">
-          <ExplorationMatrix />
-        </div>
-
-        {/* 3. Transition Bridge to Currently Exploring Section */}
-        <div className="pt-12 mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-dashed border-border/80 text-xs font-mono">
+        {/* 2. Transition Bridge to 03 — Selected Work */}
+        <div className="pt-12 mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-border text-xs font-mono">
           <div className="flex items-center gap-2.5 text-muted-foreground">
-            <span className="text-accent font-semibold">05 // NEXT CHAPTER</span>
+            <span className="text-accent font-semibold">03 // NEXT CHAPTER</span>
             <span>•</span>
-            <span>Active learning & experimentation across emerging frontiers</span>
+            <span>Shipped prototypes, flagship Web3 escrow, and robotics builds</span>
           </div>
 
           <a
-            href="#exploration"
-            onClick={handleScrollToExploration}
+            href="#projects"
+            onClick={handleScrollToProjects}
             className="group inline-flex items-center gap-2 text-foreground hover:text-accent font-semibold transition-colors cursor-pointer select-none"
           >
-            <span>Proceed to current exploration</span>
+            <span>Proceed to selected work</span>
             <ArrowDownRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
           </a>
         </div>

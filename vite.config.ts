@@ -31,6 +31,9 @@ export default defineConfig({
             if (id.includes('lucide-react')) {
               return 'vendor-icons';
             }
+            if (id.includes('three')) {
+              return 'vendor-three';
+            }
           }
         },
       },

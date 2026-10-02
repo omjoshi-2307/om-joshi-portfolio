@@ -1,19 +1,19 @@
 import type { AboutSectionData } from '@/types/about';
 
 export const ABOUT_DATA: AboutSectionData = {
-  eyebrow: '05 // PERSONAL IDENTITY',
-  chapterNumber: '05',
-  title: 'Beyond the Stack',
-  subtitle: 'The mindset, background, and habits behind the work.',
+  eyebrow: '01 // INTRODUCTION',
+  chapterNumber: '01',
+  title: 'Who is Om?',
+  subtitle: 'B.Tech IT student & builder based in Pune.',
   
   statement: {
-    lead: 'I tend to understand things much better after trying to',
-    highlight: 'build them myself.',
-    sub: 'From physical microcontrollers to decentralized smart contracts, building is the fastest path to genuine understanding.',
+    lead: 'I am an IT student who learns by',
+    highlight: 'building real things.',
+    sub: 'From wiring microcontrollers to full-stack web applications and decentralized escrow flows, building is the fastest way to understand how systems work.',
   },
 
   reflectionQuote: {
-    quote: 'The tools and frameworks will keep changing, but the core habit stays the same: learn the concepts, build a working prototype, test the limits, and understand why it works.',
+    quote: 'The tools and frameworks will keep changing, but the core habit stays constant: understand the foundational concepts, build a working prototype, test the edges, and understand why it works.',
     context: 'Core engineering philosophy',
   },
 
@@ -23,21 +23,21 @@ export const ABOUT_DATA: AboutSectionData = {
       stageLabel: '01 / ROOTS & HARDWARE',
       headline: 'From Hardware to Software Logic',
       content:
-        'Started by wiring microcontrollers and writing embedded logic—moving software from the screen into physical actuators, sensors, and robotics.',
+        'Started by wiring microcontrollers and writing embedded logic in C++—moving code off the screen into physical actuators, distance sensors, and autonomous robotics.',
     },
     {
       id: 'narrative-pressure',
       stageLabel: '02 / SPRINTS & COLLABORATION',
-      headline: 'Hackathons & Product Velocity',
+      headline: 'Hackathons & Velocity',
       content:
-        'Building under tight constraints at AISSMS Techathon and Stellar Build Station taught me rapid scoping, design token discipline, and cross-functional teamwork.',
+        'Building under tight constraints at AISSMS Techathon 3.0 and Stellar Build Station taught me rapid scoping, component discipline, and cross-functional team coordination.',
     },
     {
       id: 'narrative-focus',
       stageLabel: '03 / CONTINUOUS EXPANSION',
       headline: 'Frontiers, Systems & Craft',
       content:
-        'Currently pursuing B.Tech in IT in Pune, continuously experimenting across modern web stacks, Web3 protocols, AI developer tooling, and cybersecurity.',
+        'Currently pursuing my B.Tech in Information Technology in Pune, continuously experimenting across modern web stacks, Web3 protocols, AI developer tooling, and cybersecurity fundamentals.',
     },
   ],
 
@@ -51,13 +51,13 @@ export const ABOUT_DATA: AboutSectionData = {
     education: {
       label: 'EDUCATION',
       value: 'B.Tech — Information Technology',
-      detail: 'Undergraduate Engineering Program',
+      detail: 'Undergraduate Program (Pune)',
       icon: 'GraduationCap',
     },
     orientation: {
       label: 'ORIENTATION',
-      value: 'Curious • Experimental • Builder',
-      detail: 'Hands-on problem solving across layers',
+      value: 'Curious · Experimental · Builder',
+      detail: 'Hands-on problem solving from first principles',
       icon: 'Compass',
     },
   },
@@ -72,14 +72,14 @@ export const ABOUT_DATA: AboutSectionData = {
       category: 'Sport & Tactics',
       tagline: 'Team Dynamics & Strategy',
       description:
-        'Appreciating tactical structure, positional play, high-speed decision making, and weekend matchday momentum.',
+        'Appreciating tactical structures, positional play, spatial awareness, and weekend matchday momentum.',
       iconName: 'football',
     },
     {
       id: 'interest-anime',
       name: 'Anime',
       category: 'Narrative & Art',
-      tagline: 'Worldbuilding & Character Arcs',
+      tagline: 'Worldbuilding & Complex Systems',
       description:
         'Drawn to deep storytelling, intricate fictional systems, visual direction, and creative problem solving in animation.',
       iconName: 'anime',
@@ -96,9 +96,9 @@ export const ABOUT_DATA: AboutSectionData = {
   ],
 
   closing: {
-    preamble: 'NEXT STEP',
-    headline: "Now you know the person behind the projects.",
-    actionText: "Let's connect & build something together",
-    targetId: 'contact',
+    preamble: '02 // NEXT CHAPTER',
+    headline: 'Disciplines, systems & technical craft.',
+    actionText: 'Explore what I build',
+    targetId: 'skills',
   },
 };

@@ -5,10 +5,10 @@ import { siteIdentity } from './identity';
  * Single source of truth for document headers, Open Graph tags, Twitter/X cards, and JSON-LD schema.
  */
 
-// Centralized production origin (falls back to GitHub Pages origin or custom domain)
+// Centralized production origin (falls back to actual Vercel deployment URL)
 export const SITE_URL =
   (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL) ||
-  'https://omjoshi-2307.github.io/om-joshi-portfolio';
+  'https://om-joshi-portfolio.vercel.app';
 
 export interface PageMeta {
   title: string;
@@ -26,7 +26,7 @@ export const siteSeo = {
   description:
     'Om Joshi is a B.Tech Information Technology student and builder from Pune, exploring software development, modern web technologies, Web3, AI, cybersecurity, and developer tooling through projects and experimentation.',
   author: 'Om Joshi',
-  themeColor: '#09090B',
+  themeColor: '#08090C',
   locale: 'en_US',
   image: `${SITE_URL}/portfolio-preview.svg`,
   twitterHandle: '@omjoshi_2307',
@@ -36,6 +36,7 @@ export const siteSeo = {
     'React',
     'TypeScript',
     'Web Development',
+    'Cybersecurity',
     'AI',
     'Web3',
     'Stellar',
@@ -45,31 +46,31 @@ export const siteSeo = {
   // Case-Study Specific Overrides
   projects: {
     sured: {
-      title: 'SureD — Secure Rental Deposits on Stellar | Om Joshi',
+      title: 'SureD — Blockchain-Powered Rental Security Deposit Platform | Om Joshi',
       description:
-        'A decentralized escrow protocol prototype on Stellar and Soroban smart contracts to eliminate rental security deposit disputes between tenants and landlords.',
+        'A blockchain-powered rental security deposit platform designed around the tenant-landlord escrow workflow to make deposit holding transparent and dispute-free.',
       url: `${SITE_URL}/work/sured`,
       image: `${SITE_URL}/sured-preview.svg`,
       type: 'article' as const,
-      keywords: ['SureD', 'Stellar', 'Soroban', 'Rust', 'Web3 Escrow', 'Smart Contracts', 'Om Joshi'],
+      keywords: ['SureD', 'Rental Deposit Escrow', 'Stellar', 'Soroban', 'Freighter Wallet', 'Om Joshi'],
     },
     walle: {
       title: 'WALL-E — Autonomous Obstacle Avoiding Robot | Om Joshi',
       description:
-        'An autonomous mobile robotics platform with ultrasonic distance sensors, DC motor drivers, and embedded C++ firmware for real-time obstacle avoidance.',
+        'An Arduino-based wheeled robot using an HC-SR04 ultrasonic distance sensor to detect obstacles and steer away in real time.',
       url: `${SITE_URL}/work/wall-e`,
       image: `${SITE_URL}/walle-preview.svg`,
       type: 'article' as const,
-      keywords: ['WALL-E', 'Arduino', 'Embedded C++', 'Robotics', 'Obstacle Avoidance', 'Om Joshi'],
+      keywords: ['WALL-E', 'Arduino Uno', 'C++', 'Robotics', 'Obstacle Avoidance', 'Om Joshi'],
     },
     jalsanchaee: {
-      title: 'JalSanchaeeNavachar — AISSMS Techathon 3.0 | Om Joshi',
+      title: 'JalSanchaeeNavachar — Water Conservation Concept | Om Joshi',
       description:
-        'An IoT water conservation telemetry prototype and client monitoring dashboard concept explored during AISSMS Techathon 3.0.',
+        'A hackathon concept and UI prototype developed at AISSMS Techathon 3.0, exploring residential water level monitoring dashboards.',
       url: `${SITE_URL}/work/jalsanchaeenavachar`,
       image: `${SITE_URL}/jalsanchaee-preview.svg`,
       type: 'article' as const,
-      keywords: ['JalSanchaeeNavachar', 'AISSMS Techathon', 'IoT Telemetry', 'Water Conservation', 'Om Joshi'],
+      keywords: ['JalSanchaeeNavachar', 'AISSMS Techathon', 'Hackathon Concept', 'Water Conservation', 'Om Joshi'],
     },
   },
 } as const;

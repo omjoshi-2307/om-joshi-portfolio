@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ExternalLink, Sparkles, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ExternalLink, Sparkles, ArrowRight, AlertCircle, Lightbulb } from 'lucide-react';
 import { ProjectVisual } from './ProjectVisual';
 import type { ProjectItem } from '@/types/projects';
 import { useRouter } from '@/hooks/useRouter';
@@ -40,26 +40,26 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        'group/featured relative flex flex-col gap-8 p-6 sm:p-10 md:p-12 rounded-xl border border-border bg-card shadow-subtle hover:border-border-strong transition-colors',
+        'group/featured relative flex flex-col gap-8 p-6 sm:p-10 md:p-12 rounded-lg border border-border bg-card shadow-card hover:border-border-strong transition-colors',
         className
       )}
     >
-      {/* 1. Context Marker & Status */}
+      {/* 1. Context Marker & Flagship Status Badge */}
       <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-border text-xs font-mono">
         <div className="flex items-center gap-2 text-accent font-semibold uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5 text-accent" aria-hidden="true" />
-          <span>FEATURED BUILD // {project.context}</span>
+          <span>FLAGSHIP BUILD // {project.context}</span>
         </div>
 
         <div className="flex items-center gap-3 text-muted-foreground">
-          <span className="px-2.5 py-0.5 rounded-sm bg-elevated border border-border text-[10px] font-semibold text-foreground font-mono">
-            WEB3 ESCROW PROTOCOL
+          <span className="px-2.5 py-0.5 rounded bg-surface border border-border text-[10px] font-semibold text-foreground font-mono">
+            RENTAL DEPOSIT ESCROW
           </span>
-          <span className="text-[11px] font-mono">STELLAR NETWORK</span>
+          <span className="text-[11px] font-mono">HACKATHON BUILD</span>
         </div>
       </div>
 
-      {/* 2. Interactive Large Visual Architecture (Dominant Visual - 60-70%) */}
+      {/* 2. Interactive Large Architectural Visual Schematic */}
       <div
         role="button"
         tabIndex={0}
@@ -68,21 +68,26 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
         onMouseEnter={() => setPointerState('view', 'VIEW')}
         onMouseLeave={resetPointerState}
         aria-label={`Interactive architectural schematic for ${project.title}. Press Enter to read full case study.`}
-        className="cursor-pointer transition-transform duration-200 group-hover/featured:scale-[1.005] rounded-lg focus-visible:outline-2 focus-visible:outline-accent"
+        className="cursor-pointer transition-transform duration-200 group-hover/featured:scale-[1.004] rounded focus-visible:outline-2 focus-visible:outline-accent"
       >
         <ProjectVisual type={project.visualType} />
       </div>
 
-      {/* 3. Headline & Subtitle & Actions Bar */}
+      {/* 3. Headline, Story Summary & Action Bar */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pt-2">
-        <div className="flex flex-col gap-2 max-w-2xl">
-          <h3 className="project-monumental text-foreground uppercase tracking-tight">
-            {project.title}
-          </h3>
-          <p className="text-lg sm:text-xl font-bold text-foreground/90 font-display">
+        <div className="flex flex-col gap-2.5 max-w-2xl">
+          <div className="flex items-center gap-3">
+            <h3 className="project-monumental text-foreground uppercase tracking-tight">
+              {project.title}
+            </h3>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-accent/10 border border-accent/20 text-accent font-semibold uppercase">
+              PROTOTYPE
+            </span>
+          </div>
+          <p className="text-lg sm:text-xl font-bold text-foreground font-display">
             {project.subtitle}
           </p>
-          <p className="editorial-lead text-muted-foreground text-sm sm:text-base">
+          <p className="editorial-lead text-muted-foreground text-sm sm:text-base leading-relaxed">
             {project.summary}
           </p>
         </div>
@@ -98,9 +103,9 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
             onMouseEnter={() => setPointerState('link')}
             onMouseLeave={resetPointerState}
             aria-label={`Read dedicated case study for ${project.title}`}
-            className="group/btn inline-flex items-center gap-2 px-5 py-3 min-h-[44px] rounded-md bg-accent hover:bg-accent-hover text-accent-foreground text-xs font-mono font-semibold transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
+            className="group/btn inline-flex items-center gap-2 px-5 py-2.5 min-h-[44px] rounded bg-accent hover:bg-accent-hover text-white text-xs font-mono font-semibold transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
           >
-            <span>Read Case Study</span>
+            <span>Case Study</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover/btn:translate-x-0.5" aria-hidden="true" />
           </a>
 
@@ -111,7 +116,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
             onMouseEnter={() => setPointerState('link')}
             onMouseLeave={resetPointerState}
             aria-label={`Open live product demo for ${project.title} (opens in a new tab)`}
-            className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
+            className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded border border-border hover:border-border-strong bg-card hover:bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 shadow-subtle active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
           >
             <span>Live Demo</span>
             <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" aria-hidden="true" />
@@ -125,7 +130,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
               onMouseEnter={() => setPointerState('link')}
               onMouseLeave={resetPointerState}
               aria-label={`View GitHub repository for ${project.title} (opens in a new tab)`}
-              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-md border border-border hover:border-border-strong bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
+              className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded border border-border hover:border-border-strong bg-card hover:bg-elevated text-foreground text-xs font-mono font-medium transition-colors duration-150 active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-accent"
             >
               <GitHubIcon className="w-3.5 h-3.5 text-muted-foreground" />
               <span>GitHub</span>
@@ -134,26 +139,57 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
         </div>
       </div>
 
-      {/* 4. Compact Contribution & Technology Bar */}
+      {/* 4. Structured Problem & Solution Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+        <div className="p-4 sm:p-5 rounded bg-surface border border-border flex flex-col gap-2">
+          <div className="flex items-center gap-2 text-[11px] font-mono text-muted-foreground uppercase font-semibold">
+            <AlertCircle className="w-3.5 h-3.5 text-accent-secondary" />
+            <span>THE PROBLEM</span>
+          </div>
+          <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed font-sans">
+            {project.problem ||
+              'Tenants face arbitrary deductions and delayed deposit returns when leases end, while landlords lack an impartial system that holds agreed funds securely without custodial friction.'}
+          </p>
+        </div>
+
+        <div className="p-4 sm:p-5 rounded bg-surface border border-border flex flex-col gap-2">
+          <div className="flex items-center gap-2 text-[11px] font-mono text-muted-foreground uppercase font-semibold">
+            <Lightbulb className="w-3.5 h-3.5 text-signal" />
+            <span>THE SOLUTION</span>
+          </div>
+          <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed font-sans">
+            {project.solution ||
+              'A structured escrow workflow (Create → Fund → Student/Tenant Confirmation → Landlord Confirmation → Release) utilizing Soroban smart contract escrow on the Stellar network.'}
+          </p>
+        </div>
+      </div>
+
+      {/* 5. Contributions & Team Collaboration Context */}
       {project.myContributions && project.myContributions.length > 0 && (
-        <div className="p-5 rounded-lg bg-surface border border-border flex flex-col gap-3">
-          <div className="flex items-center justify-between border-b border-border pb-2 text-[11px] font-mono text-muted-foreground font-semibold uppercase tracking-wider">
-            <span>MY ROLE CONTRIBUTIONS</span>
-            <span>STELLAR BUILD STATION SPRINT</span>
+        <div className="p-5 sm:p-6 rounded bg-surface border border-border flex flex-col gap-3.5">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-2.5 text-[11px] font-mono text-muted-foreground font-semibold uppercase tracking-wider">
+            <span>MY ROLE & CONTRIBUTIONS</span>
+            <span className="text-[10px] text-muted-subtle">STELLAR BUILD STATION PUNE</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {project.myContributions.map((contrib) => (
-              <div key={contrib} className="flex items-center gap-2 text-xs text-foreground">
-                <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" aria-hidden="true" />
+              <div key={contrib} className="flex items-start gap-2.5 text-xs text-foreground font-sans">
+                <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" aria-hidden="true" />
                 <span>{contrib}</span>
               </div>
             ))}
           </div>
+
+          {project.teamContext && (
+            <div className="pt-2 border-t border-border/80 text-[11px] font-mono text-muted-subtle">
+              <span>Note: {project.teamContext}</span>
+            </div>
+          )}
         </div>
       )}
 
-      {/* 5. Technology Stack Pills */}
+      {/* 6. Technology Stack Pills */}
       <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-border">
         <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider mr-2">
           STACK:
@@ -161,7 +197,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
         {project.mainTechnologies.map((tech) => (
           <span
             key={tech}
-            className="px-2.5 py-1 rounded-sm bg-elevated border border-border text-[11px] font-mono font-medium text-foreground"
+            className="px-2.5 py-1 rounded bg-surface border border-border text-[11px] font-mono font-medium text-foreground"
           >
             {tech}
           </span>
@@ -169,7 +205,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
         {project.supportingTechnologies?.map((tech) => (
           <span
             key={tech}
-            className="px-2 py-0.5 rounded-sm bg-card border border-border text-[10px] font-mono text-muted-foreground"
+            className="px-2 py-0.5 rounded bg-card border border-border text-[10px] font-mono text-muted-foreground"
           >
             {tech}
           </span>

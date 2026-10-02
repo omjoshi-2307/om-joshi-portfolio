@@ -5,7 +5,6 @@ import { PointerProvider } from '@/context/PointerContext';
 import { SiteShell } from '@/components/layout/SiteShell';
 import { PageTransition } from '@/components/layout/PageTransition';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { IntroSection } from '@/components/intro/IntroSection';
 import { JourneySection } from '@/components/journey/JourneySection';
 import { ProjectsSection } from '@/components/projects/ProjectsSection';
 import { ToolboxSection } from '@/components/toolbox/ToolboxSection';
@@ -117,28 +116,25 @@ const HomepageView: React.FC = () => {
 
   return (
     <div className="flex flex-col">
-      {/* 1. HERO */}
+      {/* HERO — Immediate Identity & Statement */}
       <HeroSection />
 
-      {/* 2. INTRO / CURRENT IDENTITY */}
-      <IntroSection />
-
-      {/* 3. JOURNEY / EVOLUTION */}
-      <JourneySection />
-
-      {/* 4. SELECTED WORK / PROJECTS */}
-      <ProjectsSection />
-
-      {/* 5. TECHNICAL TOOLBOX */}
-      <ToolboxSection />
-
-      {/* 6. CURRENTLY EXPLORING */}
-      <ExplorationSection />
-
-      {/* 7. ABOUT / PERSONAL IDENTITY */}
+      {/* 01 — INTRODUCTION: Who is Om? */}
       <AboutSection />
 
-      {/* 8. CONTACT */}
+      {/* 02 — WHAT I BUILD: What areas does he work in? */}
+      <ToolboxSection />
+
+      {/* 03 — SELECTED WORK: Flagship SureD, WALL-E & JalSanchaee */}
+      <ProjectsSection />
+
+      {/* 04 — JOURNEY: Milestones & Technical Evolution */}
+      <JourneySection />
+
+      {/* 05 — CURRENTLY: Active Experimentation & Learning Radar */}
+      <ExplorationSection />
+
+      {/* 06 — CONTACT: Connect & Collaborate */}
       <ContactSection />
     </div>
   );

@@ -32,11 +32,11 @@ export const ProjectCaseStudyPage: React.FC<ProjectCaseStudyPageProps> = ({
   const getMediaBadge = () => {
     switch (caseStudy.id) {
       case 'sured':
-        return 'SMART ESCROW PROTOCOL';
+        return 'RENTAL DEPOSIT ESCROW WORKFLOW';
       case 'walle':
-        return 'AUTONOMOUS ROBOTICS KINEMATICS';
+        return 'OBSTACLE AVOIDING ROBOT';
       case 'jalsanchaee':
-        return 'IOT WATER TELEMETRY';
+        return 'WATER CONSERVATION CONCEPT';
       default:
         return 'TECHNICAL SCHEMATIC';
     }
@@ -45,11 +45,11 @@ export const ProjectCaseStudyPage: React.FC<ProjectCaseStudyPageProps> = ({
   const getMediaCaption = () => {
     switch (caseStudy.id) {
       case 'sured':
-        return 'SureD multi-party Soroban escrow transaction pipeline on Stellar testnet';
+        return 'SureD tenant-landlord rental security deposit escrow flow';
       case 'walle':
-        return 'WALL-E obstacle detection sensor loop, HC-SR04 telemetry, and steering routines';
+        return 'WALL-E ultrasonic sensor sweep and motor steering routines on Arduino';
       case 'jalsanchaee':
-        return 'JalSanchaee reservoir depth and flow consumption telemetry architecture';
+        return 'JalSanchaee conceptual data flow and monitoring interface layout';
       default:
         return undefined;
     }

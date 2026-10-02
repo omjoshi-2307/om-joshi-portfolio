@@ -11,7 +11,7 @@ export const ExplorationHeader: React.FC<ExplorationHeaderProps> = ({ className 
   const prefersReduced = useReducedMotion();
 
   return (
-    <div className={cn('flex flex-col gap-6 max-w-4xl mb-16 sm:mb-24', className)}>
+    <div className={cn('flex flex-col gap-6 max-w-4xl mb-12 sm:mb-16', className)}>
       <motion.div
         initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 12 }}
         whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export const ExplorationHeader: React.FC<ExplorationHeaderProps> = ({ className 
         className="flex items-center gap-2.5 technical-eyebrow text-muted-subtle"
       >
         <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
-        <span>05 // EMERGING FRONTIERS</span>
+        <span>05 // CURRENTLY</span>
       </motion.div>
 
       <motion.h2
@@ -30,9 +30,9 @@ export const ExplorationHeader: React.FC<ExplorationHeaderProps> = ({ className 
         transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         className="section-monumental text-foreground uppercase tracking-tight"
       >
-        <span>ACTIVE</span>
+        <span>CURRENTLY</span>
         <br />
-        <span>FRONTIERS.</span>
+        <span>EXPLORING.</span>
       </motion.h2>
 
       <motion.p
@@ -40,9 +40,9 @@ export const ExplorationHeader: React.FC<ExplorationHeaderProps> = ({ className 
         whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="editorial-lead text-muted-foreground max-w-2xl"
+        className="editorial-lead text-muted-foreground max-w-2xl text-base sm:text-lg"
       >
-        The story isn't finished. While the toolbox represents what I build with today, these are the technical frontiers, systems layers, and emergent paradigms I am actively investigating.
+        What I am exploring now — active research, local model experiments, application security fundamentals, and distributed protocol engineering.
       </motion.p>
     </div>
   );
