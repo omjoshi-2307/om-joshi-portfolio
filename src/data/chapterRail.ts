@@ -104,7 +104,7 @@ export const CHAPTER_IMAGE_SOURCES: ChapterImageSource[] = [
     sourceName: 'Om Joshi Communication Protocol',
     license: 'Proprietary / Author Original',
     usage: 'contextual',
-    notes: 'Signal broadcast radar antenna, direct email protocol packet (onjoshi2307@gmail.com), and handshake link.',
+    notes: 'Signal broadcast radar antenna, direct email protocol packet (omjoshi2307@gmail.com), and handshake link.',
   },
 ];
 
