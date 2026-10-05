@@ -1,88 +1,296 @@
-<div align="center">
+# Om Joshi
 
-# Om Joshi — Personal Portfolio
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=230&section=header&text=OM%20JOSHI&fontSize=58&fontColor=E8DCC6&fontAlignY=38&desc=Information%20Technology%20Student%20%7C%20Builder%20%7C%20Explorer&descSize=17&descAlignY=60&color=722F37" width="100%" />
+</p>
 
-**A modern, editorial personal portfolio and interactive engineering showcase.**
+<p align="center">
+  <strong>Building. Learning. Exploring.</strong>
+</p>
 
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vite.dev/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-13-FF4FA3?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/)
-[![Oxlint](https://img.shields.io/badge/Linter-Oxlint-EC4899?style=flat-square)](https://oxc.rs/)
+<p align="center">
+  <em>I am an IT student who learns by building real things.</em>
+</p>
 
-[**Explore Live Portfolio →**](https://om-joshi-portfolio.vercel.app) • [**View GitHub Repository →**](https://github.com/omjoshi-2307/om-joshi-portfolio)
-
-</div>
-
----
-
-## Overview
-
-This repository houses the source code for the personal portfolio of **Om Joshi**, a B.Tech Information Technology student and builder based in Pune, India. 
-
-Designed with an editorial studio aesthetic, the site functions as both an interactive personal showcase and an engineering playground. It chronicles a multi-disciplinary journey spanning low-level embedded hardware, rapid hackathon prototypes, decentralized Web3 escrow protocols, and ongoing explorations in local AI workflows, systems programming, and cybersecurity.
+<p align="center">
+  <a href="https://om-joshi-portfolio.vercel.app/">
+    <img src="https://img.shields.io/badge/PORTFOLIO-722F37?style=for-the-badge&labelColor=722F37&color=E8DCC6" />
+  </a>
+  <a href="https://github.com/omjoshi-2307">
+    <img src="https://img.shields.io/badge/GITHUB-722F37?style=for-the-badge&labelColor=722F37&color=E8DCC6" />
+  </a>
+</p>
 
 ---
 
-## Live Experience
+## 01 — About
 
-| Environment | URL | Status |
-| :--- | :--- | :--- |
-| **Production Site** | [om-joshi-portfolio.vercel.app](https://om-joshi-portfolio.vercel.app) | Active |
-| **Source Repository** | [github.com/omjoshi-2307/om-joshi-portfolio](https://github.com/omjoshi-2307/om-joshi-portfolio) | Public |
+I'm **Om Joshi**, an Information Technology student from Pune, India.
 
----
+I like understanding how things work, building them myself, breaking them, debugging them, and then making them better.
 
-## Key Highlights
+My approach is simple:
 
-- **Obsidian & Warm Ivory Design System**: Dual-mode theme engine with an Obsidian Dark Studio palette (`#09090B`) as default and Warm Ivory Light Studio palette (`#F4F1EA`), engineered with an inline anti-flash script for zero-latency theme persistence.
-- **Command Palette (`Cmd+K` / `Ctrl+K`)**: Keyboard-first modal interface offering fast section jumping, case study navigation, instant theme switching, direct email copying, and social shortcuts.
-- **Scroll-Synchronized Visual Chapter Rail**: Fixed bottom navigation rail that tracks reading position and presents visual chapter previews across the narrative.
-- **Zero-Dependency Client-Side Router**: Lightweight SPA navigation engine powering deep-linkable case studies (`/work/:slug`) and custom 404 fallback routing.
-- **Interactive Project Case Studies**: In-depth breakdowns of real engineering projects, detailing problem statements, technical architecture, and team contributions.
-- **Desktop Pointer Micro-Interactions**: Ambient custom cursor tracking layer with contextual state adjustments across interactive UI elements.
-- **Accessibility & Motion Preferences**: Comprehensive `prefers-reduced-motion` compliance, accessible skip links, semantic HTML5 elements, and keyboard navigability.
-- **Production SEO & Structured Data**: Complete Open Graph, Twitter/X meta cards, canonical URL configuration, and Schema.org `Person` & `CreativeWork` JSON-LD structured data.
+```text
+LEARN
+  ↓
+BUILD
+  ↓
+BREAK
+  ↓
+DEBUG
+  ↓
+IMPROVE
+  ↓
+REPEAT
+```
 
----
-
-## Featured Projects & Case Studies
-
-| Project | Context | Core Technologies | Focus Area |
-| :--- | :--- | :--- | :--- |
-| [**SureD**](https://github.com/Khushal-93/SureD) | Stellar Build Station Pune | React, TypeScript, Tailwind CSS, Stellar, Soroban, Rust, Freighter | Decentralized rental deposit escrow protocol eliminating landlord-tenant disputes via smart contracts. |
-| [**WALL-E**](https://github.com/omjoshi-2307/WALL-E-Autonomous-Obstacle-Avoiding-Robot) | Engineering Build | Arduino Uno, Embedded C++, HC-SR04 Ultrasonic, L298N Motor Driver | Autonomous mobile robot featuring real-time ultrasonic obstacle sensing and kinematic evasion routines. |
-| **JalSanchaeeNavachar** *(Archive)* | AISSMS Techathon 3.0 | Rapid Prototyping, IoT Telemetry Concepts, UI Wireframing | Formative hackathon sprint exploring residential water telemetry and conservation analytics under tight deadlines. |
+I'm currently exploring the intersection of **software development, cybersecurity, artificial intelligence, computer vision, and emerging technologies**.
 
 ---
 
-## Tech Stack
+## 02 — Technology
 
-### Core Frontend & Framework
-- **React 19** (`^19.2.8`) — UI component architecture and reactive state
-- **TypeScript** (`~6.0.2`) — Static type safety and strict interface definitions
-- **Vite 8** (`^8.2.0`) — Build toolchain and fast HMR developer environment
+### Languages
 
-### Styling & Design System
-- **Tailwind CSS v4** (`^4.3.3`) — Utility-first styling via `@tailwindcss/vite`
-- **Design Tokens** (`tokens.css`) — Custom CSS variable system for Obsidian & Ivory themes
-- **Typography** — Satoshi (Fontshare), Inter (Google Fonts), JetBrains Mono (Google Fonts)
-- **clsx** & **tailwind-merge** — Conditional and conflict-free class composition
+<p>
+<img src="https://skillicons.dev/icons?i=c,cpp,python,javascript,typescript,html,css&theme=light" />
+</p>
 
-### Motion & UI Primitives
-- **Framer Motion** (`^13.1.0`) — Layout animations, spring transitions, and modal choreographies
-- **Lucide React** (`^1.31.0`) — Scalable vector icon library
-- **Radix UI Slot** (`^1.3.3`) — Polymorphic component primitive compositions
+### Development
 
-### Tooling, Linting & Deployment
-- **Oxlint** (`^1.75.0`) — High-performance Rust-based JavaScript/TypeScript linter
-- **Vercel Config** (`vercel.json`) — Security headers, immutable asset caching, and SPA rewrites
-- **GitHub Pages** — Automated static hosting deployment target
+<p>
+<img src="https://skillicons.dev/icons?i=react,tailwind,vite,nodejs,express,mongodb&theme=light" />
+</p>
+
+### Tools
+
+<p>
+<img src="https://skillicons.dev/icons?i=git,github,vscode,linux,vercel&theme=light" />
+</p>
+
+### Exploring
+
+<p>
+
+`CYBERSECURITY`   `ARTIFICIAL INTELLIGENCE`   `COMPUTER VISION`
+
+`BLOCKCHAIN`   `CLOUD`   `OPEN SOURCE`
+
+</p>
 
 ---
 
-## Project Structure
+## 03 — Selected Work
+
+### SureD
+
+**Blockchain-powered rental security deposits**
+
+SureD explores how blockchain technology can make rental security deposits more transparent and trustworthy.
+
+```text
+TENANT
+   │
+   │  Deposit
+   ▼
+┌──────────────────────┐
+│      SUREDeposit     │
+│                      │
+│  Blockchain Escrow   │
+└──────────┬───────────┘
+           │
+           ▼
+       LANDLORD
+```
+
+**Built with**
+
+`React` · `TypeScript` · `Tailwind CSS` · `Node.js` · `Express` · `MongoDB` · `Stellar` · `Soroban`
+
+<p>
+<a href="https://sure-d.vercel.app/">
+<img src="https://img.shields.io/badge/VIEW_PROJECT-722F37?style=for-the-badge&labelColor=722F37&color=E8DCC6"/>
+</a>
+</p>
+
+---
+
+### DepthWizard
+
+**Single-View Height Estimation & 3D Flythrough**
+
+A Smart India Hackathon 2026 project exploring how a single optical remote-sensing image can be transformed into a depth representation and 3D terrain visualization.
+
+```text
+┌──────────────┐
+│  RGB IMAGE   │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│  AI DEPTH    │
+│  ESTIMATION  │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│  DEPTH MAP   │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│    DSM /     │
+│    rDSM      │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ 3D FLYTHROUGH│
+└──────────────┘
+```
+
+**Built with**
+
+`Python` · `AI` · `Computer Vision` · `Depth Estimation` · `3D Visualization`
+
+**Problem Statement:** `SIH26175`
+
+---
+
+## 04 — Journey
+
+```text
+                         2026
+                          │
+                          ▼
+                ┌──────────────────┐
+                │   BUILDING       │
+                │   REAL PROJECTS  │
+                └────────┬─────────┘
+                         │
+             ┌───────────┼───────────┐
+             ▼           ▼           ▼
+         HACKATHONS   OPEN SOURCE   WEB
+             │           │           │
+             └───────────┼───────────┘
+                         ▼
+                  AI + CYBERSECURITY
+                         │
+                         ▼
+                    KEEP BUILDING
+```
+
+The portfolio is not meant to represent a finished journey.
+
+It's a record of **progress**.
+
+---
+
+## 05 — Highlights
+
+| Year     | Highlight                                               |
+| :------- | :------------------------------------------------------ |
+| **2026** | 🥇 1st Rank — Code Monopoly                             |
+| **2026** | 🚀 Smart India Hackathon — Internal Selection           |
+| **2026** | 🛰️ DepthWizard — SIH26175                              |
+| **2026** | 🌐 GSSoC '26                                            |
+| **2026** | 🏗️ Building and experimenting with real-world projects |
+
+---
+
+## 06 — Currently Exploring
+
+```text
+╭──────────────────────────────────────────────╮
+│                                              │
+│   CYBERSECURITY                              │
+│   ─────────────────────────────              │
+│   Building strong security fundamentals.     │
+│                                              │
+│   PYTHON                                     │
+│   ─────────────────────────────              │
+│   Strengthening programming fundamentals.    │
+│                                              │
+│   ARTIFICIAL INTELLIGENCE                    │
+│   ─────────────────────────────              │
+│   Exploring practical AI applications.       │
+│                                              │
+│   WEB DEVELOPMENT                            │
+│   ─────────────────────────────              │
+│   Building polished, usable products.        │
+│                                              │
+╰──────────────────────────────────────────────╯
+```
+
+---
+
+## 07 — Education
+
+### B.E. — Information Technology
+
+**Nutan Maharashtra Institute of Engineering and Technology**
+
+Pune, Maharashtra, India
+
+---
+
+## 08 — Connect
+
+<p align="center">
+
+<a href="https://om-joshi-portfolio.vercel.app/">
+<img src="https://img.shields.io/badge/PORTFOLIO-722F37?style=flat-square&logo=vercel&logoColor=E8DCC6"/>
+</a>
+
+<a href="https://github.com/omjoshi-2307">
+<img src="https://img.shields.io/badge/GITHUB-722F37?style=flat-square&logo=github&logoColor=E8DCC6"/>
+</a>
+
+<a href="https://x.com/omjoshi_2307">
+<img src="https://img.shields.io/badge/X-722F37?style=flat-square&logo=x&logoColor=E8DCC6"/>
+</a>
+
+<a href="https://www.instagram.com/0m.a.joshi/">
+<img src="https://img.shields.io/badge/INSTAGRAM-722F37?style=flat-square&logo=instagram&logoColor=E8DCC6"/>
+</a>
+
+</p>
+
+---
+
+## 09 — Philosophy
+
+<p align="center">
+
+### **Don't just learn the technology. Build something with it.**
+
+<br />
+
+<em>
+Every project starts with curiosity.<br/>
+Every bug teaches something.<br/>
+Every iteration makes the next one better.
+</em>
+
+</p>
+
+---
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=130&section=footer&color=722F37" width="100%" />
+</p>
+
+<p align="center">
+  <strong>Built with curiosity, code, and a lot of debugging.</strong>
+</p>
+
+<p align="center">
+  <sub>© 2026 Om Joshi</sub>
+</p>
+## 10 — Project Structure
+
+The portfolio follows a modular React + TypeScript architecture, keeping content, UI components, motion, routing, and design tokens separated for easier maintenance and iteration.
 
 ```text
 om-joshi-portfolio/
@@ -124,3 +332,61 @@ om-joshi-portfolio/
 ├── tsconfig.json               # TypeScript compiler configuration
 ├── vercel.json                 # Production routing and security header rules
 └── vite.config.ts              # Vite configuration and manual chunk optimization
+```
+
+### Architecture at a glance
+
+```text
+                         ┌──────────────────────┐
+                         │       main.tsx       │
+                         │   Application Entry  │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │       App.tsx        │
+                         │   Root + Router      │
+                         └──────────┬───────────┘
+                                    │
+              ┌─────────────────────┼─────────────────────┐
+              ▼                     ▼                     ▼
+       ┌─────────────┐       ┌─────────────┐       ┌─────────────┐
+       │ Components  │       │    Pages    │       │   Context   │
+       │     & UI    │       │   & Routes  │       │   Providers │
+       └──────┬──────┘       └─────────────┘       └──────┬──────┘
+              │                                             │
+              └──────────────────┬──────────────────────────┘
+                                 ▼
+                      ┌──────────────────────┐
+                      │        Data          │
+                      │ Projects · Journey   │
+                      │ Skills · Content     │
+                      └──────────┬───────────┘
+                                 │
+                                 ▼
+                      ┌──────────────────────┐
+                      │       Styles         │
+                      │ Tokens · Global CSS  │
+                      └──────────────────────┘
+```
+
+### Design System
+
+The visual system is built around the portfolio's warm editorial palette:
+
+```text
+┌─────────────────────────────────────────────────┐
+│                                                 │
+│  DEEP BURGUNDY       #722F37                    │
+│  Primary / Accent                                │
+│                                                 │
+│  MOCHA CREAM         #E8DCC6                    │
+│  Surface / Highlight                             │
+│                                                 │
+│  COSMIC LATTE        #B7A89A                    │
+│  Secondary / Neutral                             │
+│                                                 │
+└─────────────────────────────────────────────────┘
+```
+
+The separation of **components, data, configuration, styles, hooks, and utilities** allows the portfolio to evolve without turning individual pages into monolithic components.
