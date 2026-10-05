@@ -4,7 +4,7 @@ export interface SocialLinkItem {
   href: string;
   handle: string;
   isPublic?: boolean;
-  platform: 'linkedin' | 'github' | 'x' | 'credly';
+  platform: 'linkedin' | 'github' | 'x' | 'credly' | 'instagram';
   ariaLabel: string;
 }
 

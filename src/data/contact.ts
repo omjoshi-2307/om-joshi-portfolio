@@ -42,6 +42,15 @@ export const CONTACT_DATA: ContactSectionData = {
       ariaLabel: 'Follow Om Joshi on X / Twitter (opens in new tab)',
     },
     {
+      id: 'social-instagram',
+      label: 'Instagram',
+      href: siteIdentity.socials.instagram,
+      handle: '@0m.a.joshi',
+      isPublic: true,
+      platform: 'instagram',
+      ariaLabel: 'Follow Om Joshi on Instagram (opens in new tab)',
+    },
+    {
       id: 'social-credly',
       label: 'Credly',
       href: siteIdentity.socials.credly.rawUrl,

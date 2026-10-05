@@ -73,6 +73,18 @@ export const FooterSection: React.FC = () => {
             >
               X
             </a>
+            <span className="text-border" aria-hidden="true">•</span>
+            <a
+              href={siteIdentity.socials.instagram}
+              target="_blank"
+              rel="noreferrer noopener"
+              onMouseEnter={() => setPointerState('link')}
+              onMouseLeave={resetPointerState}
+              className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              aria-label="Instagram Profile (opens in new tab)"
+            >
+              Instagram
+            </a>
           </div>
 
           <span className="text-border hidden sm:inline" aria-hidden="true">|</span>

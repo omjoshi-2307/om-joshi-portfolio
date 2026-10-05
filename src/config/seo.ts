@@ -89,6 +89,7 @@ export function getPersonSchema() {
       siteIdentity.socials.linkedin,
       siteIdentity.socials.github,
       siteIdentity.socials.x,
+      siteIdentity.socials.instagram,
     ],
     address: {
       '@type': 'PostalAddress',

@@ -15,6 +15,7 @@ export const siteIdentity = {
     linkedin: 'https://www.linkedin.com/in/0m-joshi2307/',
     github: 'https://github.com/omjoshi-2307',
     x: 'https://x.com/omjoshi_2307',
+    instagram: 'https://www.instagram.com/0m.a.joshi/',
     credly: {
       rawUrl: 'https://www.credly.com/users/om-joshi2623',
       isPublic: true,

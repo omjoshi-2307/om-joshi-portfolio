@@ -231,6 +231,17 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           onClose();
         },
       },
+      {
+        id: 'link-instagram',
+        label: 'Open Instagram (@0m.a.joshi)',
+        category: 'Social Links',
+        keywords: ['instagram', 'insta', 'photos', 'social', 'profile'],
+        icon: ExternalLink,
+        perform: () => {
+          window.open(siteIdentity.socials.instagram, '_blank', 'noopener,noreferrer');
+          onClose();
+        },
+      },
     ],
     [isDark, copied, navigate, onClose, scrollToSection, toggleTheme, copyEmail, prefersReduced]
   );
