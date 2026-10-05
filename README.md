@@ -73,9 +73,9 @@ I'm currently exploring the intersection of **software development, cybersecurit
 
 <p>
 
-`CYBERSECURITY`   `ARTIFICIAL INTELLIGENCE`   `COMPUTER VISION`
+`CYBERSECURITY`   `ARTIFICIAL INTELLIGENCE`   `COMPUTER VISION`
 
-`BLOCKCHAIN`   `CLOUD`   `OPEN SOURCE`
+`BLOCKCHAIN`   `CLOUD`   `OPEN SOURCE`
 
 </p>
 
@@ -235,62 +235,9 @@ Pune, Maharashtra, India
 
 ---
 
-## 08 — Connect
+## 08 — Project Structure
 
-<p align="center">
-
-<a href="https://om-joshi-portfolio.vercel.app/">
-<img src="https://img.shields.io/badge/PORTFOLIO-722F37?style=flat-square&logo=vercel&logoColor=E8DCC6"/>
-</a>
-
-<a href="https://github.com/omjoshi-2307">
-<img src="https://img.shields.io/badge/GITHUB-722F37?style=flat-square&logo=github&logoColor=E8DCC6"/>
-</a>
-
-<a href="https://x.com/omjoshi_2307">
-<img src="https://img.shields.io/badge/X-722F37?style=flat-square&logo=x&logoColor=E8DCC6"/>
-</a>
-
-<a href="https://www.instagram.com/0m.a.joshi/">
-<img src="https://img.shields.io/badge/INSTAGRAM-722F37?style=flat-square&logo=instagram&logoColor=E8DCC6"/>
-</a>
-
-</p>
-
----
-
-## 09 — Philosophy
-
-<p align="center">
-
-### **Don't just learn the technology. Build something with it.**
-
-<br />
-
-<em>
-Every project starts with curiosity.<br/>
-Every bug teaches something.<br/>
-Every iteration makes the next one better.
-</em>
-
-</p>
-
----
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=130&section=footer&color=722F37" width="100%" />
-</p>
-
-<p align="center">
-  <strong>Built with curiosity, code, and a lot of debugging.</strong>
-</p>
-
-<p align="center">
-  <sub>© 2026 Om Joshi</sub>
-</p>
-## 10 — Project Structure
-
-The portfolio follows a modular React + TypeScript architecture, keeping content, UI components, motion, routing, and design tokens separated for easier maintenance and iteration.
+The portfolio follows a modular **React + TypeScript** architecture, keeping content, UI components, motion, routing, and design tokens separated for easier maintenance and iteration.
 
 ```text
 om-joshi-portfolio/
@@ -315,26 +262,28 @@ om-joshi-portfolio/
 │   │   ├── projects/           # Featured project cards & media viewers
 │   │   ├── sections/           # Top-level section compositions
 │   │   ├── toolbox/            # Categorized skills matrix & technical index
-│   │   └── ui/                 # Reusable UI primitives (Button, Badge, Toggle)
-│   ├── config/                 # Site identity, links, navigation, and SEO tags
+│   │   └── ui/                 # Reusable UI primitives
+│   ├── config/                 # Site identity, links, navigation, SEO tags
 │   ├── context/                # Theme and Pointer React Context providers
-│   ├── data/                   # Structured content for projects, journey, and skills
-│   ├── hooks/                  # Custom hooks (router, theme, motion, active section)
-│   ├── pages/                  # Route views (ProjectCaseStudyPage, NotFoundPage)
+│   ├── data/                   # Structured content for projects, journey, skills
+│   ├── hooks/                  # Custom hooks
+│   ├── pages/                  # Route views
 │   ├── styles/                 # Global stylesheet and CSS design tokens
 │   ├── types/                  # TypeScript type definitions and interfaces
-│   ├── utils/                  # Helper utilities (cn, motion variants)
+│   ├── utils/                  # Helper utilities
 │   ├── App.tsx                 # Root application shell & router
 │   └── main.tsx                # Application mounting entry point
 ├── .oxlintrc.json              # Oxlint linting rules
-├── index.html                  # HTML entry with SEO metadata and anti-flash script
+├── index.html                  # HTML entry with SEO metadata
 ├── package.json                # Project dependencies and scripts
 ├── tsconfig.json               # TypeScript compiler configuration
-├── vercel.json                 # Production routing and security header rules
-└── vite.config.ts              # Vite configuration and manual chunk optimization
+├── vercel.json                 # Production routing and security headers
+└── vite.config.ts              # Vite configuration and chunk optimization
 ```
 
-### Architecture at a glance
+---
+
+## 09 — Architecture at a Glance
 
 ```text
                          ┌──────────────────────┐
@@ -370,7 +319,9 @@ om-joshi-portfolio/
                       └──────────────────────┘
 ```
 
-### Design System
+---
+
+## 10 — Design System
 
 The visual system is built around the portfolio's warm editorial palette:
 
@@ -390,3 +341,59 @@ The visual system is built around the portfolio's warm editorial palette:
 ```
 
 The separation of **components, data, configuration, styles, hooks, and utilities** allows the portfolio to evolve without turning individual pages into monolithic components.
+
+---
+
+## 11 — Connect
+
+<p align="center">
+
+<a href="https://om-joshi-portfolio.vercel.app/">
+<img src="https://img.shields.io/badge/PORTFOLIO-722F37?style=flat-square&logo=vercel&logoColor=E8DCC6"/>
+</a>
+
+<a href="https://github.com/omjoshi-2307">
+<img src="https://img.shields.io/badge/GITHUB-722F37?style=flat-square&logo=github&logoColor=E8DCC6"/>
+</a>
+
+<a href="https://x.com/omjoshi_2307">
+<img src="https://img.shields.io/badge/X-722F37?style=flat-square&logo=x&logoColor=E8DCC6"/>
+</a>
+
+<a href="https://www.instagram.com/0m.a.joshi/">
+<img src="https://img.shields.io/badge/INSTAGRAM-722F37?style=flat-square&logo=instagram&logoColor=E8DCC6"/>
+</a>
+
+</p>
+
+---
+
+## 12 — Philosophy
+
+<p align="center">
+
+### **Don't just learn the technology. Build something with it.**
+
+<br />
+
+<em>
+Every project starts with curiosity.<br/>
+Every bug teaches something.<br/>
+Every iteration makes the next one better.
+</em>
+
+</p>
+
+---
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=130&section=footer&color=722F37" width="100%" />
+</p>
+
+<p align="center">
+  <strong>Built with curiosity, code, and a lot of debugging.</strong>
+</p>
+
+<p align="center">
+  <sub>© 2026 Om Joshi</sub>
+</p>
